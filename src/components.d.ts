@@ -9,7 +9,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ElMenu: typeof import('element-plus/es')['ElMenu']
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
-    Navigation: typeof import('./src/components/Navigation/Navigation.vue')['default']
+    Navigation: typeof import('./components/Navigation/Navigation.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
