@@ -1,4 +1,7 @@
+.dark {
+  background-color: var(--bays-4);
+}
 html.dark {
-  /* custom dark bg color */
-  --el-bg-color: #626aef;
+  --el-color-primary: var(--primary-color);
+  --el-border-color: var(--boulders-0);
 }
