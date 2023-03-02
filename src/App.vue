@@ -10,7 +10,7 @@
       </el-icon>
     </button>
     <transition name="shift">
-      <AsideMenu v-show="show"/>
+      <AsideMenu v-show="show" @toggle-menu="() => show = false"/>
     </transition>
     </header>
     <main class="main" :class="show ? 'blur' : ''">

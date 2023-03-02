@@ -1,5 +1,6 @@
 <template>
   <aside class="aside-menu">
+    <div class="aside-menu__filler" @click="toggleMenu"></div>
     <div class="aside-menu__wrapper">
       <nav class="navigation">
         <ol class="navigation-list">
@@ -18,9 +19,10 @@
 <script lang="tsx" setup>
 import ThemeToggle from '~/components/ThemeToggle/ThemeToggle.vue';
 
+const emit = defineEmits(['toggleMenu']);
 
-function toogleMenu() {
-  
+function toggleMenu() {
+  emit('toggleMenu')
 }
 </script>
 
@@ -42,9 +44,11 @@ function toogleMenu() {
   bottom: 0px;
   right: 0px;
   display: flex;
-  flex-flow: row-reverse;
   width: 100%;
   z-index: 1;
+  &__filler {
+    width: 20%;
+  }
   &__wrapper {
     position: relative;
     display: flex;
@@ -54,6 +58,7 @@ function toogleMenu() {
     height: 100%;
     padding: 86px 10px;
     background-color: var(--boulders-1);
+    box-shadow: -10px 0px 30px -15px var(--bays-4-07);
   }
   &__theme-toggle {
     position: absolute;
