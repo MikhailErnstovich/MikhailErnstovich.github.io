@@ -1,0 +1,25 @@
+.main {
+  counter-reset: section;
+}
+.section_numbered {
+  height: 100vh;
+  .section__title {
+    display: flex;
+    &::before {
+      counter-increment: section 1; 
+      content: '0' counter(section) '.';
+      margin-right: 0.2em;
+      color: var(--bays-0);
+    }
+    span {
+      display: block;
+      &::first-letter {
+        text-transform: capitalize;
+      }
+    }
+
+  }
+}
+.link {
+  color: var(--bays-0);
+}

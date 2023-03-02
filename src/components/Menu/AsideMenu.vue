@@ -4,12 +4,17 @@
     <div class="aside-menu__wrapper">
       <nav class="navigation">
         <ol class="navigation-list">
-          <li class="navigation-list__item">Home</li>
-          <li class="navigation-list__item">About</li>
-          <li class="navigation-list__item">Experience</li>
-          <li class="navigation-list__item">Contact</li>
+          <li class="navigation-list__item" v-for="item in items">
+            <a 
+              class="navigation-list__item-link" 
+              :href="'#' + item.id"
+              @click="toggleMenu"
+            >
+              {{ item.title[0].toUpperCase() + item.title.slice(1) }}
+            </a>
+          </li>
         </ol>
-        <a href="/resume.pdf" class="resume-link">Resume</a>
+        <a href="/CV.pdf" class="resume-link">Resume</a>
       </nav>
       <ThemeToggle class="aside-menu__theme-toggle"/>
     </div>
@@ -18,26 +23,14 @@
 
 <script lang="tsx" setup>
 import ThemeToggle from '~/components/ThemeToggle/ThemeToggle.vue';
-
+import { items } from './menu-data';
 const emit = defineEmits(['toggleMenu']);
-
 function toggleMenu() {
-  emit('toggleMenu')
+  emit('toggleMenu');
 }
 </script>
 
 <style lang="scss">
-    // @media (max-width: 1080px) {
-    //   padding: 200px 100px;
-    // }
-    // @media (max-width: 768px) {
-    //   padding: 150px 50px;
-    // }
-    // @media (max-width: 480px) {
-    //   padding: 125px 25px;
-    // }
-
-
 .aside-menu {
   position: fixed;
   top: 0px;
@@ -45,7 +38,6 @@ function toggleMenu() {
   right: 0px;
   display: flex;
   width: 100%;
-  z-index: 1;
   &__filler {
     width: 20%;
   }
@@ -90,12 +82,15 @@ function toggleMenu() {
       &:hover {
         color: var(--bays-0);
       }
-      &::before {
-        content: "0" counter(item) ".";
+      &-link{
         display: block;
-        margin-bottom: 5px;
-        text-align: center;
-        color: var(--bays-0)
+        &::before {
+          content: "0" counter(item) ".";
+          display: block;
+          margin-bottom: 5px;
+          text-align: center;
+          color: var(--bays-0)
+        }
       }
     }
   }
@@ -104,7 +99,7 @@ function toggleMenu() {
   display: block;
   width: max-content;
   margin: 10% auto 0;
-  padding: 18px 50px;
+  padding: 14px 50px;
   font-size: clamp(var(--fz-sm), 6vw, var(--fz-lg));
   border: 1px solid var(--bays-0);;
   border-radius: 4px;
