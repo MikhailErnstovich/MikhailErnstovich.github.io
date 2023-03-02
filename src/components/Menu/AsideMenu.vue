@@ -1,15 +1,17 @@
 <template>
   <aside class="aside-menu">
+    <div class="aside-menu__wrapper">
       <nav class="navigation">
-      <ol class="navigation-list">
-        <li class="navigation-list__item">Home</li>
-        <li class="navigation-list__item">About</li>
-        <li class="navigation-list__item">Experience</li>
-        <li class="navigation-list__item">Contact</li>
-      </ol>
-      <a href="/resume.pdf" class="resume-link">Resume</a>
-    </nav>
-    <ThemeToggle class="aside-menu__theme-toggle"/>
+        <ol class="navigation-list">
+          <li class="navigation-list__item">Home</li>
+          <li class="navigation-list__item">About</li>
+          <li class="navigation-list__item">Experience</li>
+          <li class="navigation-list__item">Contact</li>
+        </ol>
+        <a href="/resume.pdf" class="resume-link">Resume</a>
+      </nav>
+      <ThemeToggle class="aside-menu__theme-toggle"/>
+    </div>
   </aside>
 </template>
 
@@ -23,36 +25,50 @@ function toogleMenu() {
 </script>
 
 <style lang="scss">
-.dark .aside-menu {
-  background-color: var(--bays-3);
-}
+    // @media (max-width: 1080px) {
+    //   padding: 200px 100px;
+    // }
+    // @media (max-width: 768px) {
+    //   padding: 150px 50px;
+    // }
+    // @media (max-width: 480px) {
+    //   padding: 125px 25px;
+    // }
+
+
 .aside-menu {
   position: fixed;
   top: 0px;
   bottom: 0px;
   right: 0px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 80%;
-  padding: 86px 10px;
-  &__button {
-    display: block;
-    background-color: transparent;
-    color: var(--bays-0);
-    &_close {
-      position: absolute;
-      top: 36px;
-      right: 36px;
-      width: 36px;
-      height: 36px;
-      font-size: 36px;
-    }
+  flex-flow: row-reverse;
+  width: 100%;
+  z-index: 1;
+  &__wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    padding: 86px 10px;
+    background-color: var(--boulders-1);
   }
   &__theme-toggle {
     position: absolute;
     top: 36px;
     left: 36px;
+  }
+}
+.dark .aside-menu {
+  &__wrapper {
+    background-color: var(--bays-3);
+  }
+}
+@media (min-width: 768px) {
+  .aside-menu {
+    display: none;
   }
 }
 
