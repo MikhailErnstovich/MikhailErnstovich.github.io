@@ -1,12 +1,8 @@
-type MenuItem = {
+export type MenuItem = {
   title: string,
   id: string,
 }
 export const items: MenuItem[] = [
-  {
-    title:'home',
-    id: 'home'
-  },
   {
     title: 'about',
     id: 'about'
@@ -16,7 +12,7 @@ export const items: MenuItem[] = [
     id: 'experience'
   },
   {
-    title: 'contact',
-    id: 'contact'
-  } 
+    title: 'contacts',
+    id: 'contacts'
+  },
 ];

@@ -10,7 +10,7 @@
               :href="'#' + item.id"
               @click="toggleMenu"
             >
-              {{ item.title[0].toUpperCase() + item.title.slice(1) }}
+              {{ getMenuItemTitle(item) }}
             </a>
           </li>
         </ol>
@@ -23,10 +23,15 @@
 
 <script lang="tsx" setup>
 import ThemeToggle from '~/components/ThemeToggle/ThemeToggle.vue';
-import { items } from './menu-data';
+import { items, MenuItem } from './menu-data';
+
 const emit = defineEmits(['toggleMenu']);
 function toggleMenu() {
   emit('toggleMenu');
+}
+
+function getMenuItemTitle(item: MenuItem): string {
+  return item.title[0].toUpperCase() + item.title.slice(1);
 }
 </script>
 
@@ -60,7 +65,7 @@ function toggleMenu() {
 }
 .dark .aside-menu {
   &__wrapper {
-    background-color: var(--bays-3);
+    background-color: var(--bays-4);
   }
 }
 @media (min-width: 768px) {
