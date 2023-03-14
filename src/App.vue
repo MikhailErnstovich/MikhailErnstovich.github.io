@@ -19,31 +19,47 @@
         <h1>Hi, my name is</h1>
         <h2 class="big-title">Mikhail Makarov.</h2>
         <h3 class="big-title">I build things for the web.</h3>
-        <p>
+        <p class="section__paragraph">
           I am a software engineer specializing in front-end application development. 
-          I am currently part of the <a class="link" href="https://flat-soft.ru/">FlatSoftware</a> team developing a computer-telephony integration system.
+          I am currently part of the <a class="link" href="https://flat-soft.ru/">FlatSoftware</a> 
+          team developing a computer-telephony integration system.
         </p>
         <a href="/CV.pdf" class="resume-link">Check out my CV!</a>
       </section>
-      <section class="section section_numbered">
-        <h2 class="section__title"  :id="sectionTitles[0].id">
-          <span>{{ sectionTitles[0].title }}</span>
-        </h2>
+      <section class="section section_numbered" :id="sectionTitles[0].id">
+        <div class="section__title-wrapper">
+          <h2 class="section__title"  >
+            <span class="section__title-text">{{ sectionTitles[0].title }}</span>
+          </h2>
+        </div>
+        <p class="section__paragraph section__paragraph_justify">
+          My name is Mikhail Makarov. I started my way in the field of web development in early 2020.
+          While on quarantine, I decided to try myself in another area and went
+          through the <a class="link" href="https://www.coursera.org/account/accomplishments/specialization/KKPTF2MJ95M8">HTML, CSS and JS course by JSC Yandex and MIPT</a>. 
+          That resulted in my new hobby and changing my career direction from <a class="link" href="https://www.youtube.com/watch?v=gsTl2qkWnp0">silicon photonics</a> to web development.
+          Today I work remotely as a frontend developer in <a class="link" href="https://flat-soft.ru/">FlatSoftware</a>.
+        </p>
+        <p class="section__paragraph section__paragraph_justify">
+          There are some key technologies below I have been working with up to date:
+        </p>
+        <Skills />
+
       </section>
-      <section class="section section_numbered">
-        <h2 class="section__title" :id="sectionTitles[1].id">
-          <span>{{ sectionTitles[1].title }}</span>
-        </h2>
+      <section class="section section_numbered" :id="sectionTitles[1].id">
+        <div class="section__title-wrapper">
+          <h2 class="section__title">
+            <span class="section__title-text">{{ sectionTitles[1].title }}</span>
+          </h2>
+        </div>
+        <Timeline />
       </section>
-      <section class="section section_numbered">
-        <h2 class="section__title" :id="sectionTitles[2].id">
-          <span>{{ sectionTitles[2].title }}</span>
-        </h2>
-      </section>
-      <section class="section section_numbered">
-        <h2 class="section__title" :id="sectionTitles[3].id">
-          <span>{{ sectionTitles[3].title }}</span>
-        </h2>
+      <section class="section section_numbered" :id="sectionTitles[2].id">
+        <div class="section__title-wrapper">
+          <h2 class="section__title">
+            <span class="section__title-text">{{ sectionTitles[2].title }}</span>
+          </h2>
+        </div>
+        <Map />
       </section>
     </main>
     <footer class="footer">
@@ -56,8 +72,11 @@
 import { ref } from 'vue';
 import AsideMenu from './components/Menu/AsideMenu.vue';
 import Logo from './components/Logo/Logo.vue';
+import Timeline from './components/Timeline/Timeline.vue';
 import { Close, Menu } from '@element-plus/icons-vue';
 import { items as sectionTitles } from '~/components/Menu/menu-data';
+import Skills from './components/Skills/Skills.vue';
+import Map from './components/Map/Map.vue';
 const show = ref(false);
 </script>
 
@@ -103,6 +122,7 @@ const show = ref(false);
     }
     .resume-link {
       margin: 40px 0 0 0;
+
     }
   }
 }
@@ -122,7 +142,7 @@ const show = ref(false);
 }
 
 .shift-enter-to,
-.shif-leave-from {
+.shift-leave-from {
   transform: translateX(0);
 }
 .shift-enter-active,
