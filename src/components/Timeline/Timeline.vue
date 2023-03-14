@@ -1,0 +1,143 @@
+<template>
+  <article class="timeline">
+    <el-timeline>
+      <el-timeline-item 
+        class="timeline__item"  
+        :class="i !== 0 ? 'timeline__item_hidden' : ''"
+        placement="top"
+        v-for="(item, i) in timeline" 
+        :key="item.interval"
+        :timestamp="item.interval"
+        :icon="item.icon"
+        @click="$event => toggleCard($event)"
+      >
+        <el-card>
+          <h4 class="timeline__item-title">{{ item.title }}</h4>
+          <a class="link timeline__item-link" :href="item.link"  target="_blank">
+            {{ item.organization }} 
+          </a>
+          <ul class="timeline__item-list">
+            <li v-for="activity in item.activities">{{ activity }}</li>
+          </ul>
+        </el-card>
+      </el-timeline-item>
+    </el-timeline>
+  </article>
+</template>
+
+<script setup lang="tsx">
+import { timeline } from './timeline-data';
+
+function toggleCard(event: Event) {
+  if (event.target.classList.contains('link')) {
+    return;
+  }
+  if (event.currentTarget) {
+    event.currentTarget.classList.toggle('timeline__item_hidden');
+  }
+}
+
+</script>
+
+<style lang="scss">
+.el-card {
+  border: 1px solid var(--bays-0);
+}
+.el-timeline {
+  &-item {
+    &__timestamp {
+      font-size: var(--fz-xs);
+      font-family: var(--font-light);
+      padding-bottom: 32px;
+      color: var(--bays-0);
+      &.is-top {
+        margin-bottom: 0;
+      }
+    }
+    &__content {
+      box-shadow: none;
+    }
+    &__tail {
+      left: 7px;
+      height: calc(100% + 12px);
+      --el-timeline-node-color: var(--bays-0-05);
+    }
+    &__node {
+      width: 18px;
+      height: 18px;
+      background-color: var(--boulders-0);
+      font-size: var(--fz-lg);
+      border-color: var(--bays-0);
+      .el-timeline-item__icon {
+        color: var(--bays-0);
+        font-size: var(--fz-lg);
+      }
+    }
+  }
+}
+.timeline {
+  &__item {
+    max-height: 1000px;
+    padding-bottom: 32px;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.645,0.045,0.355,1);
+    will-change: max-height;
+    &_hidden {
+      max-height: 0;
+      .el-timeline-item__timestamp {
+        color: var(--boulders-4)
+      }
+    }
+    .el-card {
+      background-color: var(--bays-0-01);
+      border: none;
+      border-radius: 8px;
+      &__body {
+        position: relative;
+        padding: 20px;
+      }
+    }
+    .el-card.is-always-shadow {
+      box-shadow: none;
+    }
+
+    &-title {
+      font-size: var(--fz-lg);
+      margin-bottom: 5px;
+      font-family: var(--font-medium);
+      letter-spacing: 1px;
+    }
+    &-link {
+      font-size: var(--fz-md);
+      font-family: var(--font-medium);
+    }
+    &-background {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    &-list {
+      margin-top: 10px;
+      li {
+        position: relative;
+        font-size: var(--fz-md);
+        margin-bottom: 10px;
+        padding-left: 20px;
+        list-style: none;
+        &::before {
+          display: block;
+          content: '▸';
+          position: absolute;
+          left: 0;
+          height: inherit;
+          line-height: inherit;
+          color: var(--bays-0);
+        }
+      }
+    }
+  }
+}
+</style>
