@@ -8,6 +8,9 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    outDir: path.join(__dirname, "docs"),
+  },
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, './src')}/`
