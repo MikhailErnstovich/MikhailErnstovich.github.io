@@ -1,25 +1,109 @@
+html {
+  background-color: #ffffff;
+  color: black;
+  font-family: var(--font-regular);
+}
+button { 
+  font-size: var(--fz-xl);
+}
 .main {
   counter-reset: section;
 }
-.section_numbered {
-  height: 100vh;
-  .section__title {
+
+.section {
+  &_numbered {
+    margin: 60px 0;
+  }
+  &_intro {
+    height: 100vh;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    h1 {
+      margin: 0 0 20px 0;
+      font-family: var(--font-light);
+      font-size: var(--fz-lg);
+      color: var(--bays-0);
+      letter-spacing: 2px;
+    }
+    h2 {
+      font-family: var(--font-medium);
+      letter-spacing: 3px;
+      font-size: var(--fz-heading);
+      color: var(--bouldes-0)
+    }
+    h3 {
+      margin: 0 0 20px 0;
+      font-family: var(--font-medium);
+      font-size: var(--fz-heading);
+      letter-spacing: 2px;
+      opacity: 0.7;
+    }
+    .resume-link {
+      margin: 40px 0 0 0;
+    }
+  }
+  &__title {
+    display: flex;
+    margin: 0 10px;
+    font-size: var(--fz-xxl);
+    font-family: var(--font-medium);
+    letter-spacing: 2px;
+    &-text {
+      display: block;
+      height: 100%;
+      &::first-letter {
+        text-transform: capitalize;
+      }
+    }
+    &-wrapper {
+      display: flex;
+      margin: 10px 0 40px;
+      align-items: center;
+      &::before,
+      &::after {
+        content: '';
+        display: block;
+        height: 1px;
+        width: 100%;
+        background-color: var(--boulders-0);
+        opacity: 0.7;
+      }
+    }
     &::before {
       counter-increment: section 1; 
       content: '0' counter(section) '.';
       margin-right: 0.2em;
       color: var(--bays-0);
     }
-    span {
-      display: block;
-      &::first-letter {
-        text-transform: capitalize;
-      }
+  }
+  &__paragraph {
+    margin: 0 0 15px;
+    line-height: 1.5;
+    &_justify {
+      text-align: justify;
     }
-
   }
 }
-.link {
+
+.link,
+.link:visited,
+.link:focus, 
+.link:active  {
   color: var(--bays-0);
+}
+
+.resume-link {
+  display: block;
+  width: max-content;
+  padding: 14px 50px;
+  font-size: clamp(var(--fz-sm), 6vw, var(--fz-lg));
+  border: 1px solid var(--bays-0);;
+  border-radius: 4px;
+  background-color: transparent;
+  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+  &:hover {
+    background-color: var(--bays-0-02);
+  }
 }

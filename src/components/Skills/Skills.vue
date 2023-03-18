@@ -11,7 +11,7 @@ import { skills } from './skill-data';
 
 </script>
 
-<style  lang="scss">
+<style  lang="scss" scoped>
 .skills {
   &__list {
     display: grid;

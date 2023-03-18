@@ -14,7 +14,7 @@
             </a>
           </li>
         </ol>
-        <a href="/CV.pdf" class="resume-link">Resume</a>
+        <a href="/CV.pdf" class="resume-link link">Resume</a>
       </nav>
       <ThemeToggle class="aside-menu__theme-toggle"/>
     </div>
@@ -35,7 +35,7 @@ function getMenuItemTitle(item: MenuItem): string {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .aside-menu {
   position: fixed;
   top: 0px;
@@ -54,7 +54,7 @@ function getMenuItemTitle(item: MenuItem): string {
     width: 80%;
     height: 100%;
     padding: 86px 10px;
-    background-color: var(--boulders-1);
+    background-color: var(--boulders-0);
     box-shadow: -10px 0px 30px -15px var(--bays-4-07);
   }
   &__theme-toggle {
@@ -82,13 +82,20 @@ function getMenuItemTitle(item: MenuItem): string {
       text-align: center;
       counter-increment: item 1;
       font-size: clamp(var(--fz-sm), 6vw, var(--fz-xl));
+      letter-spacing: 2px;
       transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
       cursor: pointer;
       &:hover {
         color: var(--bays-0);
       }
-      &-link{
+      &-link {
         display: block;
+        color: black;
+        &:visited,
+        &:focus, 
+        &:active {
+          color: black;
+        } 
         &::before {
           content: "0" counter(item) ".";
           display: block;
@@ -100,18 +107,18 @@ function getMenuItemTitle(item: MenuItem): string {
     }
   }
 }
-.resume-link {
-  display: block;
-  width: max-content;
-  margin: 10% auto 0;
-  padding: 14px 50px;
-  font-size: clamp(var(--fz-sm), 6vw, var(--fz-lg));
-  border: 1px solid var(--bays-0);;
-  border-radius: 4px;
-  background-color: transparent;
-  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-  &:hover {
-    background-color: var(--bays-0-op2);
+.dark {
+  .navigation-list__item-link {
+    color: var(--boulders-0);
+    &:visited,
+    &:focus, 
+    &:active {
+      color: var(--boulders-0);
+    } 
   }
+}
+.resume-link {
+  margin: 10% auto 0;
+  letter-spacing: 2px;
 }
 </style>

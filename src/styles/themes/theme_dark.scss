@@ -1,5 +1,13 @@
 .dark {
-  background-color: var(--bays-4);
+  background-color: var(--boulder-4);
+  // [class*="ymaps-2"][class*="-ground-pane"]
+  #map {
+    filter: invert(100%);
+    -ms-filter: invert(100%);
+    -webkit-filter: invert(100%);
+    -moz-filter: invert(100%);
+    -o-filter: invert(100%);
+  }
 }
 html.dark {
   color: var(--boulders-1);

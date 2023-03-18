@@ -8,15 +8,15 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AsideMenu: typeof import('./src/components/Menu/AsideMenu.vue')['default']
-    ElButton: typeof import('element-plus/es')['ElButton']
+    ElCard: typeof import('element-plus/es')['ElCard']
     ElIcon: typeof import('element-plus/es')['ElIcon']
-    ElMenu: typeof import('element-plus/es')['ElMenu']
-    ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
+    ElTimeline: typeof import('element-plus/es')['ElTimeline']
+    ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
     Logo: typeof import('./src/components/Logo/Logo.vue')['default']
-    Navigation: typeof import('./src/components/Menu/Navigation.vue')['default']
-    RouterLink: typeof import('vue-router')['RouterLink']
-    RouterView: typeof import('vue-router')['RouterView']
+    Map: typeof import('./src/components/Map/Map.vue')['default']
+    Skills: typeof import('./src/components/Skills/Skills.vue')['default']
     ThemeToggle: typeof import('./src/components/ThemeToggle/ThemeToggle.vue')['default']
+    Timeline: typeof import('./src/components/Timeline/Timeline.vue')['default']
   }
 }

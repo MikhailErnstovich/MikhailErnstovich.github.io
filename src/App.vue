@@ -24,7 +24,7 @@
           I am currently part of the <a class="link" href="https://flat-soft.ru/">FlatSoftware</a> 
           team developing a computer-telephony integration system.
         </p>
-        <a href="/CV.pdf" class="resume-link">Check out my CV!</a>
+        <a href="/CV.pdf" class="resume-link link">Check out my CV!</a>
       </section>
       <section class="section section_numbered" :id="sectionTitles[0].id">
         <div class="section__title-wrapper">
@@ -95,36 +95,6 @@ const show = ref(false);
 }
 .blur {
   filter: blur(5px) brightness(0.7);
-}
-.section {
-  &_intro {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    h1 {
-      margin: 0 0 20px 2px;
-      font-family: var(--font-light);
-      color: var(--bays-0);
-    }
-    h2 {
-      font-family: var(--font-medium);
-      letter-spacing: 3px;
-      font-size: 2em;
-      color: var(--bouldes-0)
-    }
-    h3 {
-      margin: 0 0 10px 0;
-      font-family: var(--font-medium);
-      font-size: 2em;
-      opacity: 0.7;
-    }
-    .resume-link {
-      margin: 40px 0 0 0;
-
-    }
-  }
 }
 .menu-toggle {
   display: flex;

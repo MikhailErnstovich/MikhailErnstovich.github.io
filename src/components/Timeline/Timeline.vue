@@ -58,14 +58,14 @@ function toggleCard(event: Event) {
       box-shadow: none;
     }
     &__tail {
+      top: 18px;
       left: 7px;
-      height: calc(100% + 12px);
       --el-timeline-node-color: var(--bays-0-05);
     }
     &__node {
       width: 18px;
       height: 18px;
-      background-color: var(--boulders-0);
+      background-color: transparent;
       font-size: var(--fz-lg);
       border-color: var(--bays-0);
       .el-timeline-item__icon {
@@ -73,6 +73,11 @@ function toggleCard(event: Event) {
         font-size: var(--fz-lg);
       }
     }
+  }
+}
+.dark {
+  .timeline__item_hidden .el-timeline-item__timestamp {
+    color: var(--boulders-0);
   }
 }
 .timeline {
