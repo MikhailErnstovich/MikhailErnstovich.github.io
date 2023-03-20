@@ -81,8 +81,8 @@ button {
   &__paragraph {
     margin: 0 0 15px;
     line-height: 1.5;
-    &_justify {
-      text-align: justify;
+    &_center {
+      text-align: center;
     }
   }
 }
@@ -94,7 +94,8 @@ button {
   color: var(--bays-0);
 }
 
-.resume-link {
+.resume-link,
+.mail-link {
   display: block;
   width: max-content;
   padding: 14px 50px;
@@ -106,4 +107,8 @@ button {
   &:hover {
     background-color: var(--bays-0-02);
   }
+}
+
+.mail-link {
+  margin: 50px auto;
 }

@@ -16,6 +16,7 @@ declare module '@vue/runtime-core' {
     Logo: typeof import('./src/components/Logo/Logo.vue')['default']
     Map: typeof import('./src/components/Map/Map.vue')['default']
     Skills: typeof import('./src/components/Skills/Skills.vue')['default']
+    SocialMedia: typeof import('./src/components/SocialMedia/SocialMedia.vue')['default']
     ThemeToggle: typeof import('./src/components/ThemeToggle/ThemeToggle.vue')['default']
     Timeline: typeof import('./src/components/Timeline/Timeline.vue')['default']
   }

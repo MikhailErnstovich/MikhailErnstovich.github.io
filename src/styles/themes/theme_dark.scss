@@ -8,6 +8,9 @@
     -moz-filter: invert(100%);
     -o-filter: invert(100%);
   }
+  .social-media {
+    filter: invert(90%) sepia(0%) saturate(1621%) hue-rotate(268deg) brightness(95%) contrast(90%);
+  }
 }
 html.dark {
   color: var(--boulders-1);

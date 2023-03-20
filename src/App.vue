@@ -32,14 +32,14 @@
             <span class="section__title-text">{{ sectionTitles[0].title }}</span>
           </h2>
         </div>
-        <p class="section__paragraph section__paragraph_justify">
+        <p class="section__paragraph">
           My name is Mikhail Makarov. I started my way in the field of web development in early 2020.
           While on quarantine, I decided to try myself in another area and went
           through the <a class="link" href="https://www.coursera.org/account/accomplishments/specialization/KKPTF2MJ95M8">HTML, CSS and JS course by JSC Yandex and MIPT</a>. 
           That resulted in my new hobby and changing my career direction from <a class="link" href="https://www.youtube.com/watch?v=gsTl2qkWnp0">silicon photonics</a> to web development.
           Today I work remotely as a frontend developer in <a class="link" href="https://flat-soft.ru/">FlatSoftware</a>.
         </p>
-        <p class="section__paragraph section__paragraph_justify">
+        <p class="section__paragraph">
           There are some key technologies below I have been working with up to date:
         </p>
         <Skills />
@@ -59,10 +59,21 @@
             <span class="section__title-text">{{ sectionTitles[2].title }}</span>
           </h2>
         </div>
+        <p class="section__paragraph section__paragraph_center">
+          I am open to job offers (especially with relocation) and freelance work. However, feel free to contact me if you have any other questions. I'll try my best to answer you as soon as possible.
+        </p>
+        <a
+          class="mail-link" 
+          target="_blank"
+          :href="contacts.email.link"
+        >
+          Send message
+        </a>
         <Map />
       </section>
     </main>
     <footer class="footer">
+      <SocialMedia />
       Design & Built by Mikhail Makarov
     </footer>
   </div>
@@ -77,6 +88,8 @@ import { Close, Menu } from '@element-plus/icons-vue';
 import { items as sectionTitles } from '~/components/Menu/menu-data';
 import Skills from './components/Skills/Skills.vue';
 import Map from './components/Map/Map.vue';
+import SocialMedia from './components/SocialMedia/SocialMedia.vue';
+import { contacts } from './components/SocialMedia/social-media-data';
 const show = ref(false);
 </script>
 
@@ -129,4 +142,5 @@ const show = ref(false);
     display: none;
   }
 }
+
 </style>
