@@ -63,7 +63,7 @@
           I am open to job offers (especially with relocation) and freelance work. However, feel free to contact me if you have any other questions. I'll try my best to answer you as soon as possible.
         </p>
         <a
-          class="mail-link" 
+          class="link mail-link" 
           target="_blank"
           :href="contacts.email.link"
         >
@@ -74,7 +74,7 @@
     </main>
     <footer class="footer">
       <SocialMedia />
-      Design & Built by Mikhail Makarov
+      <Authorship />
     </footer>
   </div>
 </template>
@@ -90,22 +90,11 @@ import Skills from './components/Skills/Skills.vue';
 import Map from './components/Map/Map.vue';
 import SocialMedia from './components/SocialMedia/SocialMedia.vue';
 import { contacts } from './components/SocialMedia/social-media-data';
+import Authorship from './components/Authorship/Authorship.vue';
 const show = ref(false);
 </script>
 
 <style  lang="scss">
-.header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  padding: 0 25px;
-  z-index: 2;
-}
-.main {
-  padding: 0 25px; 
-}
 .blur {
   filter: blur(5px) brightness(0.7);
 }
