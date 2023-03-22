@@ -39,11 +39,11 @@
           That resulted in my new hobby and changing my career direction from <a class="link" href="https://www.youtube.com/watch?v=gsTl2qkWnp0">silicon photonics</a> to web development.
           Today I work remotely as a frontend developer in <a class="link" href="https://flat-soft.ru/">FlatSoftware</a>.
         </p>
+        <Photo />
         <p class="section__paragraph">
           There are some key technologies below I have been working with up to date:
         </p>
         <Skills />
-
       </section>
       <section class="section section_numbered" :id="sectionTitles[1].id">
         <div class="section__title-wrapper">
@@ -91,6 +91,7 @@ import Map from './components/Map/Map.vue';
 import SocialMedia from './components/SocialMedia/SocialMedia.vue';
 import { contacts } from './components/SocialMedia/social-media-data';
 import Authorship from './components/Authorship/Authorship.vue';
+import Photo from './components/Photo/Photo.vue';
 const show = ref(false);
 </script>
 

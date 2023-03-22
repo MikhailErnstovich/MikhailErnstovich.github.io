@@ -3,10 +3,13 @@
 </template>
 <script setup lang="tsx">
 import { onBeforeMount, onMounted } from 'vue';
+
 let mapApiKey = '';
+
 onBeforeMount(async () => {
   await fetch('/config.json').then(res => res.json()).then(d => mapApiKey = d.mapApiKey);
 });
+
 onMounted(async () => {
   //install Yandex map scripts
   let scriptYandexMap = document.createElement('script');
@@ -47,6 +50,6 @@ onMounted(async () => {
 <style lang="scss" scoped>
   #map {
     width: 100%;
-    height: 70vh;
+    aspect-ratio: 1 / 1;
   }
 </style>

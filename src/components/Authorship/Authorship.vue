@@ -2,7 +2,7 @@
   <div class="authorship">
     Design & Built by Mikhail Makarov.
     <a class="link authorship__link" target="_blank" href="https://github.com/MikhailErnstovich/MikhailErnstovich.github.io">
-      Source code
+      Check out the source code.
     </a>
   </div>
 </template>
