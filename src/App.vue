@@ -32,7 +32,7 @@
             <span class="section__title-text">{{ sectionTitles[0].title }}</span>
           </h2>
         </div>
-        <p class="section__paragraph">
+        <p class="section__paragraph section__paragraph_no-margin">
           My name is Mikhail Makarov. I started my way in the field of web development in early 2020.
           While on quarantine, I decided to try myself in another area and went
           through the <a class="link" href="https://www.coursera.org/account/accomplishments/specialization/KKPTF2MJ95M8">HTML, CSS and JS course by JSC Yandex and MIPT</a>. 
