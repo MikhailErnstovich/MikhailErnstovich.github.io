@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <h1>MM</h1>
+    <h1>M</h1>
   </div>
 </template>
 
@@ -10,9 +10,10 @@
 
 <style  lang="scss" scoped>
 .logo {
-  width: 100px;
-  height: 100px;
-  line-height: 100px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
   font-size: 1.5em;
   font-family: var(--font-bold);
 }

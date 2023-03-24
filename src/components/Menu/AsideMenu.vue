@@ -2,8 +2,9 @@
   <aside class="aside-menu">
     <div class="aside-menu__filler" @click="toggleMenu"></div>
     <div class="aside-menu__wrapper">
+      <ThemeToggle class="aside-menu__theme-toggle"/>
       <nav class="navigation">
-        <ol class="navigation-list">
+        <menu class="navigation-list">
           <li class="navigation-list__item" v-for="item in items">
             <a 
               class="navigation-list__item-link" 
@@ -13,10 +14,9 @@
               {{ getMenuItemTitle(item) }}
             </a>
           </li>
-        </ol>
+        </menu>
         <a href="/CV.pdf" class="resume-link link">Resume</a>
       </nav>
-      <ThemeToggle class="aside-menu__theme-toggle"/>
     </div>
   </aside>
 </template>
@@ -26,9 +26,7 @@ import ThemeToggle from '~/components/ThemeToggle/ThemeToggle.vue';
 import { items, MenuItem } from './menu-data';
 
 const emit = defineEmits(['toggleMenu']);
-function toggleMenu() {
-  emit('toggleMenu');
-}
+const toggleMenu = () => emit('toggleMenu');
 
 function getMenuItemTitle(item: MenuItem): string {
   return item.title[0].toUpperCase() + item.title.slice(1);
@@ -53,7 +51,6 @@ function getMenuItemTitle(item: MenuItem): string {
     justify-content: center;
     width: 80%;
     height: 100%;
-    padding: 86px 10px;
     background-color: var(--boulders-0);
     box-shadow: -10px 0px 30px -15px var(--bays-4-07);
   }

@@ -14,6 +14,7 @@ declare module '@vue/runtime-core' {
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTimeline: typeof import('element-plus/es')['ElTimeline']
     ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
+    Header: typeof import('./src/components/Header/Header.vue')['default']
     Logo: typeof import('./src/components/Logo/Logo.vue')['default']
     Map: typeof import('./src/components/Map/Map.vue')['default']
     Photo: typeof import('./src/components/Photo/Photo.vue')['default']

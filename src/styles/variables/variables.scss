@@ -1,4 +1,5 @@
 :root {
+  //font sizes
   --fz-xxs: 12px;
   --fz-xs: 13px;
   --fz-sm: 14px;
@@ -7,6 +8,12 @@
   --fz-xl: 20px;
   --fz-xxl: 22px;
   --fz-heading: 32px;
+
+  //spacing
+  --s-sm: 8px;
+  --s-md: 16px;
+  --s-lg: 32px;
+  --s-xl: 64px;
 
   //Estonian color theme
   --primary-color: #0000f0;

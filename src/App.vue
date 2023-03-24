@@ -1,19 +1,6 @@
 <template>
   <div class="wrapper">
-    <header class="header">
-      <Logo />
-      <button class="menu-toggle" @click="() => show = !show">
-      <el-icon v-if="show">
-        <Close />
-      </el-icon>
-      <el-icon v-if="!show">
-        <Menu />
-      </el-icon>
-    </button>
-    <transition name="shift">
-      <AsideMenu v-show="show" @toggle-menu="() => show = false"/>
-    </transition>
-    </header>
+    <Header @toggle-blur="(isBlur) => show = isBlur"/>
     <main class="main" :class="show ? 'blur' : ''">
       <section class="section section_intro">
         <h1>Hi, my name is</h1>
@@ -81,10 +68,8 @@
 
 <script setup lang="tsx">
 import { ref } from 'vue';
-import AsideMenu from './components/Menu/AsideMenu.vue';
-import Logo from './components/Logo/Logo.vue';
+import Header from './components/Header/Header.vue';
 import Timeline from './components/Timeline/Timeline.vue';
-import { Close, Menu } from '@element-plus/icons-vue';
 import { items as sectionTitles } from '~/components/Menu/menu-data';
 import Skills from './components/Skills/Skills.vue';
 import Map from './components/Map/Map.vue';
@@ -93,44 +78,9 @@ import { contacts } from './components/SocialMedia/social-media-data';
 import Authorship from './components/Authorship/Authorship.vue';
 import Photo from './components/Photo/Photo.vue';
 const show = ref(false);
+
 </script>
 
 <style  lang="scss">
-.blur {
-  filter: blur(5px) brightness(0.7);
-}
-.menu-toggle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: transparent;
-  color: var(--bays-0);
-  position: absolute;
-  right: 25px;
-  top: 0;
-  width: 36px;
-  height: 100px;
-  font-size: 36px;
-  z-index: 2;
-}
-
-.shift-enter-to,
-.shift-leave-from {
-  transform: translateX(0);
-}
-.shift-enter-active,
-.shift-leave-active {
-  transition: transform 0.5s ease;
-}
-
-.shift-enter-from,
-.shift-leave-to {
-  transform: translateX(100vw);
-}
-@media (min-width: 768px) {
-  .menu-toggle {
-    display: none;
-  }
-}
 
 </style>
