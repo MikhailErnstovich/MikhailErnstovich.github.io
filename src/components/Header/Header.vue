@@ -9,9 +9,7 @@
           <Menu />
         </el-icon>
       </button>
-    <transition name="shift">
-      <AsideMenu v-show="show" @toggle-menu="() => show = false"/>
-    </transition>
+      <AsideMenu :toggle="show" @toggle-menu="toggleMenu"/>
   </header>
 </template>
 <script setup lang="tsx">
@@ -47,24 +45,5 @@ const toggleMenu = () => {
   height: 50px;
   font-size: 36px;
   z-index: 2;
-}
-
-.shift-enter-to,
-.shift-leave-from {
-  transform: translateX(0);
-}
-.shift-enter-active,
-.shift-leave-active {
-  transition: transform 0.5s ease;
-}
-
-.shift-enter-from,
-.shift-leave-to {
-  transform: translateX(100vw);
-}
-@media (min-width: 768px) {
-  .menu-toggle {
-    display: none;
-  }
 }
 </style>

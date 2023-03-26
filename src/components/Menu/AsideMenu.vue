@@ -1,29 +1,35 @@
 <template>
-  <aside class="aside-menu">
-    <div class="aside-menu__filler" @click="toggleMenu"></div>
-    <div class="aside-menu__wrapper">
-      <ThemeToggle class="aside-menu__theme-toggle"/>
-      <nav class="navigation">
-        <menu class="navigation-list">
-          <li class="navigation-list__item" v-for="item in items">
-            <a 
-              class="navigation-list__item-link" 
-              :href="'#' + item.id"
-              @click="toggleMenu"
-            >
-              {{ getMenuItemTitle(item) }}
-            </a>
-          </li>
-        </menu>
-        <a href="/CV.pdf" class="resume-link link">Resume</a>
-      </nav>
-    </div>
-  </aside>
+  <transition name="shift" v-show="props.toggle">
+    <aside class="aside-menu">
+      <div class="aside-menu__filler" @click="toggleMenu"></div>
+      <div class="aside-menu__wrapper">
+        <ThemeToggle class="aside-menu__theme-toggle"/>
+        <nav class="navigation">
+          <menu class="navigation-list">
+            <li class="navigation-list__item" v-for="item in items">
+              <a 
+                class="navigation-list__item-link" 
+                :href="'#' + item.id"
+                @click="toggleMenu"
+              >
+                {{ getMenuItemTitle(item) }}
+              </a>
+            </li>
+          </menu>
+          <a href="/CV.pdf" class="resume-link link">Resume</a>
+        </nav>
+      </div>
+    </aside>
+  </transition>
 </template>
 
 <script lang="tsx" setup>
 import ThemeToggle from '~/components/ThemeToggle/ThemeToggle.vue';
 import { items, MenuItem } from './menu-data';
+
+const props = defineProps({
+  toggle: Boolean 
+});
 
 const emit = defineEmits(['toggleMenu']);
 const toggleMenu = () => emit('toggleMenu');
@@ -102,6 +108,25 @@ function getMenuItemTitle(item: MenuItem): string {
         }
       }
     }
+  }
+}
+
+.shift-enter-to,
+.shift-leave-from {
+  transform: translateX(0);
+}
+.shift-enter-active,
+.shift-leave-active {
+  transition: transform 0.5s ease;
+}
+
+.shift-enter-from,
+.shift-leave-to {
+  transform: translateX(100vw);
+}
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none;
   }
 }
 .dark {
