@@ -26,8 +26,8 @@ const imgUrl = new URL('~/assets/images/rainbow.JPG', import.meta.url).href;
 .photo {
   position: relative;
   width: 100%;
-  padding: 20px;
-  margin: 15px 0;
+  padding: var(--s-md);
+  margin: var(--s-sm) auto var(--s-lg);
   &__wrapper {
     position: relative;
     &:focus .photo__img,
@@ -52,7 +52,7 @@ const imgUrl = new URL('~/assets/images/rainbow.JPG', import.meta.url).href;
       border: 2px solid var(--bays-0);
       border-top: none;
       border-left: none;
-      transform: translate(15px, calc(15px - 100%));
+      transform: translate(var(--s-sm), calc(15px - 100%));
       transition: all .3s ease-in-out;
       z-index: -1;
       will-change: transform;
