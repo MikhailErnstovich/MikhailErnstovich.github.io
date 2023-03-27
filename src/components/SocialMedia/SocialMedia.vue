@@ -41,7 +41,7 @@ import { contacts } from './social-media-data';
     &__item {
       width: 40px;
       height: 40px;
-      padding: 10px;
+      padding: var(--s-xs);
       &-link {
         img {
           display: block;
