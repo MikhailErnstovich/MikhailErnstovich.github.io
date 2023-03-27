@@ -3,16 +3,16 @@
     <div class="photo__wrapper">
       <picture class="photo__content">
         <source 
-          :srcset="imgUrl"
+          :srcset="imgUrls.lg"
           media="(min-width: 1000px)"
         />
         <source 
-          :srcset="imgUrl" 
+          :srcset="imgUrls.md" 
           media="(min-width: 600px)"
         />
         <img 
           class="photo__img"
-          :src="imgUrl"
+          :src="imgUrls.sm"
           alt="Mikhail Makarov"
         />
       </picture>
@@ -20,7 +20,11 @@
   </div>
 </template>
 <script setup lang="tsx">
-const imgUrl = new URL('~/assets/images/rainbow.JPG', import.meta.url).href;
+const imgUrls = {
+  sm:  new URL('~/assets/images/me-sm.webp', import.meta.url).href,
+  md:  new URL('~/assets/images/me-md.webp', import.meta.url).href,
+  lg:  new URL('~/assets/images/me.webp', import.meta.url).href
+}
 </script>
 <style lang="scss" scoped>
 .photo {

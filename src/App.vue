@@ -46,7 +46,7 @@
         >
           Send message
         </a>
-        <Map />
+        <!-- <Map /> -->
       </section>
     </main>
     <footer class="footer">
