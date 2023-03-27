@@ -19,8 +19,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: calc(100vh - 100px);
-  padding: var(--s-xl) 0 ;
+  height: 100vh;
   h1 {
     margin: 0 0 var(--s-xs);
     font-family: var(--font-light);
@@ -42,7 +41,7 @@
     opacity: 0.7;
   }
   .resume-link {
-    margin: var(--s-xl) auto 0;
+    margin: var(--s-xl) 0 0;
   }
 }
 </style>
