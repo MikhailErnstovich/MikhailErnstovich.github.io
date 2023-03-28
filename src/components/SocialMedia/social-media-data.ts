@@ -3,27 +3,27 @@ export const contacts = {
     {
       link: 'https://www.researchgate.net/profile/Mikhail-Makarov-6',
       title: 'ResearchGate',
-      img: 'https://raw.githubusercontent.com/MikhailErnstovich/MikhailErnstovich.github.io/master/src/assets/icons/research-gate.svg',
+      img:  new URL('~/assets/icons/research-gate.svg', import.meta.url).href,
     },
     {
       link: 'https://www.linkedin.com/in/mikhail-makarov-639a55164/',
       title: 'LinkedIn',
-      img: 'https://raw.githubusercontent.com/MikhailErnstovich/MikhailErnstovich.github.io/master/src/assets/icons/linkedin.svg',
+      img: new URL('~/assets/icons/linkedin.svg', import.meta.url).href,
     },
     {
       link: 'https://github.com/MikhailErnstovich',
       title: 'GitHub',
-      img: 'https://raw.githubusercontent.com/MikhailErnstovich/MikhailErnstovich.github.io/master/src/assets/icons/github.svg',
+      img: new URL('~/assets/icons/github.svg', import.meta.url).href,
     },
     {
       link: 'https://t.me/R0b1nH00d',
       title: 'Telegram',
-      img: 'https://raw.githubusercontent.com/MikhailErnstovich/MikhailErnstovich.github.io/master/src/assets/icons/telegram.svg',
+      img: new URL('~/assets/icons/telegram.svg', import.meta.url).href,
     },
   ],
   email: {
     link: 'mailto: mikhail.makarov@phystech.edu',
     title: 'E-mail',
-    img: 'https://raw.githubusercontent.com/MikhailErnstovich/MikhailErnstovich.github.io/master/src/assets/icons/mail.svg',
+    img: new URL('~/assets/icons/mail.svg', import.meta.url).href,
   }
 };

@@ -10,8 +10,9 @@
           class="social-media__item-link" 
           target="_blank"
           :href="item.link"
+          v-inserted
         >
-          <img :src="item.img" :alt="item.title + ' icon'"/>
+          <img :data-url="item.img" :alt="item.title + ' icon'"/>
         </a>
       </li>
       <li
@@ -21,8 +22,9 @@
           class="social-media__item-link" 
           target="_blank"
           :href="contacts.email.link"
+          v-inserted
         >
-          <img :src="contacts.email.img" :alt="contacts.email.title + ' icon'"/>
+          <img :data-url="contacts.email.img" :alt="contacts.email.title + ' icon'"/>
         </a>
       </li>
     </ul>
@@ -30,6 +32,10 @@
 </template>
 <script setup lang="tsx">
 import { contacts } from './social-media-data';
+import { insertImage } from '~/helpers/lazy-loaders';
+const vInserted = {
+  mounted: insertImage
+};
 </script>
 <style lang="scss" scoped>
   .social-media{
