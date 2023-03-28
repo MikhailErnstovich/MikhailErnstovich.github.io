@@ -1,4 +1,4 @@
-export function insertImage (el: HTMLPictureElement):void {
+export function insertImage (el: HTMLElement):void {
   const loadImage = () => {
     const imgElements = Array.from(el.children).filter(el => {
       return el.nodeName === 'IMG' || el.nodeName === 'SOURCE'

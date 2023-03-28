@@ -1,30 +1,30 @@
 @font-face {
   font-family: 'Intel-Bold';
-  src: url('/fonts/intelone-display-bold.ttf') format('truetype'),
-    url('/fonts/intelone-display-bold.woff') format('woff'),
-    url('/fonts/intelone-display-bold.woff2') format('woff2');
+  src: url('/fonts/intelone-display-bold.woff2') format('woff2'),
+    url('/fonts/intelone-display-bold.ttf') format('truetype'),
+    url('/fonts/intelone-display-bold.woff') format('woff');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Intel-light';
-  src: url('/fonts/intelone-display-light.ttf') format('truetype'),
-    url('/fonts/intelone-display-light.woff') format('woff'),
-    url('/fonts/intelone-display-light.woff2') format('woff2');
+  src: url('/fonts/intelone-display-light.woff2') format('woff2'),
+    url('/fonts/intelone-display-light.ttf') format('truetype'),
+    url('/fonts/intelone-display-light.woff') format('woff');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Intel-medium';
-  src: url('/fonts/intelone-display-medium.ttf') format('truetype'),
-    url('/fonts/intelone-display-medium.woff2') format('woff2');
+  src: url('/fonts/intelone-display-medium.woff2') format('woff2'),
+    url('/fonts/intelone-display-medium.ttf') format('truetype');
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Intel-regular';
-  src: url('/fonts/intelone-display-regular.ttf') format('truetype'),
-    url('/fonts/intelone-display-regular.woff') format('woff'),
-    url('/fonts/intelone-display-regular.woff2') format('woff2');
+  src: url('/fonts/intelone-display-regular.woff2') format('woff2'),
+    url('/fonts/intelone-display-regular.ttf') format('truetype'),
+    url('/fonts/intelone-display-regular.woff') format('woff');
   font-display: swap;
 }
