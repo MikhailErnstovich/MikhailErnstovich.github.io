@@ -1,6 +1,6 @@
 <template>
   <div class="photo">
-    <div class="photo__wrapper">
+    <figure class="photo__wrapper">
       <picture class="photo__content">
         <source 
           :srcset="imgUrls.lg"
@@ -16,7 +16,7 @@
           alt="Mikhail Makarov"
         />
       </picture>
-    </div>
+    </figure>
   </div>
 </template>
 <script setup lang="tsx">
