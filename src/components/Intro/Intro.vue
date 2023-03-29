@@ -21,7 +21,7 @@
   justify-content: center;
   height: 100vh;
   h1 {
-    margin: 0 0 var(--s-xs);
+    margin: 0 0 var(--s-xss);
     font-family: var(--font-light);
     font-size: var(--fz-lg);
     color: var(--bays-0);
@@ -34,14 +34,14 @@
     color: var(--bouldes-0)
   }
   h3 {
-    margin: 0 0 var(--s-md);
+    margin: 0 0 var(--s-sm);
     font-family: var(--font-medium);
     font-size: var(--fz-heading);
     letter-spacing: 2px;
     opacity: 0.7;
   }
   .resume-link {
-    margin: var(--s-xl) 0 0;
+    margin: var(--s-lg) 0 0;
   }
 }
 </style>

@@ -65,15 +65,13 @@ function getMenuItemTitle(item: MenuItem): string {
     top: 36px;
     left: 36px;
   }
+  @include lg-screen {
+    display: none;
+  }
 }
 .dark .aside-menu {
   &__wrapper {
     background-color: var(--bays-4);
-  }
-}
-@media (min-width: 768px) {
-  .aside-menu {
-    display: none;
   }
 }
 
@@ -124,11 +122,7 @@ function getMenuItemTitle(item: MenuItem): string {
 .shift-leave-to {
   transform: translateX(100vw);
 }
-@media (min-width: 768px) {
-  .menu-toggle {
-    display: none;
-  }
-}
+
 .dark {
   .navigation-list__item-link {
     color: var(--boulders-0);

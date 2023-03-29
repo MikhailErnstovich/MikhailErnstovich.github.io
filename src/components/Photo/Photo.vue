@@ -35,8 +35,8 @@ const vInserted = {
 .photo {
   position: relative;
   width: 100%;
-  padding: var(--s-md);
-  margin: var(--s-sm) auto var(--s-lg);
+  padding: var(--s-sm);
+  margin: var(--s-xs) auto var(--s-md);
   &__wrapper {
     position: relative;
     &:focus .photo__img,
@@ -61,7 +61,7 @@ const vInserted = {
       border: 2px solid var(--bays-0);
       border-top: none;
       border-left: none;
-      transform: translate(var(--s-sm), calc(15px - 100%));
+      transform: translate(var(--s-xs), calc(15px - 100%));
       transition: all .3s ease-in-out;
       z-index: -1;
       will-change: transform;

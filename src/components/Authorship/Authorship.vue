@@ -11,7 +11,7 @@
 </script>
 <style lang="scss" scoped>
 .authorship {
-  margin: var(--s-md) 0;
+  margin: var(--s-sm) 0;
   text-align: center;
   font-size: var(--fz-xs);
 }

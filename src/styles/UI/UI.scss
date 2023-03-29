@@ -9,26 +9,26 @@ button {
 }
 .main {
   counter-reset: section;
-  padding: 0 var(--s-md);
+  padding: 0 var(--s-sm);
 }
 .header {
   position: absolute;
   width: 100%;
   height: 100px;
-  padding: 0 var(--s-md);
+  padding: 0 var(--s-sm);
   z-index: 2;
 }
 .footer {
-  padding: 0 var(--s-md);
+  padding: 0 var(--s-sm);
 }
 .section {
   width: 100%;
   &_numbered {
-    margin: var(--s-xl) 0;
+    margin: var(--s-lg) 0;
   }
   &__title {
     display: flex;
-    margin: 0 var(--s-sm);
+    margin: 0 var(--s-xs);
     font-size: var(--fz-xxl);
     font-family: var(--font-medium);
     letter-spacing: 2px;
@@ -41,7 +41,7 @@ button {
     }
     &-wrapper {
       display: flex;
-      padding: var(--s-sm) 0 var(--s-lg);
+      padding: var(--s-xs) 0 var(--s-md);
       align-items: center;
       &::before,
       &::after {
@@ -56,7 +56,7 @@ button {
     &::before {
       counter-increment: section 1; 
       content: '0' counter(section) '.';
-      margin-right: var(--s-xs);
+      margin-right: var(--s-xss);
       color: var(--bays-0);
     }
   }
@@ -80,7 +80,7 @@ button {
 .mail-link {
   display: block;
   width: max-content;
-  padding: var(--s-sm) var(--s-lg);
+  padding: var(--s-xs) var(--s-md);
   font-size: clamp(var(--fz-sm), 6vw, var(--fz-lg));
   border: 1px solid var(--bays-0);;
   border-radius: 4px;
@@ -92,5 +92,5 @@ button {
 }
 
 .mail-link {
-  margin: var(--s-lg) auto var(--s-xl);
+  margin: var(--s-md) auto var(--s-lg);
 }

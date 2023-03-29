@@ -45,5 +45,8 @@ const toggleMenu = () => {
   height: 50px;
   font-size: 36px;
   z-index: 2;
+  @include lg-screen {
+    display: none;
+  }
 }
 </style>

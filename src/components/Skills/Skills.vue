@@ -13,17 +13,17 @@ import { skills } from './skill-data';
 
 <style  lang="scss" scoped>
 .skills {
-  margin: var(--s-sm) 0 0;
+  margin: var(--s-xs) 0 0;
   &__list {
     display: grid;
     grid-template-columns: repeat(2, minmax(140px, 200px));
-    gap: 0 var(--s-sm);
+    gap: 0 var(--s-xs);
     list-style: none;
     &-item {
       position: relative;
-      padding-left: var(--s-md);
-      height: var(--s-lg);
-      line-height: var(--s-lg);
+      padding-left: var(--s-sm);
+      height: var(--s-md);
+      line-height: var(--s-md);
       font-size: var(--fz-sm);
       &::before {
         display: block;

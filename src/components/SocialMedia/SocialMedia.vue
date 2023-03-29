@@ -47,7 +47,7 @@ const vInserted = {
     &__item {
       width: 40px;
       height: 40px;
-      padding: var(--s-xs);
+      padding: var(--s-xss);
       &-link {
         img {
           display: block;

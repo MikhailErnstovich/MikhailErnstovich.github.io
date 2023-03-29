@@ -48,7 +48,7 @@ function toggleCard(event: Event) {
     &__timestamp {
       font-size: var(--fz-xs);
       font-family: var(--font-light);
-      padding-bottom: var(--s-lg);
+      padding-bottom: var(--s-md);
       color: var(--bays-0);
       &.is-top {
         margin-bottom: 0;
@@ -83,7 +83,7 @@ function toggleCard(event: Event) {
 .timeline {
   &__item {
     max-height: 1000px;
-    padding-bottom: var(--s-lg);
+    padding-bottom: var(--s-md);
     overflow: hidden;
     transition: max-height 0.5s cubic-bezier(0.645,0.045,0.355,1);
     will-change: max-height;
@@ -96,10 +96,10 @@ function toggleCard(event: Event) {
     .el-card {
       background-color: var(--bays-0-01);
       border: none;
-      border-radius: var(--s-xs);
+      border-radius: var(--s-xss);
       &__body {
         position: relative;
-        padding: var(--s-sm);
+        padding: var(--s-xs);
       }
     }
     .el-card.is-always-shadow {
@@ -124,12 +124,12 @@ function toggleCard(event: Event) {
       height: 100%;
     }
     &-list {
-      margin-top: var(--s-xs);
+      margin-top: var(--s-xss);
       li {
         position: relative;
         font-size: var(--fz-md);
-        margin-bottom: var(--s-xs);
-        padding-left: var(--s-md);
+        margin-bottom: var(--s-xss);
+        padding-left: var(--s-sm);
         list-style: none;
         &::before {
           display: block;
