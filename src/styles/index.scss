@@ -44,3 +44,30 @@ h1, h2, h3, h4, p {
   padding: 0;
   margin: 0;
 }
+
+//breaking points
+@mixin xs-screen {
+  @media only screen and (max-width: 599px) {
+    @content;
+  }
+}
+@mixin sm-screen {
+  @media only screen and (min-width: 600px) and (max-width: 959px) {
+    @content;
+  }
+}
+@mixin md-screen {
+  @media only screen and (min-width: 960px) and (max-width: 1255px) {
+    @content;
+  }
+}
+@mixin lg-screen {
+  @media only screen and (min-width: 1256px) and (max-width: 1919px) {
+    @content;
+  }
+}
+@mixin xl-screen {
+  @media only screen and (min-width: 1920px) {
+    @content;
+  }
+}
