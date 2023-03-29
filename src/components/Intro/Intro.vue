@@ -1,14 +1,14 @@
 <template>
   <section class="section section_intro">
-    <h1>Hi, my name is</h1>
-    <h2 class="big-title">Mikhail Makarov.</h2>
-    <h3 class="big-title">I build things for the web.</h3>
+    <span>Hi, my name is</span>
+    <h1 class="big-title">Mikhail Makarov.</h1>
+    <h2 class="big-title">I build things for the web.</h2>
     <p class="section__paragraph">
       I am a software engineer specializing in front-end application development. 
       I am currently part of the <a class="link" href="https://flat-soft.ru/">FlatSoftware</a> 
       team developing a computer-telephony integration system.
     </p>
-    <a href="/CV.pdf" class="resume-link link">Check out my CV!</a>
+    <a href="/CV.pdf" class="resume-link">Check out my CV!</a>
   </section>
 </template>
 <script setup lang="tsx">
@@ -20,24 +20,22 @@
   flex-direction: column;
   justify-content: center;
   height: 100vh;
-  h1 {
+  span {
     margin: 0 0 var(--s-xss);
-    font-family: var(--font-light);
-    font-size: var(--fz-lg);
+    font-family: var(--font-regular);
+    font-size: var(--fz-h-xs);
+    line-height: var(--lh-h-xs);
     color: var(--bays-0);
     letter-spacing: 2px;
   }
-  h2 {
+  .big-title {
     font-family: var(--font-medium);
     letter-spacing: 3px;
-    font-size: var(--fz-heading);
-    color: var(--bouldes-0)
+    font-size: var(--fz-h-sm);
+    line-height: var(--lh-h-sm);
   }
-  h3 {
+  h2 {
     margin: 0 0 var(--s-sm);
-    font-family: var(--font-medium);
-    font-size: var(--fz-heading);
-    letter-spacing: 2px;
     opacity: 0.7;
   }
   .resume-link {

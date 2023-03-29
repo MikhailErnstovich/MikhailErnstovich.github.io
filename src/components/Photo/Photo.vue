@@ -58,11 +58,11 @@ const vInserted = {
       background-color: var(--bays-0-03);
     }
     &::after {
-      border: 2px solid var(--bays-0);
+      border: 2px solid var(--bays-1);
       border-top: none;
       border-left: none;
       transform: translate(var(--s-xs), calc(15px - 100%));
-      transition: all .3s ease-in-out;
+      transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
       z-index: -1;
       will-change: transform;
     }

@@ -40,7 +40,7 @@
           I am open to job offers (especially with relocation) and freelance work. However, feel free to contact me if you have any other questions. I'll try my best to answer you as soon as possible.
         </p>
         <a
-          class="link mail-link" 
+          class="mail-link" 
           target="_blank"
           :href="contacts.email.link"
         >

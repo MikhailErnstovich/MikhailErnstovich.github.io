@@ -2,11 +2,9 @@ html {
   background-color: #ffffff;
   color: black;
   font-family: var(--font-regular);
+  font-size: var(--fz-md);
 }
 
-button { 
-  font-size: var(--fz-xl);
-}
 .main {
   counter-reset: section;
   padding: 0 var(--s-sm);
@@ -29,7 +27,8 @@ button {
   &__title {
     display: flex;
     margin: 0 var(--s-xs);
-    font-size: var(--fz-xxl);
+    font-size: var(--fz-h-xs);
+    line-height: var(--lh-h-xs);
     font-family: var(--font-medium);
     letter-spacing: 2px;
     &-text {
@@ -57,12 +56,12 @@ button {
       counter-increment: section 1; 
       content: '0' counter(section) '.';
       margin-right: var(--s-xss);
-      color: var(--bays-0);
+      color: var(--bays-1);
     }
   }
   &__paragraph {
     margin: 0;
-    line-height: 1.5;
+    line-height: var(--lh-md);
     &_center {
       text-align: center;
     }
@@ -70,24 +69,40 @@ button {
 }
 
 .link,
-.link:visited,
-.link:focus, 
-.link:active  {
-  color: var(--bays-0);
+.link:visited  {
+  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+  color: var(--bays-1);
+}
+
+.link:focus,
+.link:hover {
+  color: var(--primary-color);
+}
+
+.link:active {
+  color: var(--bays-3);
 }
 
 .resume-link,
 .mail-link {
   display: block;
   width: max-content;
-  padding: var(--s-xs) var(--s-md);
-  font-size: clamp(var(--fz-sm), 6vw, var(--fz-lg));
-  border: 1px solid var(--bays-0);;
-  border-radius: 4px;
-  background-color: transparent;
+  padding: var(--s-xs) var(--s-sm);
+  border-radius: 100px;
+  background-color: var(--bays-1);
+  font-size: var(--fz-sm);
+  line-height: var(--lh-sm);
+  text-transform: uppercase;
+  color: #fff;
   transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
-  &:hover {
-    background-color: var(--bays-0-02);
+  &:hover,
+  &:focus {
+    background-color: var(--primary-color);
+    color: #fff;
+  }
+  &:active {
+    background-color: var(--bays-3);
+    color: #fff;
   }
 }
 

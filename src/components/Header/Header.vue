@@ -40,11 +40,19 @@ const toggleMenu = () => {
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  color: var(--bays-0);
+  color: var(--bays-1);
   width: 50px;
   height: 50px;
   font-size: 36px;
   z-index: 2;
+  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+  &:hover,
+  &:focus {
+    color: var(--primary-color);
+  }
+  &:active {
+    color: var(--bays-3);
+  }
   @include lg-screen {
     display: none;
   }

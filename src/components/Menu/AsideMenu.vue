@@ -16,7 +16,7 @@
               </a>
             </li>
           </menu>
-          <a href="/CV.pdf" class="resume-link link">Resume</a>
+          <a href="/CV.pdf" class="resume-link">Resume</a>
         </nav>
       </div>
     </aside>
@@ -82,27 +82,36 @@ function getMenuItemTitle(item: MenuItem): string {
       padding: 0 20px 20px 20px;
       text-align: center;
       counter-increment: item 1;
-      font-size: clamp(var(--fz-sm), 6vw, var(--fz-xl));
+      font-size: var(--fz-lg);
       letter-spacing: 2px;
+      color: var(--boulder-4);
       transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
       cursor: pointer;
-      &:hover {
-        color: var(--bays-0);
+      &:hover,
+      &:focus {
+        color: var(--primary-color);
+      }
+      &:active {
+        color: var(--bays-3);
       }
       &-link {
         display: block;
-        color: black;
-        &:visited,
-        &:focus, 
-        &:active {
-          color: black;
-        } 
+        &:visited {
+          color: inherit;
+        }
+        &:hover::before,
+        &:focus::before {
+          color: var(--primary-color);
+        }
+        &:active::before {
+          color: var(--bays-3);
+        }
         &::before {
           content: "0" counter(item) ".";
           display: block;
           margin-bottom: 5px;
           text-align: center;
-          color: var(--bays-0)
+          color: var(--bays-1)
         }
       }
     }

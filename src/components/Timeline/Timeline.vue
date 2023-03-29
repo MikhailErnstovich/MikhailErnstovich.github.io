@@ -29,11 +29,13 @@
 import { timeline } from './timeline-data';
 
 function toggleCard(event: Event) {
-  if (event.target.classList.contains('link')) {
-    return;
-  }
-  if (event.currentTarget) {
-    event.currentTarget.classList.toggle('timeline__item_hidden');
+  if (event.target instanceof Element && event.currentTarget instanceof Element) {
+    if (event.target.classList.contains('link')) {
+      return;
+    }
+    if (event.currentTarget) {
+      event.currentTarget.classList.toggle('timeline__item_hidden');
+    }
   }
 }
 
@@ -41,15 +43,15 @@ function toggleCard(event: Event) {
 
 <style lang="scss">
 .el-card {
-  border: 1px solid var(--bays-0);
+  border: 1px solid var(--bays-1);
 }
 .el-timeline {
   &-item {
     &__timestamp {
-      font-size: var(--fz-xs);
+      font-size: var(--fz-sm);
       font-family: var(--font-light);
       padding-bottom: var(--s-md);
-      color: var(--bays-0);
+      color: var(--bays-1);
       &.is-top {
         margin-bottom: 0;
       }
@@ -67,9 +69,9 @@ function toggleCard(event: Event) {
       height: 18px;
       background-color: transparent;
       font-size: var(--fz-lg);
-      border-color: var(--bays-0);
+      border-color: var(--bays-1);
       .el-timeline-item__icon {
-        color: var(--bays-0);
+        color: var(--bays-1);
         font-size: var(--fz-lg);
       }
     }
@@ -90,7 +92,14 @@ function toggleCard(event: Event) {
     &_hidden {
       max-height: 0;
       .el-timeline-item__timestamp {
-        color: var(--boulders-4)
+        color: var(--boulders-4);
+        &:hover,
+        &:focus {
+          color: var(--primary-color);
+        }
+        &:active {
+          color: var(--bays-3);
+        }
       }
     }
     .el-card {
@@ -138,7 +147,7 @@ function toggleCard(event: Event) {
           left: 0;
           height: inherit;
           line-height: inherit;
-          color: var(--bays-0);
+          color: var(--bays-1);
         }
       }
     }

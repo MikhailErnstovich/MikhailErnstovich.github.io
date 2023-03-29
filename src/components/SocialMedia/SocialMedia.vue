@@ -49,6 +49,14 @@ const vInserted = {
       height: 40px;
       padding: var(--s-xss);
       &-link {
+        filter: invert(13%) sepia(90%) saturate(5012%) hue-rotate(230deg) brightness(104%) contrast(117%);
+        &:hover,
+        &:focus {
+          filter: invert(9%) sepia(100%) saturate(7480%) hue-rotate(248deg) brightness(81%) contrast(141%);
+        }
+        &:active {
+          filter: invert(7%) sepia(71%) saturate(6784%) hue-rotate(242deg) brightness(95%) contrast(122%);
+        }
         img {
           display: block;
           width: 100%;

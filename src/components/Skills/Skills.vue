@@ -32,7 +32,7 @@ import { skills } from './skill-data';
         left: 0;
         height: inherit;
         line-height: inherit;
-        color: var(--bays-0);
+        color: var(--bays-1);
       }
     }
   }

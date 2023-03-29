@@ -1,13 +1,27 @@
 :root {
-  //font sizes
-  --fz-xxs: 12px;
-  --fz-xs: 13px;
+  //regular text font sizes
+  --fz-xs: 12px;
   --fz-sm: 14px;
   --fz-md: 16px;
   --fz-lg: 18px;
-  --fz-xl: 20px;
-  --fz-xxl: 22px;
-  --fz-heading: 32px;
+
+  //regular text line heights
+  --lh-xs: 16px;
+  --lh-sm: 20px;
+  --lh-md: 24px;
+  --lh-lg: 28px;
+
+  //heading font sizes
+  --fz-h-xs: 24px;
+  --fz-h-sm: 32px;
+  --fz-h-md: 48px;
+  --fz-h-lg: 56px;
+  
+  //heading line heights  
+  --lh-h-xs: 32px;
+  --lh-h-sm: 40px;
+  --lh-h-md: 56px;
+  --lh-h-lg: 64px;
 
   //spacing
   --s-xss: 8px;
@@ -41,30 +55,6 @@
   --bays-4: #00005a;
   --bays-4-05: rgba(0, 0, 90, 0.5);
   --bays-4-07: rgba(0, 0, 90, 0.7);
-
-  --parks-0: #c1bc76;
-  --parks-1: #65a580;
-  --parks-2: #2e6347;
-  --parks-3: #1d4432;
-  --parks-4: #51de3e;
-
-  --waterfalls-0: #d2c3d4;
-  --waterfalls-1: #c4bec5;
-  --waterfalls-2: #8b7883;
-  --waterfalls-3: #3c0078;
-  --waterfalls-4: #ff2db4;
-
-  --bogs-0: #d2dbc1;
-  --bogs-1: #bae6e8;
-  --bogs-2: #98a589;
-  --bogs-3: #2b7aa1;
-  --bogs-4: #e1e000;
-
-  --beaches-0: #fcedc5;
-  --beaches-1: #ffca9f;
-  --beaches-2: #ad7351;
-  --beaches-3: #964542;
-  --beaches-4: #ff4800;
 
   //fonts
   --font-regular: 'Intel-regular', 'Open Sans', sans-serif;

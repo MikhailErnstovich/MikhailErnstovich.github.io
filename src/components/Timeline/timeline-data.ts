@@ -13,7 +13,7 @@ type TimelineEvent = {
 
 export const timeline: TimelineEvent[] = [
   { 
-    interval: 'Aug 2022 - till now',
+    interval: 'Aug 2022 — till now',
     title: 'Frontend developer',
     organization: 'FlatSoftware',
     link: 'https://flat-soft.ru/',
@@ -25,7 +25,7 @@ export const timeline: TimelineEvent[] = [
     icon: Monitor
   },
   {
-    interval: 'Aug 2021 - Oct 2021',
+    interval: 'Aug 2021 — Oct 2021',
     title: 'JavaScript Algorithms and Data Structures Course',
     organization: 'Freecodecamp',
     link: 'https://www.freecodecamp.org/certification/fcc0fb53d16-e07a-4e60-9166-8b61529a2b34/javascript-algorithms-and-data-structures',
@@ -36,7 +36,7 @@ export const timeline: TimelineEvent[] = [
     icon: Notebook
   },
   {
-    interval: 'May 2019 - Nov 2020',
+    interval: 'May 2019 — Nov 2020',
     title: 'Interface Development Course by JSC Yandex and MIPT',
     organization: 'Coursera',
     link: 'https://www.coursera.org/account/accomplishments/specialization/KKPTF2MJ95M8',
@@ -47,7 +47,7 @@ export const timeline: TimelineEvent[] = [
     icon: Notebook
   },
   {
-    interval: 'Aug 2016 - till now',
+    interval: 'Aug 2016 — till now',
     title: 'Senior Researcher',
     organization: 'Molecular Electronics Research Institute (JSC MERI)',
     link: 'https://www.niime.ru/en/about/',
@@ -59,7 +59,7 @@ export const timeline: TimelineEvent[] = [
     icon: Cpu
   },
   {
-    interval: 'Sep 2014 - Jun 2016',
+    interval: 'Sep 2014 — Jun 2016',
     title: 'Master\'s Degree program',
     organization: 'Moscow Institute of Physics and Technology (MIPT)',
     link: 'https://mipt.ru/english/',
@@ -69,7 +69,7 @@ export const timeline: TimelineEvent[] = [
     icon: Notebook
   },
   {
-    interval: 'Sep 2010 - Jun 2014',
+    interval: 'Sep 2010 — Jun 2014',
     title: 'Undergraduate program',
     organization: 'Moscow Institute of Physics and Technology (MIPT)',
     link: 'https://mipt.ru/english/',
