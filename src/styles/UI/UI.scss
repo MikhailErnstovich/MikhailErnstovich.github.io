@@ -8,6 +8,12 @@ html {
 .main {
   counter-reset: section;
   padding: 0 var(--s-sm);
+  filter: none;
+  transition: filter 0.5s cubic-bezier(0.645,0.045,0.355,1);
+  will-change: filter;
+}
+.main.blur {
+  filter: blur(5px) brightness(0.7);
 }
 .header {
   position: absolute;

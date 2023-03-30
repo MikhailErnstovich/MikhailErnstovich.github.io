@@ -124,7 +124,7 @@ function getMenuItemTitle(item: MenuItem): string {
 }
 .shift-enter-active,
 .shift-leave-active {
-  transition: transform 0.5s ease;
+  transition: transform 0.5s cubic-bezier(0.645,0.045,0.355,1);
 }
 
 .shift-enter-from,

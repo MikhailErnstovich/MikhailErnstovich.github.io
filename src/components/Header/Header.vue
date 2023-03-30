@@ -1,6 +1,9 @@
 <template>
   <header class="header">
+    <AppearTransition :name="'slide-right'">
       <Logo />
+    </AppearTransition>
+    <AppearTransition :name="'slide-left'">
       <button class="menu-toggle" @click="toggleMenu">
         <el-icon v-if="show">
           <Close />
@@ -9,7 +12,8 @@
           <Menu />
         </el-icon>
       </button>
-      <AsideMenu :toggle="show" @toggle-menu="toggleMenu"/>
+    </AppearTransition>
+    <AsideMenu :toggle="show" @toggle-menu="toggleMenu"/>
   </header>
 </template>
 <script setup lang="tsx">
@@ -17,6 +21,9 @@ import { ref } from 'vue';
 import AsideMenu from '~/components/Menu/AsideMenu.vue';
 import Logo from '~/components/Logo/Logo.vue';
 import { Close, Menu } from '@element-plus/icons-vue';
+import AppearTransition from '~/components/AppearTransition/AppearTransition.vue';
+
+
 const show = ref(false);
 const emit = defineEmits(['toggleBlur']);
 const toggleMenu = () => {
@@ -25,16 +32,15 @@ const toggleMenu = () => {
 }
 
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.header ~ .blur {
-  filter: blur(5px) brightness(0.7);
+.animation-wrapper:nth-child(2) {
+  z-index: 2;
 }
-
 .menu-toggle {
   display: flex;
   justify-content: center;
@@ -44,7 +50,6 @@ const toggleMenu = () => {
   width: 50px;
   height: 50px;
   font-size: 36px;
-  z-index: 2;
   transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
   &:hover,
   &:focus {

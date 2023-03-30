@@ -7,6 +7,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AppearTransition: typeof import('./src/components/AppearTransition/AppearTransition.vue')['default']
     AsideMenu: typeof import('./src/components/Menu/AsideMenu.vue')['default']
     Authorship: typeof import('./src/components/Authorship/Authorship.vue')['default']
     ElCard: typeof import('element-plus/es')['ElCard']

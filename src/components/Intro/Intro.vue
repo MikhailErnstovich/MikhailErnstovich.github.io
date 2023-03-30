@@ -1,29 +1,29 @@
 <template>
     <section class="section section_intro">
-      <transition appear>
+      <AppearTransition :name="transitionNames[0]">
         <span>Hi, my name is</span>
-      </transition>
-      <transition appear>
+      </AppearTransition>
+      <AppearTransition :name="transitionNames[0]">
         <h1 class="big-title">Mikhail Makarov.</h1>
-      </transition>
-      <transition appear>
+      </AppearTransition>
+      <AppearTransition :name="transitionNames[0]">
         <h2 class="big-title">I build things for the web.</h2>
-      </transition>
-      <transition appear>
+      </AppearTransition>
+      <AppearTransition :name="transitionNames[0]">
         <p class="section__paragraph">
           I am a software engineer specializing in front-end application development. 
           I am currently part of the <a class="link" href="https://flat-soft.ru/">FlatSoftware</a> 
           team developing a computer-telephony integration system.
         </p>
-      </transition>
-      <transition appear>
+      </AppearTransition>
+      <AppearTransition :name="transitionNames[1]">
         <a href="/CV.pdf" class="resume-link">Check out my CV!</a>
-      </transition>
+      </AppearTransition>
     </section>
 </template>
 <script setup lang="tsx">
-import { onMounted, ref } from 'vue';
-
+import AppearTransition from '~/components/AppearTransition/AppearTransition.vue';
+const transitionNames = ['rise','drop'];
 </script>
 <style lang="scss" scoped>
 .section_intro {
@@ -51,30 +51,6 @@ import { onMounted, ref } from 'vue';
   }
   .resume-link {
     margin: var(--s-lg) 0 0;
-  }
-}
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 1s cubic-bezier(0.645,0.045,0.355,1);;
-}
-
-.v-enter-from,
-.v-leave-to {
-  opacity: 0;
-}
-
-.section_intro {
-  :nth-child(2) {
-    transition-delay: .2s;
-  }
-  :nth-child(3) {
-    transition-delay: .4s;
-  }
-  :nth-child(4) {
-    transition-delay: .6s;
-  }
-  :nth-child(5) {
-    transition-delay: .8s;
   }
 }
 </style>
