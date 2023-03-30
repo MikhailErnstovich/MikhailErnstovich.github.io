@@ -1,13 +1,13 @@
 <template>
-  <section class="section section_numbered" :id="props.title.id" v-invoke-transition :data-is-visible="''" ref="about">
-    <CustomTransition :appear="false" :name="'drop'" :toggle="isVisible">
+  <section class="section section_numbered" :id="props.title.id" v-invoke-transition :data-is-visible="''" ref="root">
+    <CustomTransition :appear="false" :name="'drop'" :toggle="toggle">
       <div class="section__title-wrapper">
         <h2 class="section__title">
           <span class="section__title-text">{{ props.title.title }}</span>
         </h2>
       </div>
     </CustomTransition>
-    <CustomTransition :appear="false" :name="'drop'" :toggle="isVisible">
+    <CustomTransition :appear="false" :name="'drop'" :toggle="toggle">
       <p class="section__paragraph">
         My name is Mikhail Makarov. I started my way in the field of web development in early 2020.
         While on quarantine, I decided to try myself in another area and went
@@ -16,10 +16,10 @@
         Today I work remotely as a frontend developer in <a class="link" href="https://flat-soft.ru/">FlatSoftware</a>.
       </p>
     </CustomTransition>
-    <CustomTransition :appear="false" :name="'drop'" :toggle="isVisible">
+    <CustomTransition :appear="false" :name="'drop'" :toggle="toggle">
       <Photo />
     </CustomTransition>
-    <CustomTransition :appear="false" :name="'drop'" :toggle="isVisible">
+    <CustomTransition :appear="false" :name="'drop'" :toggle="toggle">
       <p class="section__paragraph">
         There are some key technologies below I have been working with up to date:
       </p>
@@ -28,31 +28,22 @@
   </section>
 </template>
 <script setup lang="tsx">
-import { ref, onMounted, watchEffect } from 'vue';
+import { ref, onMounted, Ref } from 'vue';
 import Skills from '~/components/Skills/Skills.vue';
 import Photo from '~/components/Photo/Photo.vue';
 import { MenuItem } from '~/components/Menu/menu-data';
-import { showElement } from '~/helpers/lazy-loaders';
+import { showElement } from '~/helpers/appear-animation';
 import CustomTransition from '~/components/Transitions/CustomTransition.vue';
+import { handleAppearAnimation } from '~/helpers/appear-animation';
 const props = defineProps<{
-  title: MenuItem,
-
+  title: MenuItem
 }>();
 const vInvokeTransition = {
   mounted: showElement
 };
-const isVisible = ref(false);
-const makeVisible: MutationCallback = (mutationList, observer: MutationObserver) => {
-  isVisible.value = true;
-  observer.disconnect();
-}
-const about = ref<Node>();
-onMounted(() => {
-  if (about.value instanceof Node) {
-    const observer = new MutationObserver(makeVisible);
-    observer.observe(about.value, { attributes: true });
-  }
-})
+const toggle = ref(false);
+const root = ref<Node>();
+onMounted(() => handleAppearAnimation(root as Ref<Node>, toggle));
 </script>
 <style lang="scss">
 

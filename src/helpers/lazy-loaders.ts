@@ -1,5 +1,9 @@
+//load img or picture content when the tag is in the user's viewport
 export function insertImage (el: HTMLElement):void {
-  const handleIntersect = (entries: IntersectionObserverEntry[], observer: IntersectionObserver):void => {
+  const handleIntersect = (
+    entries: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ):void => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) {
         return;
@@ -9,7 +13,7 @@ export function insertImage (el: HTMLElement):void {
       }
     });
   };
-
+  //if browser doesn't have observer, than loading starts immidiatly 
   if (!window['IntersectionObserver']) {
     loadImage(el);
   } else {
@@ -17,25 +21,7 @@ export function insertImage (el: HTMLElement):void {
   }
 }
 
-export function showElement (el: HTMLElement):void {
-  const handleIntersect = (entries: IntersectionObserverEntry[], observer: IntersectionObserver):void => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) {
-        return;
-      } else {
-        el.dataset.isVisible = '1';
-        observer.unobserve(el);
-      }
-    });
-  };
-  if (!window['IntersectionObserver']) {
-    console.log(123);
-  } else {
-    createObserver(el, handleIntersect);
-  }
-}
-
-function createObserver (el: HTMLElement, callback: IntersectionObserverCallback):void {
+export function createObserver (el: HTMLElement, callback: IntersectionObserverCallback):void {
   const options = {
     root: null,
     threshold: 0
@@ -44,6 +30,7 @@ function createObserver (el: HTMLElement, callback: IntersectionObserverCallback
   observer.observe(el);
 }
 
+//Take content link from data-url attribute and put it to img or picture src attribute. Content starts loading
 function loadImage (el: HTMLElement) {
   const imgElements = Array.from(el.children).filter(el => {
     return el.nodeName === 'IMG' || el.nodeName === 'SOURCE'
