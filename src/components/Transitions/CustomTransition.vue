@@ -1,14 +1,17 @@
 <template>
-  <transition :name="props.name" appear>
-    <div class="animation-wrapper">
+  <transition :name="props.name" :appear="props.appear">
+    <div class="animation-wrapper" v-if="props.toggle">
       <slot></slot>
     </div>
   </transition>
 </template>
 <script setup lang="tsx">
-const props = defineProps({
-  name: String 
-});
+const props = defineProps<{
+  name: string,
+  appear: boolean,
+  toggle: boolean
+}>();
+
 </script>
 <style lang="scss" scoped>
 .slide-right-enter-active,
@@ -37,19 +40,6 @@ const props = defineProps({
   transform: translateX(10px);
 }
 
-.drop-enter-active,
-.drop-leave-active {
-  transition-property: opacity, transform;
-  transition-duration: 1s;
-  transition-timing-function: cubic-bezier(0.645,0.045,0.355,1);
-}
-
-.drop-enter-from,
-.drop-leave-to {
-  opacity: 0;
-  transform: translateY(10px);
-}
-
 .rise-enter-active,
 .rise-leave-active {
   transition-property: opacity, transform;
@@ -59,6 +49,19 @@ const props = defineProps({
 
 .rise-enter-from,
 .rise-leave-to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.drop-enter-active,
+.drop-leave-active {
+  transition-property: opacity, transform;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0.645,0.045,0.355,1);
+}
+
+.drop-enter-from,
+.drop-leave-to {
   opacity: 0;
   transform: translateY(-10px);
 }

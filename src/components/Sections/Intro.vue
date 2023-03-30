@@ -1,29 +1,29 @@
 <template>
     <section class="section section_intro">
-      <AppearTransition :name="transitionNames[0]">
+      <CustomTransition :appear="true" :name="transitionNames[0]" :toggle="true">
         <span>Hi, my name is</span>
-      </AppearTransition>
-      <AppearTransition :name="transitionNames[0]">
+      </CustomTransition>
+      <CustomTransition :appear="true" :name="transitionNames[0]" :toggle="true">
         <h1 class="big-title">Mikhail Makarov.</h1>
-      </AppearTransition>
-      <AppearTransition :name="transitionNames[0]">
+      </CustomTransition>
+      <CustomTransition :appear="true" :name="transitionNames[0]" :toggle="true">
         <h2 class="big-title">I build things for the web.</h2>
-      </AppearTransition>
-      <AppearTransition :name="transitionNames[0]">
+      </CustomTransition>
+      <CustomTransition :appear="true" :name="transitionNames[2]" :toggle="true">
         <p class="section__paragraph">
           I am a software engineer specializing in front-end application development. 
           I am currently part of the <a class="link" href="https://flat-soft.ru/">FlatSoftware</a> 
           team developing a computer-telephony integration system.
         </p>
-      </AppearTransition>
-      <AppearTransition :name="transitionNames[1]">
+      </CustomTransition>
+      <CustomTransition :appear="true" :name="transitionNames[1]" :toggle="true">
         <a href="/CV.pdf" class="resume-link">Check out my CV!</a>
-      </AppearTransition>
+      </CustomTransition>
     </section>
 </template>
 <script setup lang="tsx">
-import AppearTransition from '~/components/AppearTransition/AppearTransition.vue';
-const transitionNames = ['rise','drop'];
+import CustomTransition from '~/components/Transitions/CustomTransition.vue';
+const transitionNames = ['drop','rise','slide-left'];
 </script>
 <style lang="scss" scoped>
 .section_intro {

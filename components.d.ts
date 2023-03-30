@@ -8,10 +8,10 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     About: typeof import('./src/components/Sections/About.vue')['default']
-    AppearTransition: typeof import('./src/components/AppearTransition/AppearTransition.vue')['default']
     AsideMenu: typeof import('./src/components/Menu/AsideMenu.vue')['default']
     Authorship: typeof import('./src/components/Authorship/Authorship.vue')['default']
     Contacts: typeof import('./src/components/Sections/Contacts.vue')['default']
+    CustomTransition: typeof import('./src/components/Transitions/CustomTransition.vue')['default']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']

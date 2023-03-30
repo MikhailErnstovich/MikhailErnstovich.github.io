@@ -1,9 +1,9 @@
 <template>
   <header class="header">
-    <AppearTransition :name="'slide-right'">
+    <CustomTransition :toggle="true" :appear="true" :name="'slide-right'">
       <Logo />
-    </AppearTransition>
-    <AppearTransition :name="'slide-left'">
+    </CustomTransition>
+    <CustomTransition :toggle="true" :appear="true" :name="'slide-left'">
       <button class="menu-toggle" @click="toggleMenu">
         <el-icon v-if="show">
           <Close />
@@ -12,7 +12,7 @@
           <Menu />
         </el-icon>
       </button>
-    </AppearTransition>
+    </CustomTransition>
     <AsideMenu :toggle="show" @toggle-menu="toggleMenu"/>
   </header>
 </template>
@@ -21,7 +21,7 @@ import { ref } from 'vue';
 import AsideMenu from '~/components/Menu/AsideMenu.vue';
 import Logo from '~/components/Logo/Logo.vue';
 import { Close, Menu } from '@element-plus/icons-vue';
-import AppearTransition from '~/components/AppearTransition/AppearTransition.vue';
+import CustomTransition from '~/components/Transitions/CustomTransition.vue';
 
 
 const show = ref(false);
