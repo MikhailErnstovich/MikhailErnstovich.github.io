@@ -7,16 +7,21 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    About: typeof import('./src/components/Sections/About.vue')['default']
+    About1: typeof import('./src/components/Sections/About1.vue')['default']
     AppearTransition: typeof import('./src/components/AppearTransition/AppearTransition.vue')['default']
     AsideMenu: typeof import('./src/components/Menu/AsideMenu.vue')['default']
     Authorship: typeof import('./src/components/Authorship/Authorship.vue')['default']
+    Contacts: typeof import('./src/components/Sections/Contacts.vue')['default']
     ElCard: typeof import('element-plus/es')['ElCard']
     ElIcon: typeof import('element-plus/es')['ElIcon']
     ElSwitch: typeof import('element-plus/es')['ElSwitch']
     ElTimeline: typeof import('element-plus/es')['ElTimeline']
     ElTimelineItem: typeof import('element-plus/es')['ElTimelineItem']
+    Experience: typeof import('./src/components/Sections/Experience.vue')['default']
+    Footer: typeof import('./src/components/Footer/Footer.vue')['default']
     Header: typeof import('./src/components/Header/Header.vue')['default']
-    Intro: typeof import('./src/components/Intro/Intro.vue')['default']
+    Intro: typeof import('./src/components/Sections/Intro.vue')['default']
     Logo: typeof import('./src/components/Logo/Logo.vue')['default']
     Map: typeof import('./src/components/Map/Map.vue')['default']
     Photo: typeof import('./src/components/Photo/Photo.vue')['default']

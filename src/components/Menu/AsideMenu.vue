@@ -27,9 +27,9 @@
 import ThemeToggle from '~/components/ThemeToggle/ThemeToggle.vue';
 import { items, MenuItem } from './menu-data';
 
-const props = defineProps({
-  toggle: Boolean 
-});
+const props = defineProps<{
+  toggle: boolean 
+}>();
 
 const emit = defineEmits(['toggleMenu']);
 const toggleMenu = () => emit('toggleMenu');
