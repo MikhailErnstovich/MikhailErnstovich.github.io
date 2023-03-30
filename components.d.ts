@@ -8,7 +8,6 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     About: typeof import('./src/components/Sections/About.vue')['default']
-    About1: typeof import('./src/components/Sections/About1.vue')['default']
     AppearTransition: typeof import('./src/components/AppearTransition/AppearTransition.vue')['default']
     AsideMenu: typeof import('./src/components/Menu/AsideMenu.vue')['default']
     Authorship: typeof import('./src/components/Authorship/Authorship.vue')['default']
