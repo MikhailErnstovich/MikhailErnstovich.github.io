@@ -1,7 +1,7 @@
 <template>
   <section class="section section_numbered" :id="props.title.id">
     <div class="section__title-wrapper">
-      <h2 class="section__title"  >
+      <h2 class="section__title">
         <span class="section__title-text">{{ props.title.title }}</span>
       </h2>
     </div>
@@ -23,6 +23,7 @@
 import Skills from '~/components/Skills/Skills.vue';
 import Photo from '~/components/Photo/Photo.vue';
 import { MenuItem } from '~/components/Menu/menu-data';
+import AppearTransition from '~/components/AppearTransition/AppearTransition.vue';
 const props = defineProps<{
   title: MenuItem 
 }>();

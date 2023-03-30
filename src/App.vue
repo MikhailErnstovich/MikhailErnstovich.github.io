@@ -15,9 +15,9 @@
 import { ref } from 'vue';
 import Header from './components/Header/Header.vue';
 import Intro from './components/Sections/Intro.vue';
-import About from './components/Sections/Experience.vue';
+import About from './components/Sections/About.vue';
 import Contacts from './components/Sections/Contacts.vue';
-import Experience from './components/Sections/About.vue';
+import Experience from './components/Sections/Experience.vue';
 import Footer from './components/Footer/Footer.vue';
 import { items as sectionTitles } from '~/components/Menu/menu-data';
 const show = ref(false);
