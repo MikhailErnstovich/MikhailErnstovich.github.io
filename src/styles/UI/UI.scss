@@ -115,3 +115,39 @@ html {
 .mail-link {
   margin: var(--s-md) auto var(--s-lg);
 }
+
+.animation {
+  transition-property: opacity, transform;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0.645,0.045,0.355,1);
+}
+.animation_opacity {
+  opacity: 1;
+}
+.animation_opacity.start {
+  opacity: 0;
+}
+.animation_drop {
+  transform: translateY(0);
+}
+.animation_drop.start {
+  transform: translateY(-10px);
+}
+.animation_rise {
+  transform: translateY(0);
+}
+.animation_rise.start {
+  transform: translateY(10px);
+}
+.animation_slide-left {
+  transform: translateX(0);
+}
+.animation_slide-left.start {
+  transform: translateX(10px);
+}
+.animation_slide-right {
+  transform: translateX(0);
+}
+.animation_slide-right.start {
+  transform: translateX(-10px);
+}

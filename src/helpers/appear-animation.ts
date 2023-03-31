@@ -1,20 +1,6 @@
-import { Ref } from 'vue';
 import { createObserver } from './lazy-loaders';
 
-//track HTML changes and toggle visibility
-export function handleAppearAnimation(el: Ref<Node>, toggle: Ref<boolean>) {
-  const callback: MutationCallback = (mutationList, observer) => {
-    toggle.value = true;
-    observer.disconnect();
-  }
-  if (el.value instanceof Node) {
-    const observer = new MutationObserver(callback);
-    observer.observe(el.value, { attributes: true });
-  }
-}
-
-//change element data-is-visible attribute
-export function showElement (el: HTMLElement):void {
+export function appearAnimation (el: HTMLElement, className: string):void {
   const handleIntersect: IntersectionObserverCallback = (
     entries,
     observer
@@ -23,13 +9,13 @@ export function showElement (el: HTMLElement):void {
       if (!entry.isIntersecting) {
         return;
       } else {
-        el.dataset.isVisible = '1';
+        el.classList.remove(className);
         observer.unobserve(el);
       }
     });
   };
   if (!window['IntersectionObserver']) {
-    el.dataset.isVisible = '1';
+    el.classList.remove(className);
   } else {
     createObserver(el, handleIntersect);
   }

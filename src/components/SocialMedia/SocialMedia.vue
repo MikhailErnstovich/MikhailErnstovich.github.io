@@ -2,9 +2,10 @@
   <article class="social-media">
     <ul class="social-media__list">
       <li 
-        class="social-media__item"
-        v-for="item in contacts.socials"
+        class="social-media__item animation animation_opacity animation_drop start"
+        v-for="(item, index) in contacts.socials"
         :key="item.link"
+        v-appear-transition
       >
         <a 
           class="social-media__item-link" 
@@ -16,7 +17,8 @@
         </a>
       </li>
       <li
-        class="social-media__item"
+        class="social-media__item animation animation_opacity animation_drop start"
+        v-appear-transition
       >
         <a 
           class="social-media__item-link" 
@@ -33,8 +35,14 @@
 <script setup lang="tsx">
 import { contacts } from './social-media-data';
 import { insertImage } from '~/helpers/lazy-loaders';
+import { appearAnimation } from '~/helpers/appear-animation';
+
 const vInserted = {
   mounted: insertImage
+};
+
+const vAppearTransition = {
+  mounted: (el: HTMLElement) => appearAnimation(el, 'start'),
 };
 </script>
 <style lang="scss" scoped>
@@ -62,6 +70,13 @@ const vInserted = {
           width: 100%;
           height: 100%;
         }
+      }
+      &:nth-child(2),
+      &:nth-child(4) {
+        transition-delay: .2s;
+      }
+      &:nth-child(3) {
+        transition-delay: .4s;
       }
     }
   }
