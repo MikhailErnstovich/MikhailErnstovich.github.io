@@ -35,7 +35,6 @@ const vInserted = {
 .photo {
   position: relative;
   width: 100%;
-  padding: var(--s-sm);
   margin: var(--s-xs) auto var(--s-md);
   &__wrapper {
     position: relative;

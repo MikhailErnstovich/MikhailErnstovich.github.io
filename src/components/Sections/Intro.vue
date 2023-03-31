@@ -53,4 +53,9 @@ const transitionNames = ['drop','rise','slide-left'];
     margin: var(--s-lg) 0 0;
   }
 }
+.dark {
+  .section_intro h2 {
+    color: var(--boulders-2);
+  }
+}
 </style>
