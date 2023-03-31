@@ -12,7 +12,7 @@
         @click="$event => toggleCard($event)"
       >
         <el-card>
-          <h4 class="timeline__item-title">{{ item.title }}</h4>
+          <h3 class="timeline__item-title">{{ item.title }}</h3>
           <a class="link timeline__item-link" :href="item.link"  target="_blank">
             {{ item.organization }} 
           </a>

@@ -4,7 +4,7 @@
       <Logo />
     </CustomTransition>
     <CustomTransition :toggle="true" :appear="true" :name="'slide-left'">
-      <button class="menu-toggle" @click="toggleMenu">
+      <button class="menu-toggle" @click="toggleMenu" aria-label="Open Menu">
         <el-icon v-if="show">
           <Close />
         </el-icon>
