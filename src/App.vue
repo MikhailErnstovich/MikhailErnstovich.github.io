@@ -15,13 +15,14 @@
 import { ref } from 'vue';
 import Header from './components/Header/Header.vue';
 import Intro from './components/Sections/Intro.vue';
-import About from './components/Sections/About.vue';
-import Contacts from './components/Sections/Contacts.vue';
-import Experience from './components/Sections/Experience.vue';
-import Footer from './components/Footer/Footer.vue';
 import { items as sectionTitles } from '~/components/Menu/menu-data';
+import { defineAsyncComponent } from 'vue'
 const show = ref(false);
 
+const About = defineAsyncComponent(() => import('~/components/Sections/About.vue'));
+const Experience = defineAsyncComponent(() => import('~/components/Sections/Experience.vue'));
+const Contacts = defineAsyncComponent(() => import('~/components/Sections/Contacts.vue'));
+const Footer = defineAsyncComponent(() => import('~/components/Footer/Footer.vue'));
 </script>
 
 <style  lang="scss">
