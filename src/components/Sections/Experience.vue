@@ -5,11 +5,11 @@
         <span class="section__title-text">{{ props.title.title }}</span>
       </h2>
     </div>
-    <Timeline class="animation animation_opacity animation_rise start" v-appear-transition/>
+    <Tline />
   </section>
 </template>
 <script setup lang="tsx">
-import Timeline from '~/components/Timeline/Timeline.vue';
+import Tline from '~/components/Tline/Tline.vue';
 import { MenuItem } from '~/components/Menu/menu-data';
 import { appearAnimation } from '~/helpers/appear-animation';
 
@@ -23,5 +23,5 @@ const vAppearTransition = {
 
 </script>
 <style lang="scss" scoped>
-
+  
 </style>
