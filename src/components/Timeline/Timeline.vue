@@ -1,120 +1,94 @@
 <template>
-  <article class="timeline">
-    <el-timeline>
-      <el-timeline-item 
-        class="timeline__item"  
-        :class="i !== 0 ? 'timeline__item_hidden' : ''"
-        placement="top"
+  <article class="t-line">
+    <ul class="t-line__list">
+      <li 
+        class="t-line__item animation animation_opacity animation_rise start"       
+        :class="i !== 0 ? 't-line__item_hidden' : ''"  
         v-for="(item, i) in timeline" 
         :key="item.interval"
-        :timestamp="item.interval"
-        :icon="item.icon"
-        @click="$event => toggleCard($event)"
+        v-appear-transition
       >
-        <el-card>
-          <h3 class="timeline__item-title">{{ item.title }}</h3>
-          <a class="link timeline__item-link" :href="item.link"  target="_blank">
-            {{ item.organization }} 
-          </a>
-          <ul class="timeline__item-list">
+        <div class="t-line__item-timestamp" @click="$event => toggleCard($event)">
+          {{ item.interval }}
+        </div>
+        <div class="t-line__axis">
+          <img class="t-line__axis-icon" :src="item.icon" alt="icon" />
+          <div class="t-line__axis-tail"></div>
+        </div>
+        <div class="t-line__card">
+          <hgroup class="t-line__title-wrapper">
+            <h3 class="t-line__item-title">{{ item.title }}</h3>
+            <a class="link t-line__item-link" :href="item.link"  target="_blank">
+              {{ item.organization }} 
+            </a>
+          </hgroup>
+          <ul class="t-line__item-list">
             <li v-for="activity in item.activities">{{ activity }}</li>
           </ul>
-        </el-card>
-      </el-timeline-item>
-    </el-timeline>
+        </div>   
+      </li>
+    </ul>
   </article>
 </template>
 
 <script setup lang="tsx">
 import { timeline } from './timeline-data';
+import { appearAnimation } from '~/helpers/appear-animation';
 
+const vAppearTransition = {
+  mounted: (el: HTMLElement) => appearAnimation(el, 'start'),
+};
 function toggleCard(event: Event) {
-  if (event.target instanceof Element && event.currentTarget instanceof Element) {
-    if (event.target.classList.contains('link')) {
-      return;
-    }
-    if (event.currentTarget) {
-      event.currentTarget.classList.toggle('timeline__item_hidden');
-    }
+  if (event.currentTarget instanceof HTMLElement && event.currentTarget.parentNode instanceof HTMLElement) {
+    event.currentTarget.parentNode.classList.toggle('t-line__item_hidden');
   }
 }
-
 </script>
 
-<style lang="scss">
-.el-card {
-  border: 1px solid var(--bays-1);
-}
-.el-timeline {
-  &-item {
-    &__timestamp {
-      font-size: var(--fz-sm);
-      font-family: var(--font-light);
-      padding-bottom: var(--s-md);
-      color: var(--bays-1);
-      &.is-top {
-        margin-bottom: 0;
-      }
-    }
-    &__content {
-      box-shadow: none;
-    }
-    &__tail {
-      top: 18px;
-      left: 7px;
-      --el-timeline-node-color: var(--bays-0-05);
-    }
-    &__node {
-      width: 18px;
-      height: 18px;
-      background-color: transparent;
-      font-size: var(--fz-lg);
-      border-color: var(--bays-1);
-      .el-timeline-item__icon {
-        color: var(--bays-1);
-        font-size: var(--fz-lg);
-      }
-    }
+<style lang="scss" scoped>
+.t-line {
+  &__list {
+    list-style: none;
   }
-}
-.dark {
-  .timeline__item_hidden .el-timeline-item__timestamp {
-    color: var(--boulders-0);
-  }
-}
-.timeline {
   &__item {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    grid-template-rows: var(--lh-sm) 1fr;
+    column-gap: var(--s-xs);
     max-height: 1000px;
-    padding-bottom: var(--s-md);
-    overflow: hidden;
     transition: max-height 0.5s cubic-bezier(0.645,0.045,0.355,1);
     will-change: max-height;
+    overflow: hidden;
+    &:last-child {
+      .t-line__axis-tail {
+        display: none;
+      }
+    }
     &_hidden {
-      max-height: 0;
-      .el-timeline-item__timestamp {
+      max-height: calc(var(--lh-sm) + var(--s-xs));
+      .t-line__item-timestamp {
         color: var(--boulders-4);
-        &:hover,
-        &:focus {
-          color: var(--primary-color);
-        }
-        &:active {
-          color: var(--bays-3);
-        }
       }
-    }
-    .el-card {
-      background-color: var(--bays-0-01);
-      border: none;
-      border-radius: var(--s-xss);
-      &__body {
-        position: relative;
-        padding: var(--s-xs);
-      }
-    }
-    .el-card.is-always-shadow {
-      box-shadow: none;
     }
 
+    &-timestamp {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+      font-size: var(--fz-sm);
+      line-height: var(--lh-sm);
+      font-family: var(--font-light);
+      color: var(--bays-1);
+      &:hover,
+      &:focus {
+        color: var(--primary-color);
+      }
+      &:active {
+        color: var(--bays-3);
+      }
+      cursor: pointer;
+    }
     &-title {
       font-size: var(--fz-lg);
       font-family: var(--font-medium);
@@ -123,14 +97,6 @@ function toggleCard(event: Event) {
     &-link {
       font-size: var(--fz-md);
       font-family: var(--font-medium);
-    }
-    &-background {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
     }
     &-list {
       margin-top: var(--s-xss);
@@ -151,6 +117,42 @@ function toggleCard(event: Event) {
         }
       }
     }
+  }
+  &__card {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    grid-row-end: 3;
+    background-color: var(--bays-0-01);
+    border: none;
+    border-radius: var(--s-xss);
+    padding: var(--s-xs);
+    margin: var(--s-xs) 0;
+  }
+  &__axis {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &-icon {
+      display: block;
+      width: 18px;
+      height: 18px;
+      filter: invert(13%) sepia(90%) saturate(5012%) hue-rotate(230deg) brightness(104%) contrast(117%);
+    }
+    &-tail {
+      width: 2px;
+      height: 100%;
+      background-color: var(--bays-0-05);
+    }
+  }
+}
+.dark {
+  .t-line__item_hidden .t-line__item-timestamp  {
+    color: var(--boulders-0);
   }
 }
 </style>

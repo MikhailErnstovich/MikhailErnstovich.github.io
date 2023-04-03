@@ -5,11 +5,11 @@
         <span class="section__title-text">{{ props.title.title }}</span>
       </h2>
     </div>
-    <Tline />
+    <Timeline />
   </section>
 </template>
 <script setup lang="tsx">
-import Tline from '~/components/Tline/Tline.vue';
+import Timeline from '~/components/Timeline/Timeline.vue';
 import { MenuItem } from '~/components/Menu/menu-data';
 import { appearAnimation } from '~/helpers/appear-animation';
 

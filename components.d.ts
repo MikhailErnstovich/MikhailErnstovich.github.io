@@ -28,6 +28,6 @@ declare module '@vue/runtime-core' {
     SocialMedia: typeof import('./src/components/SocialMedia/SocialMedia.vue')['default']
     ThemeToggle: typeof import('./src/components/ThemeToggle/ThemeToggle.vue')['default']
     Timeline: typeof import('./src/components/Timeline/Timeline.vue')['default']
-    Tline: typeof import('./src/components/Tline/Tline.vue')['default']
+    Tline: typeof import('./src/components/Timeline/Tline.vue')['default']
   }
 }

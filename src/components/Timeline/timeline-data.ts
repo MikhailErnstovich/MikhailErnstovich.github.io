@@ -1,15 +1,11 @@
-
-import { Cpu, Notebook, Monitor } from '@element-plus/icons-vue';
-
 type TimelineEvent = {
   interval: string,
   title: string,
   organization: string,
   link: string,
   activities: string[],
-  icon: typeof Cpu
+  icon: string,
 };
-
 
 export const timeline: TimelineEvent[] = [
   { 
@@ -22,7 +18,7 @@ export const timeline: TimelineEvent[] = [
       'Work with a variety different technologies: Typescript, Jenkins, Node.js, Express.js, pinia, Vite',
       'Agile worker experience'
     ],
-    icon: Monitor
+    icon: new URL('~/assets/icons/pc.svg', import.meta.url).href
   },
   {
     interval: 'Aug 2021 — Oct 2021',
@@ -33,7 +29,7 @@ export const timeline: TimelineEvent[] = [
       'Solving algoritmic task using JavaScript',
       'Object oriented programming',
     ],
-    icon: Notebook
+    icon: new URL('~/assets/icons/book.svg', import.meta.url).href
   },
   {
     interval: 'May 2019 — Nov 2020',
@@ -44,7 +40,7 @@ export const timeline: TimelineEvent[] = [
       'Creating website layouts with HTML & CSS',
       'In deep learning of Javascript (ES5)',
     ],
-    icon: Notebook
+    icon: new URL('~/assets/icons/book.svg', import.meta.url).href
   },
   {
     interval: 'Aug 2016 — till now',
@@ -56,7 +52,7 @@ export const timeline: TimelineEvent[] = [
       'Writing scientific papers and their further public presentations',
       'Communication with multi-diciplinary teams of scientists, engineers and managers'
     ],
-    icon: Cpu
+    icon: new URL('~/assets/icons/chip.svg', import.meta.url).href
   },
   {
     interval: 'Sep 2014 — Jun 2016',
@@ -66,7 +62,7 @@ export const timeline: TimelineEvent[] = [
     activities: [
       'Master degree in Applied Mathematics and Physics on Faculty of Physical and Quantum Electronics',
     ],
-    icon: Notebook
+    icon: new URL('~/assets/icons/book.svg', import.meta.url).href
   },
   {
     interval: 'Sep 2010 — Jun 2014',
@@ -76,6 +72,6 @@ export const timeline: TimelineEvent[] = [
     activities: [
       'Bachelor degree in Applied Mathematics and Physics on Faculty of Physical and Quantum Electronics',
     ],
-    icon: Notebook
+    icon: new URL('~/assets/icons/book.svg', import.meta.url).href
   },
 ];
