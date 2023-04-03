@@ -79,4 +79,15 @@ const vInserted = {
     mix-blend-mode: multiply;
   }
 }
+html.dark {
+  .photo {
+    &__wrapper {
+      &::after {
+        border: 2px solid var(--bays-0);
+        border-top: none;
+        border-left: none;
+      }
+    }
+  }
+}
 </style>

@@ -36,7 +36,7 @@ const transitionNames = ['drop','rise','slide-left'];
     font-family: var(--font-regular);
     font-size: var(--fz-h-xs);
     line-height: var(--lh-h-xs);
-    color: var(--bays-0);
+    color: var(--bays-1);
     letter-spacing: 2px;
   }
   .big-title {
@@ -54,8 +54,14 @@ const transitionNames = ['drop','rise','slide-left'];
   }
 }
 .dark {
-  .section_intro h2 {
-    color: var(--boulders-2);
+  .section_intro {
+    h2 {
+      color: var(--boulders-2);
+    }
+    span {
+      color: var(--bays-0);
+    }
   }
+
 }
 </style>

@@ -1,28 +1,28 @@
 <template>
-  <article class="t-line">
-    <ul class="t-line__list">
+  <article class="timeline">
+    <ul class="timeline__list">
       <li 
-        class="t-line__item animation animation_opacity animation_rise start"       
-        :class="i !== 0 ? 't-line__item_hidden' : ''"  
+        class="timeline__item animation animation_opacity animation_rise start"       
+        :class="i !== 0 ? 'timeline__item_hidden' : ''"  
         v-for="(item, i) in timeline" 
         :key="item.interval"
         v-appear-transition
       >
-        <div class="t-line__item-timestamp" @click="$event => toggleCard($event)">
+        <div class="timeline__item-timestamp" @click="$event => toggleCard($event)">
           {{ item.interval }}
         </div>
-        <div class="t-line__axis" v-inserted>
-          <img class="t-line__axis-icon" :data-url="item.icon" alt="icon" />
-          <div class="t-line__axis-tail"></div>
+        <div class="timeline__axis" v-inserted>
+          <img class="timeline__axis-icon" :data-url="item.icon" alt="icon" />
+          <div class="timeline__axis-tail"></div>
         </div>
-        <div class="t-line__card">
-          <hgroup class="t-line__title-wrapper">
-            <h3 class="t-line__item-title">{{ item.title }}</h3>
-            <a class="link t-line__item-link" :href="item.link"  target="_blank">
+        <div class="timeline__card">
+          <hgroup class="timeline__title-wrapper">
+            <h3 class="timeline__item-title">{{ item.title }}</h3>
+            <a class="link timeline__item-link" :href="item.link"  target="_blank">
               {{ item.organization }} 
             </a>
           </hgroup>
-          <ul class="t-line__item-list">
+          <ul class="timeline__item-list">
             <li v-for="activity in item.activities">{{ activity }}</li>
           </ul>
         </div>   
@@ -45,13 +45,13 @@ const vAppearTransition = {
 };
 function toggleCard(event: Event) {
   if (event.currentTarget instanceof HTMLElement && event.currentTarget.parentNode instanceof HTMLElement) {
-    event.currentTarget.parentNode.classList.toggle('t-line__item_hidden');
+    event.currentTarget.parentNode.classList.toggle('timeline__item_hidden');
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.t-line {
+.timeline {
   &__list {
     list-style: none;
   }
@@ -65,13 +65,13 @@ function toggleCard(event: Event) {
     will-change: max-height;
     overflow: hidden;
     &:last-child {
-      .t-line__axis-tail {
+      .timeline__axis-tail {
         display: none;
       }
     }
     &_hidden {
       max-height: calc(var(--lh-sm) + var(--s-xs));
-      .t-line__item-timestamp {
+      .timeline__item-timestamp {
         color: var(--boulders-4);
       }
     }
@@ -118,7 +118,7 @@ function toggleCard(event: Event) {
           left: 0;
           height: inherit;
           line-height: inherit;
-          color: var(--bays-1);
+          color: var(--primary-color);
         }
       }
     }
@@ -146,18 +146,50 @@ function toggleCard(event: Event) {
       display: block;
       width: 18px;
       height: 18px;
-      filter: invert(13%) sepia(90%) saturate(5012%) hue-rotate(230deg) brightness(104%) contrast(117%);
+      @include filter-bays-1;
     }
     &-tail {
-      width: 2px;
+      width: 1px;
       height: 100%;
-      background-color: var(--bays-0-05);
+      background-color: var(--bays-1);
     }
   }
 }
 .dark {
-  .t-line__item_hidden .t-line__item-timestamp  {
-    color: var(--boulders-0);
+  .timeline {
+    &__item {
+      &_hidden {
+        .timeline__item-timestamp {
+          color: var(--boulders-0);
+        }
+      }
+      &-timestamp {
+        color: var(--bays-0);
+        &:hover,
+        &:focus {
+          color: var(--bays-1);
+        }
+        &:active {
+          color: var(--primary-color);
+        }
+        cursor: pointer;
+      }
+      &-list {
+        li {
+          &::before {
+            color: var(--boulders-0);
+          }
+        }
+      }
+    }
+    &__axis {
+      &-icon {
+        @include filter-bays-0;
+      }
+      &-tail {
+        background-color: var(--bays-0);
+      }
+    }
   }
 }
 </style>

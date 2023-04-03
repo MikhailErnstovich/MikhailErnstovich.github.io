@@ -55,9 +55,6 @@ function getMenuItemTitle(item: MenuItem): string {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: calc(var(--s-sm) + var(--fz-h-sm)) 1fr;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
     width: 80%;
     height: 100%;
     background-color: var(--boulders-0);
@@ -78,11 +75,6 @@ function getMenuItemTitle(item: MenuItem): string {
     display: none;
   }
 }
-.dark .aside-menu {
-  &__wrapper {
-    background-color: var(--bays-4);
-  }
-}
 
 .navigation {
   &-list {
@@ -93,7 +85,7 @@ function getMenuItemTitle(item: MenuItem): string {
       counter-increment: item 1;
       font-size: var(--fz-lg);
       letter-spacing: 2px;
-      color: var(--boulder-4);
+      color: var(--boulders-4);
       transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
       cursor: pointer;
       &:hover,
@@ -120,7 +112,7 @@ function getMenuItemTitle(item: MenuItem): string {
           display: block;
           margin-bottom: 5px;
           text-align: center;
-          color: var(--bays-1)
+          color: var(--primary-color);
         }
       }
     }
@@ -140,19 +132,39 @@ function getMenuItemTitle(item: MenuItem): string {
 .shift-leave-to {
   transform: translateX(100vw);
 }
-
-.dark {
-  .navigation-list__item-link {
-    color: var(--boulders-0);
-    &:visited,
-    &:focus, 
-    &:active {
-      color: var(--boulders-0);
-    } 
-  }
-}
 .resume-link {
   margin: 10% auto 0;
   letter-spacing: 2px;
+}
+
+.dark {
+  .aside-menu {
+    &__wrapper {
+      background-color: var(--bays-4);
+    }
+  }
+  .navigation-list__item-link {
+    color: var(--boulders-0);
+    &:visited {
+      color: var(--boulders-0);
+    }
+    &:hover,
+    &:focus {
+      color: var(--bays-1);
+    }
+    &:active {
+      color: var(--primary-color);
+    }
+    &:hover::before,
+    &:focus::before {
+      color: var(--bays-1);
+    }
+    &:active::before {
+      color: var(--primary-color);
+    }
+    &::before {
+      color: var(--bays-0);
+    }
+  }
 }
 </style>

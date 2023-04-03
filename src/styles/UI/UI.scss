@@ -1,6 +1,6 @@
 html {
   background-color: #ffffff;
-  color: black;
+  color: #000000;
   font-family: var(--font-regular);
   font-size: var(--fz-md);
 }
@@ -51,7 +51,7 @@ html {
         display: block;
         height: 1px;
         width: 100%;
-        background-color: var(--bays-0);
+        background-color: var(--bays-1);
         opacity: 0.7 !important;
       }
     }
@@ -71,19 +71,19 @@ html {
   }
 }
 
-.link,
-.link:visited  {
+.link {
   transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
   color: var(--bays-1);
-}
-
-.link:focus,
-.link:hover {
-  color: var(--primary-color);
-}
-
-.link:active {
-  color: var(--bays-3);
+  &:visited {
+    color: var(--bays-1);
+  }
+  &:focus,
+  &:hover {
+    color: var(--primary-color);
+  }
+  &:active {
+    color: var(--bays-3);
+  }
 }
 
 .resume-link,
@@ -96,16 +96,14 @@ html {
   font-size: var(--fz-sm);
   line-height: var(--lh-sm);
   text-transform: uppercase;
-  color: #fff;
+  color: #ffffff;
   transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
   &:hover,
   &:focus {
     background-color: var(--primary-color);
-    color: #fff;
   }
   &:active {
     background-color: var(--bays-3);
-    color: #fff;
   }
 }
 

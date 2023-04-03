@@ -46,38 +46,54 @@ const vAppearTransition = {
 };
 </script>
 <style lang="scss" scoped>
-  .social-media{
-    &__list {
-      display: flex;
-      justify-content: space-around;
-      list-style: none;
+.social-media{
+  &__list {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+  }
+  &__item {
+    width: 40px;
+    height: 40px;
+    padding: var(--s-xss);
+    &-link {
+      @include filter-bays-1;
+      &:hover,
+      &:focus {
+        @include filter-primary;
+      }
+      &:active {
+        @include filter-bays-3;
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
     }
+    &:nth-child(2),
+    &:nth-child(4) {
+      transition-delay: .2s;
+    }
+    &:nth-child(3) {
+      transition-delay: .4s;
+    }
+  }
+}
+.dark {
+  .social-media{
     &__item {
-      width: 40px;
-      height: 40px;
-      padding: var(--s-xss);
       &-link {
-        filter: invert(13%) sepia(90%) saturate(5012%) hue-rotate(230deg) brightness(104%) contrast(117%);
+        @include filter-bays-0;
         &:hover,
         &:focus {
-          filter: invert(9%) sepia(100%) saturate(7480%) hue-rotate(248deg) brightness(81%) contrast(141%);
+          @include filter-bays-1;
         }
         &:active {
-          filter: invert(7%) sepia(71%) saturate(6784%) hue-rotate(242deg) brightness(95%) contrast(122%);
+          @include filter-primary;
         }
-        img {
-          display: block;
-          width: 100%;
-          height: 100%;
-        }
-      }
-      &:nth-child(2),
-      &:nth-child(4) {
-        transition-delay: .2s;
-      }
-      &:nth-child(3) {
-        transition-delay: .4s;
       }
     }
   }
+}
 </style>

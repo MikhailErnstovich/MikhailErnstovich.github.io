@@ -64,13 +64,14 @@ const toggleMenu = () => {
   width: var(--fz-h-sm);
   padding: 0;
   margin: 0;
-  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+  @include filter-bays-1;
+  transition: filter 0.25s cubic-bezier(0.645,0.045,0.355,1);
   &:hover,
   &:focus {
-    color: var(--primary-color);
+    @include filter-primary;
   }
   &:active {
-    color: var(--bays-3);
+    @include filter-bays-3;
   }
   @include lg-screen {
     display: none;
@@ -78,6 +79,18 @@ const toggleMenu = () => {
   &__icon {
     width: var(--fz-h-sm);
     aspect-ratio: 1 / 1;
+  }
+}
+.dark {
+  .menu-toggle {
+    @include filter-bays-0;
+    &:hover,
+    &:focus {
+      @include filter-bays-1;
+    }
+    &:active {
+      @include filter-primary;
+    }
   }
 }
 </style>

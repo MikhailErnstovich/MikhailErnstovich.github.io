@@ -63,5 +63,15 @@ const vAppearTransition = {
     }
   }
 }
-
+html.dark {
+  .skills {
+  &__list {
+    &-item {
+      &::before {
+        color: var(--bays-0);
+      }
+    }
+  }
+}
+}
 </style>

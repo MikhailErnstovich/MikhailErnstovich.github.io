@@ -33,20 +33,30 @@ const isDark = useDark();
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--primary-color);
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 24px;
-  width: 24px;
-  left: 4px;
-  bottom: 4px;
-  background-color: #ffffff;
-  -webkit-transition: .4s;
-  transition: .4s;
+  background-color: var(--bays-1);
+  box-shadow: none;
+  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+  &:hover,
+  &:focus {
+    background-color: var(--primary-color);
+  }
+  &:active {
+    background-color: var(--bays-3);
+    &::before {
+      box-shadow: 0px 0px 0px 12px rgba(0, 98, 245, 0.2);
+    }
+  }
+  &::before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #ffffff;
+    box-shadow: none;
+    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+  }
 }
 
 input:checked + .slider {
