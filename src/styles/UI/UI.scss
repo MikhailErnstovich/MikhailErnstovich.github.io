@@ -16,11 +16,8 @@ html {
   filter: blur(5px) brightness(0.7);
 }
 .header {
-  position: absolute;
-  width: 100%;
-  height: 100px;
-  padding: 0 var(--s-sm);
   z-index: 2;
+  padding: var(--s-sm) var(--s-sm) 0 var(--s-sm);
 }
 .footer {
   padding: 0 var(--s-sm);

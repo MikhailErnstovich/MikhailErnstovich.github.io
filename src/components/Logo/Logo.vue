@@ -1,7 +1,5 @@
 <template>
-  <div class="logo">
-    <h1>M</h1>
-  </div>
+  <div class="logo"><i>M</i></div>
 </template>
 
 <script setup lang="tsx">
@@ -10,11 +8,13 @@
 
 <style  lang="scss" scoped>
 .logo {
-  display: block;
-  width: 50px;
-  height: 50px;
-  line-height: 50px;
-  font-size: 1.5em;
-  font-family: var(--font-bold);
+  display: flex;
+  i {
+    display: block;
+    font-style: normal;
+    font-size:  var(--fz-h-md);
+    font-family: var(--font-bold);
+    line-height: var(--lh-h-xs);
+  }
 }
 </style>

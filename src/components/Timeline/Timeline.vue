@@ -37,7 +37,7 @@ import { insertImage } from '~/helpers/lazy-loaders';
 import { appearAnimation } from '~/helpers/appear-animation';
 
 const vInserted = {
-  mounted: insertImage
+  mounted: insertImage,
 };
 
 const vAppearTransition = {

@@ -52,18 +52,27 @@ function getMenuItemTitle(item: MenuItem): string {
   }
   &__wrapper {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: calc(var(--s-sm) + var(--fz-h-sm)) 1fr;
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
     width: 80%;
     height: 100%;
     background-color: var(--boulders-0);
     box-shadow: -10px 0px 30px -15px var(--bays-4-07);
   }
   &__theme-toggle {
-    position: absolute;
-    top: 36px;
-    left: 36px;
+    grid-row-start: 1;
+    grid-row-end: 2;
+    margin: var(--s-sm) 0 0 var(--s-sm);
+  }
+  .navigation {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    align-self: center;
+    margin-bottom: calc(var(--s-sm) + var(--fz-h-sm));
   }
   @include lg-screen {
     display: none;

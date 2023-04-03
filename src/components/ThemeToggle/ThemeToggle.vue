@@ -1,54 +1,68 @@
-<template>
+ <template>
   <article class="theme-toggle">
-    <el-switch
-      class="theme-toggle__switch"
-      v-model="isDark"
-      size="large"
-      inline-prompt
-      :active-icon="Sunny"
-      :inactive-icon="Moon"
-    />
+    <label class="theme-toggle__switch">
+      <input type="checkbox" v-model="isDark">
+      <span class="slider round"></span>
+    </label>
   </article>
 </template>
 
 <script lang="tsx" setup>
 import { useDark } from "@vueuse/core";
-import { Sunny, Moon } from '@element-plus/icons-vue'
 const isDark = useDark();
 </script>
 
-<style lang="scss">
-.theme-toggle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+<style lang="scss" scoped>
+.theme-toggle__switch {
+  position: relative;
+  display: inline-block;
   width: 60px;
-  .el-switch--large .el-switch__core {
-    height: 26px;
-    min-width: 54px;
-    border-radius: 13px;
+  height: 32px;
+}
 
-  }
-  .el-switch .el-switch__action {
-    background-color: #ffffff;
-  }
-  .el-switch .el-switch__core {
-    border-width: 2px;
-    border-color: var(--primary-color);
-    background-color: var(--primary-color);
-    .el-switch__inner {
-      justify-content: flex-end;
-      .el-icon {
-        font-size: 16px;
-      }
-    }
-  }
-  .el-switch.is-checked .el-switch__core {
-    border-color: var(--boulders-3);
-    background-color: var(--boulders-3);
-    .el-switch__inner {
-      justify-content: flex-start;
-    }
-  }
+.theme-toggle__switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--primary-color);
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 24px;
+  width: 24px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #ffffff;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--boulders-3);
+}
+
+input:checked + .slider:before {
+  transform: translateX(28px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
 </style>

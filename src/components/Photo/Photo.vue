@@ -28,7 +28,7 @@ const imgUrls = {
 }
 
 const vInserted = {
-  mounted: insertImage
+  mounted: insertImage,
 };
 </script>
 <style lang="scss" scoped>

@@ -12,8 +12,6 @@ declare module '@vue/runtime-core' {
     Authorship: typeof import('./src/components/Authorship/Authorship.vue')['default']
     Contacts: typeof import('./src/components/Sections/Contacts.vue')['default']
     CustomTransition: typeof import('./src/components/Transitions/CustomTransition.vue')['default']
-    ElIcon: typeof import('element-plus/es')['ElIcon']
-    ElSwitch: typeof import('element-plus/es')['ElSwitch']
     Experience: typeof import('./src/components/Sections/Experience.vue')['default']
     Footer: typeof import('./src/components/Footer/Footer.vue')['default']
     Header: typeof import('./src/components/Header/Header.vue')['default']
