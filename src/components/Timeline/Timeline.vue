@@ -11,8 +11,8 @@
         <div class="t-line__item-timestamp" @click="$event => toggleCard($event)">
           {{ item.interval }}
         </div>
-        <div class="t-line__axis">
-          <img class="t-line__axis-icon" :src="item.icon" alt="icon" />
+        <div class="t-line__axis" v-inserted>
+          <img class="t-line__axis-icon" :data-url="item.icon" alt="icon" />
           <div class="t-line__axis-tail"></div>
         </div>
         <div class="t-line__card">
@@ -33,7 +33,12 @@
 
 <script setup lang="tsx">
 import { timeline } from './timeline-data';
+import { insertImage } from '~/helpers/lazy-loaders';
 import { appearAnimation } from '~/helpers/appear-animation';
+
+const vInserted = {
+  mounted: insertImage
+};
 
 const vAppearTransition = {
   mounted: (el: HTMLElement) => appearAnimation(el, 'start'),
