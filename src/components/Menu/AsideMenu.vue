@@ -63,7 +63,7 @@ function getMenuItemTitle(item: MenuItem): string {
   &__theme-toggle {
     grid-row-start: 1;
     grid-row-end: 2;
-    margin: var(--s-sm) 0 0 var(--s-sm);
+    margin: var(--s-xs) 0 0 var(--s-xs);
   }
   .navigation {
     grid-row-start: 2;

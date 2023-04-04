@@ -7,7 +7,6 @@ html {
 
 .main {
   counter-reset: section;
-  padding: 0 var(--s-sm);
   filter: none;
   transition: filter 0.5s cubic-bezier(0.645,0.045,0.355,1);
   will-change: filter;
@@ -17,13 +16,14 @@ html {
 }
 .header {
   z-index: 2;
-  padding: var(--s-sm) var(--s-sm) 0 var(--s-sm);
+  padding: var(--s-xs) var(--s-xs) 0 var(--s-xs);
 }
 .footer {
   padding: 0 var(--s-sm);
 }
 .section {
   width: 100%;
+  padding: 0 var(--s-xs);
   &_numbered {
     margin: var(--s-lg) 0;
   }
