@@ -61,7 +61,7 @@ function toggleCard(event: Event) {
     grid-template-rows: var(--lh-sm) 1fr;
     column-gap: var(--s-xs);
     max-height: 1000px;
-    transition: max-height 0.5s cubic-bezier(0.645,0.045,0.355,1);
+    transition: all 0.5s cubic-bezier(0.645,0.045,0.355,1);
     will-change: max-height;
     overflow: hidden;
     &:last-child {
@@ -128,7 +128,7 @@ function toggleCard(event: Event) {
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
-    background-color: var(--bays-0-01);
+    background: linear-gradient(45deg, var(--bays-0-01), var(--bays-0-02));
     border: none;
     border-radius: var(--s-xss);
     padding: var(--s-xs);
