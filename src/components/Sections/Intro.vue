@@ -1,5 +1,5 @@
 <template>
-    <section class="section section_intro">
+    <section class="section">
       <CustomTransition :appear="true" :name="transitionNames[0]" :toggle="true">
         <span>Hi, my name is</span>
       </CustomTransition>
@@ -26,7 +26,7 @@ import CustomTransition from '~/components/Transitions/CustomTransition.vue';
 const transitionNames = ['drop','rise','slide-left'];
 </script>
 <style lang="scss" scoped>
-.section_intro {
+.section {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -55,9 +55,15 @@ const transitionNames = ['drop','rise','slide-left'];
   @include md-screen {
     padding: 0 var(--s-md);
   }
+  @include lg-screen {
+    padding: 0 var(--s-xl);
+  }
+  @include xl-screen {
+    padding: 0 var(--s-xxl);
+  }
 }
 .dark {
-  .section_intro {
+  .section {
     h2 {
       color: var(--boulders-2);
     }
@@ -65,6 +71,5 @@ const transitionNames = ['drop','rise','slide-left'];
       color: var(--bays-0);
     }
   }
-
 }
 </style>

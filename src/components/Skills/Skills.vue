@@ -24,11 +24,11 @@ const vAppearTransition = {
 
 <style  lang="scss" scoped>
 .skills {
-  margin: var(--s-xs) 0 0;
   &__list {
     display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
+    grid-template-columns: repeat(2, 1fr);
     gap: 0 var(--s-xs);
+    padding: 0 var(--s-sm);
     list-style: none;
     &-item {
       position: relative;
@@ -60,6 +60,16 @@ const vAppearTransition = {
       &:nth-child(6) {
         transition-delay: 1s;
       }
+    }
+  }
+  @include md-screen {
+    &__list-item {
+      font-size: var(--fz-md);
+    }
+  }
+  @include lg-screen {
+    &__list-item {
+      font-size: var(--fz-lg);
     }
   }
 }

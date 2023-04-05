@@ -4,11 +4,11 @@
       <picture v-inserted class="photo__content">
         <source 
           :data-url="imgUrls.lg"
-          media="(min-width: 1000px)"
+          media="(min-width: 1256px)"
         />
         <source 
           :data-url="imgUrls.md"
-          media="(min-width: 600px)"
+          media="(min-width: 768px)"
         />
         <img 
           class="photo__img"
@@ -36,6 +36,7 @@ const vInserted = {
   position: relative;
   width: 100%;
   margin: var(--s-xs) auto var(--s-md);
+  padding: var(--s-sm);
   &__wrapper {
     position: relative;
     &:focus .photo__img,
