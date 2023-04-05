@@ -22,7 +22,6 @@ declare module '@vue/runtime-core' {
     Photo: typeof import('./src/components/Photo/Photo.vue')['default']
     Skills: typeof import('./src/components/Skills/Skills.vue')['default']
     SocialMedia: typeof import('./src/components/SocialMedia/SocialMedia.vue')['default']
-    TabList: typeof import('./src/components/TabList/TabList.vue')['default']
     ThemeToggle: typeof import('./src/components/ThemeToggle/ThemeToggle.vue')['default']
     Timeline: typeof import('./src/components/Timeline/Timeline.vue')['default']
   }
