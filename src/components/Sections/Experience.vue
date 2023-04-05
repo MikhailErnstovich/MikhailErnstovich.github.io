@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_numbered section_experience" :id="props.title.id">
+  <section class="section section_numbered" :id="props.title.id">
     <div class="section__title-wrapper animation animation_opacity animation_drop start" v-appear-transition>
       <h2 class="section__title">
         <span class="section__title-text">{{ props.title.title }}</span>
@@ -23,9 +23,25 @@ const vAppearTransition = {
 
 </script>
 <style lang="scss" scoped>
-.section_experience {
+.section {
   @include md-screen {
+    @include md-grid;
     padding: 0 var(--s-md);
+    &__title-wrapper {
+      grid-column-start: 1;
+      grid-column-end: 13;
+    }
+    .timeline {
+      grid-column-start: 1;
+      grid-column-end: 13;
+    }
+  }
+  @include lg-screen {
+    @include lg-grid;
+    padding: 0 var(--s-xl);
+  }
+  @include xl-screen {
+    padding: 0 var(--s-xxl);
   }
 }
 </style>

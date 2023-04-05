@@ -166,9 +166,26 @@ const cardData: TimelineEvent = reactive({
     }
   }
 }
+
+@mixin md-xl-screen {
+  @include md-screen {
+    @content;
+  }
+  @include lg-screen {
+    @content;
+  }
+  @include xl-screen {
+    @content;
+  }
+}
 .timeline {
   @include md-screen {
     @include md-grid;
+  }
+  @include md-xl-screen {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
     &__list {
       grid-column-start: 1;
       grid-column-end: 4;
@@ -203,7 +220,7 @@ const cardData: TimelineEvent = reactive({
         font-size: var(--fz-md);
         line-height: var(--lh-md);
         height: var(--lh-md);
-        text-align: justify;
+        text-align: center;
         span {
           width:100%;
           height: 0;
@@ -259,5 +276,11 @@ const cardData: TimelineEvent = reactive({
       background: linear-gradient(180deg, var(--bays-0-01), transparent);
     }
   }
-}
+  @include lg-screen {
+    @include lg-grid;
+  }
+  @include xl-screen {
+    @include lg-grid;
+  }
+}    
 </style>

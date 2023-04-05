@@ -48,17 +48,17 @@ h1, h2, h3, h4, p {
   }
 }
 @mixin sm-screen {
-  @media only screen and (min-width: 600px) and (max-width: 767x) {
+  @media only screen and (min-width: 600px) {
     @content;
   }
 }
 @mixin md-screen {
-  @media only screen and (min-width: 768px) and (max-width: 1255px) {
+  @media only screen and (min-width: 768px) {
     @content;
   }
 }
 @mixin lg-screen {
-  @media only screen and (min-width: 1256px) and (max-width: 1919px) {
+  @media only screen and (min-width: 1256px) {
     @content;
   }
 }
@@ -87,7 +87,7 @@ h1, h2, h3, h4, p {
 @mixin lg-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);;
-  column-gap: var(--s-sm);
+  column-gap: var(--s-md);
 }
 
 //filter from black to specific color
