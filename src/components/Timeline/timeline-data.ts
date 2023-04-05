@@ -1,4 +1,4 @@
-type TimelineEvent = {
+export type TimelineEvent = {
   interval: string,
   title: string,
   organization: string,

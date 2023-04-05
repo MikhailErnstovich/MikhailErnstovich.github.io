@@ -3,38 +3,41 @@
     <ul class="timeline__list">
       <li 
         class="timeline__item animation animation_opacity animation_rise start"       
-        :class="i !== 0 ? 'timeline__item_hidden' : ''"  
+        :class="i !== 0 ? 'timeline__item_hidden' : 'timeline__item_selected'"  
         v-for="(item, i) in timeline" 
         :key="item.interval"
         v-appear-transition
+        :ref="setItemRef"
       >
-        <div class="timeline__item-timestamp" @click="$event => toggleCard($event)">
+        <div class="timeline__item-timestamp" @click="() => toggleCard(i)">
           {{ item.interval }}
+          <span></span>
         </div>
         <div class="timeline__axis" v-inserted>
           <img class="timeline__axis-icon" :data-url="item.icon" alt="icon" />
           <div class="timeline__axis-tail"></div>
         </div>
-        <div class="timeline__card">
-          <hgroup class="timeline__title-wrapper">
-            <h3 class="timeline__item-title">{{ item.title }}</h3>
-            <a class="link timeline__item-link" :href="item.link"  target="_blank">
-              {{ item.organization }} 
-            </a>
-          </hgroup>
-          <ul class="timeline__item-list">
-            <li v-for="activity in item.activities">{{ activity }}</li>
-          </ul>
-        </div>   
+        <Card :cardData="item" class="timeline__card"/>
       </li>
     </ul>
+    <Card :cardData="cardData" class="timeline__tab"/>
   </article>
 </template>
 
 <script setup lang="tsx">
-import { timeline } from './timeline-data';
+import { reactive, onMounted } from 'vue';
+import { timeline, TimelineEvent } from './timeline-data';
 import { insertImage } from '~/helpers/lazy-loaders';
 import { appearAnimation } from '~/helpers/appear-animation';
+import Card from '~/components/Card/Card.vue';
+
+let itemRefs: HTMLElement[] = [];
+const setItemRef = (el: HTMLElement) => {
+  if (el) {
+    itemRefs.push(el)
+  }
+  return undefined;
+}
 
 const vInserted = {
   mounted: insertImage,
@@ -43,11 +46,33 @@ const vInserted = {
 const vAppearTransition = {
   mounted: (el: HTMLElement) => appearAnimation(el, 'start'),
 };
-function toggleCard(event: Event) {
-  if (event.currentTarget instanceof HTMLElement && event.currentTarget.parentNode instanceof HTMLElement) {
-    event.currentTarget.parentNode.classList.toggle('timeline__item_hidden');
-  }
+
+onMounted(() => {
+  Object.assign(cardData, timeline[0]);
+  console.log(itemRefs)
+});
+
+function toggleCard(i: number) {
+  itemRefs[i].classList.toggle('timeline__item_hidden');
+  itemRefs.forEach((item, index) => {
+    if (index === i) {
+      item.classList.add('timeline__item_selected');
+    } else {
+      item.classList.remove('timeline__item_selected');
+    }
+  });
+  Object.assign(cardData, timeline[i]);
 }
+
+const cardData: TimelineEvent = reactive({ 
+    interval: '',
+    title: '',
+    organization: '',
+    link: '',
+    activities: [''],
+    icon: ''
+  }
+) 
 </script>
 
 <style lang="scss" scoped>
@@ -71,11 +96,10 @@ function toggleCard(event: Event) {
     }
     &_hidden {
       max-height: calc(var(--lh-sm) + var(--s-xs));
-      .timeline__item-timestamp {
-        color: var(--boulders-4);
-      }
     }
-
+    &_selected .timeline__item-timestamp{
+      color: var(--primary-color);
+    }
     &-timestamp {
       grid-column-start: 2;
       grid-column-end: 3;
@@ -84,43 +108,11 @@ function toggleCard(event: Event) {
       font-size: var(--fz-sm);
       line-height: var(--lh-sm);
       font-family: var(--font-light);
-      color: var(--bays-1);
-      &:hover,
-      &:focus {
+      color: var(--boulders-4);
+      &:hover{
         color: var(--primary-color);
       }
-      &:active {
-        color: var(--bays-3);
-      }
       cursor: pointer;
-    }
-    &-title {
-      font-size: var(--fz-lg);
-      font-family: var(--font-medium);
-      letter-spacing: 1px;
-    }
-    &-link {
-      font-size: var(--fz-md);
-      font-family: var(--font-medium);
-    }
-    &-list {
-      margin-top: var(--s-xss);
-      li {
-        position: relative;
-        font-size: var(--fz-md);
-        margin-bottom: var(--s-xss);
-        padding-left: var(--s-sm);
-        list-style: none;
-        &::before {
-          display: block;
-          content: '▸';
-          position: absolute;
-          left: 0;
-          height: inherit;
-          line-height: inherit;
-          color: var(--primary-color);
-        }
-      }
     }
   }
   &__card {
@@ -128,10 +120,6 @@ function toggleCard(event: Event) {
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
-    background: linear-gradient(45deg, var(--bays-0-01), var(--bays-0-02));
-    border: none;
-    border-radius: var(--s-xss);
-    padding: var(--s-xs);
     margin: var(--s-xs) 0;
   }
   &__axis {
@@ -154,31 +142,17 @@ function toggleCard(event: Event) {
       background-color: var(--bays-1);
     }
   }
+  &__tab {
+    display: none;
+  }
 }
 .dark {
   .timeline {
     &__item {
-      &_hidden {
-        .timeline__item-timestamp {
-          color: var(--boulders-0);
-        }
-      }
       &-timestamp {
         color: var(--bays-0);
-        &:hover,
-        &:focus {
+        &:hover {
           color: var(--bays-1);
-        }
-        &:active {
-          color: var(--primary-color);
-        }
-        cursor: pointer;
-      }
-      &-list {
-        li {
-          &::before {
-            color: var(--boulders-0);
-          }
         }
       }
     }
@@ -189,6 +163,100 @@ function toggleCard(event: Event) {
       &-tail {
         background-color: var(--bays-0);
       }
+    }
+  }
+}
+.timeline {
+  @include md-screen {
+    @include md-grid;
+    &__list {
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+    &__item {
+      position: relative;
+      display: block;
+      padding: var(--s-xs) 0;
+      max-height: calc(var(--lh-md) + 2 * var(--s-xs));
+      overflow: visible;
+      &::before,
+      &::after {
+        content: ' ';
+        position: absolute;
+        left: 0;
+        display: block;
+        width: var(--s-xs);
+        height: var(--s-xs);
+        border-left: 2px solid var(--bays-1);
+        transform: translate(-8px) scale(0);
+        transition: transform 0.25s cubic-bezier(0.645,0.045,0.355,1);
+      }
+      &::before {
+        top: 0;
+        border-top: 2px solid var(--bays-1);
+      }
+      &::after {
+        bottom: 0;
+        border-bottom: 2px solid var(--bays-1);
+      }
+      &-timestamp {
+        font-size: var(--fz-md);
+        line-height: var(--lh-md);
+        height: var(--lh-md);
+        text-align: justify;
+        span {
+          width:100%;
+          height: 0;
+          display: inline-block;
+        }
+        &::before,
+        &::after {
+          content: ' ';
+          position: absolute;
+          right: 0;
+          display: block;
+          width: var(--s-xs);
+          height: var(--s-xs);
+          border-right: 2px solid var(--bays-1);
+          transform: translate(8px) scale(0);
+          transition: transform 0.25s cubic-bezier(0.645,0.045,0.355,1);
+        }
+        &::before {
+          top: 0;
+          border-top: 2px solid var(--bays-1);
+        }
+        &::after {
+          bottom: 0;
+          border-bottom: 2px solid var(--bays-1);
+        }
+      }
+      &_hidden {
+        max-height: inherit;
+      }
+      &_selected {
+        .timeline__item-timestamp {
+          &::before,
+          &::after {
+            transform: translate(8px) scale(1);
+          }
+        }
+        &::before,
+        &::after {
+          transform: translate(-8px) scale(1);
+        }
+      }
+    }
+    &__axis {
+      display: none;      
+    }
+    &__list .timeline__card {
+      display: none;
+    }
+    &__tab {
+      display: block;
+      grid-column-start: 4;
+      grid-column-end: 13;
+      background: linear-gradient(180deg, var(--bays-0-01), transparent);
     }
   }
 }

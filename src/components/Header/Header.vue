@@ -51,6 +51,11 @@ const toggleMenu = () => {
   align-items: flex-start;
   width: 100%;
   height: calc(var(--s-sm) + var(--fz-h-sm));
+  z-index: 2;
+  padding: var(--s-xs) var(--s-xs) 0 var(--s-xs);
+  @include md-screen {
+    padding: var(--s-sm) var(--s-sm) 0 var(--s-sm);
+  }
 }
 .animation-wrapper:nth-child(2) {
   z-index: 2;
@@ -73,12 +78,12 @@ const toggleMenu = () => {
   &:active {
     @include filter-bays-3;
   }
-  @include lg-screen {
-    display: none;
-  }
   &__icon {
     width: var(--fz-h-sm);
     aspect-ratio: 1 / 1;
+  }
+  @include md-screen {
+    display: none;
   }
 }
 .dark {

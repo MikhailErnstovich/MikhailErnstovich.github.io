@@ -48,12 +48,12 @@ h1, h2, h3, h4, p {
   }
 }
 @mixin sm-screen {
-  @media only screen and (min-width: 600px) and (max-width: 959px) {
+  @media only screen and (min-width: 600px) and (max-width: 767x) {
     @content;
   }
 }
 @mixin md-screen {
-  @media only screen and (min-width: 960px) and (max-width: 1255px) {
+  @media only screen and (min-width: 768px) and (max-width: 1255px) {
     @content;
   }
 }
@@ -71,30 +71,26 @@ h1, h2, h3, h4, p {
 //grid columns
 @mixin xs-grid {
   display: grid;
-  grid-template-columns: 4;
-  column-gap: 16px;
-  padding: 0 16px;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: var(--s-xs);
 }
-@mixin s-grid {
+@mixin sm-grid {
   display: grid;
-  grid-template-columns: 8;
-  column-gap: 16px;
-  padding: 0 32px;
+  grid-template-columns: repeat(8, 1fr);;
+  column-gap: var(--s-xs);
 }
 @mixin md-grid {
   display: grid;
-  grid-template-columns: 12;
-  column-gap: 24px;
-  padding: 0 64px;
+  grid-template-columns: repeat(12, 1fr);;
+  column-gap: var(--s-sm);
 }
 @mixin lg-grid {
   display: grid;
-  grid-template-columns: 12;
-  column-gap: 24px;
-  padding: 0 64px;
+  grid-template-columns: repeat(12, 1fr);;
+  column-gap: var(--s-sm);
 }
 
-//filter from black to specific color=
+//filter from black to specific color
 //hover, focus
 @mixin filter-primary {
   filter: invert(10%) sepia(93%) saturate(7145%) hue-rotate(247deg) brightness(80%) contrast(148%);

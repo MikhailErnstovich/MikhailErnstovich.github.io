@@ -71,7 +71,7 @@ function getMenuItemTitle(item: MenuItem): string {
     align-self: center;
     margin-bottom: calc(var(--s-sm) + var(--fz-h-sm));
   }
-  @include lg-screen {
+  @include md-screen {
     display: none;
   }
 }

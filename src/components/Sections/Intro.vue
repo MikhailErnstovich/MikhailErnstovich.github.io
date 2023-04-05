@@ -52,6 +52,9 @@ const transitionNames = ['drop','rise','slide-left'];
   .resume-link {
     margin: var(--s-lg) 0 0;
   }
+  @include md-screen {
+    padding: 0 var(--s-md);
+  }
 }
 .dark {
   .section_intro {

@@ -14,10 +14,6 @@ html {
 .main.blur {
   filter: blur(5px) brightness(0.7);
 }
-.header {
-  z-index: 2;
-  padding: var(--s-xs) var(--s-xs) 0 var(--s-xs);
-}
 .footer {
   padding: 0 var(--s-sm);
 }
