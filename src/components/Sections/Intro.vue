@@ -32,6 +32,7 @@ const transitionNames = ['drop','rise','slide-left'];
   justify-content: center;
   height: 100vh;
   span {
+    display: block;
     margin: 0 0 var(--s-xss);
     font-family: var(--font-regular);
     font-size: var(--fz-h-xs);
@@ -54,6 +55,16 @@ const transitionNames = ['drop','rise','slide-left'];
   }
   @include md-screen {
     padding: 0 var(--s-md);
+    font-size: var(--fz-lg);
+    line-height: var(--lh-lg);
+    &__paragraph {
+      width: 80%;
+    }
+    .big-title {
+      letter-spacing: 5px;
+      font-size: var(--fz-h-md);
+      line-height: var(--lh-h-md);
+    }
   }
   @include lg-screen {
     padding: 0 var(--s-xl);

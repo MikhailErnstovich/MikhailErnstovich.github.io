@@ -79,6 +79,9 @@ const vAppearTransition = {
       transition-delay: .4s;
     }
   }
+  @include md-screen {
+    max-width: 500px;
+  }
 }
 .dark {
   .social-media{

@@ -82,9 +82,9 @@ const toggleMenu = () => {
     width: var(--fz-h-sm);
     aspect-ratio: 1 / 1;
   }
-  @include md-screen {
-    display: none;
-  }
+  // @include md-screen {
+  //   display: none;
+  // }
 }
 .dark {
   .menu-toggle {

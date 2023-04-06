@@ -16,7 +16,7 @@
               </a>
             </li>
           </menu>
-          <a href="/CV.pdf" class="resume-link">Resume</a>
+          <a href="/CV.pdf" class="resume-link">Check out my CV!</a>
         </nav>
       </div>
     </aside>
@@ -72,7 +72,15 @@ function getMenuItemTitle(item: MenuItem): string {
     margin-bottom: calc(var(--s-sm) + var(--fz-h-sm));
   }
   @include md-screen {
-    display: none;
+    &__filler {
+      width: 40%;
+    }
+    &__wrapper {
+      width: 60%;
+    }
+    &__theme-toggle {
+      margin: var(--s-sm) 0 0 var(--s-sm);
+    }
   }
 }
 
@@ -114,6 +122,15 @@ function getMenuItemTitle(item: MenuItem): string {
           text-align: center;
           color: var(--primary-color);
         }
+      }
+    }
+  }
+  @include md-screen {
+    &-list{
+      &__item {
+        font-size: var(--fz-h-xs);
+        line-height: var(--lh-h-xs);
+        letter-spacing: 2px;
       }
     }
   }

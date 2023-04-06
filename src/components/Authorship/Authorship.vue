@@ -14,5 +14,8 @@
   margin: var(--s-sm) 0;
   text-align: center;
   font-size: var(--fz-xs);
+  @include md-screen {
+    font-size: var(--fz-sm);
+  }
 }
 </style>
