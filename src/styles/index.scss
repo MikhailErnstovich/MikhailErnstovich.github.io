@@ -73,6 +73,18 @@ figure {
   }
 }
 
+@mixin md-xl-screen {
+  @include md-screen {
+    @content;
+  }
+  @include lg-screen {
+    @content;
+  }
+  @include xl-screen {
+    @content;
+  }
+}
+
 //grid columns
 @mixin xs-grid {
   display: grid;

@@ -6,7 +6,7 @@
       </transition>
       <transition mode="out-in">
         <a 
-          class="link card_link"
+          class="link card__link"
           target="_blank"
           :href="props.cardData.link"
           :key="props.cardData.interval"
@@ -40,11 +40,13 @@ const props = defineProps<{
   padding: var(--s-xs);
   &__title {
     font-size: var(--fz-lg);
+    line-height: var(--lh-lg);
     font-family: var(--font-medium);
     letter-spacing: 1px;
   }
   &__link {
     font-size: var(--fz-md);
+    line-height: var(--lh-md);
     font-family: var(--font-medium);
   }
   &__list {
@@ -52,6 +54,7 @@ const props = defineProps<{
     li {
       position: relative;
       font-size: var(--fz-md);
+      line-height: var(--lh-md);
       margin-bottom: var(--s-xss);
       padding-left: var(--s-sm);
       list-style: none;
@@ -63,6 +66,22 @@ const props = defineProps<{
         height: inherit;
         line-height: inherit;
         color: var(--primary-color);
+      }
+    }
+  }
+  @include md-screen {
+    &__title {
+      font-size: var(--fz-xl);
+      line-height: var(--lh-xl);
+    }
+    &__link {
+      font-size: var(--fz-lg);
+      line-height: var(--lh-lg);
+    }
+    &__list {
+      li {
+        font-size: var(--fz-lg);
+        line-height: var(--lh-lg);
       }
     }
   }

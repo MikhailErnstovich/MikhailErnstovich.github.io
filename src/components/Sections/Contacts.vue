@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_numbered section_contacts" :id="props.title.id">
+  <section class="section section_numbered section" :id="props.title.id">
     <div class="section__title-wrapper animation animation_opacity animation_drop start" v-appear-transition>
       <h2 class="section__title">
         <span class="section__title-text">{{ props.title.title }}</span>
@@ -33,9 +33,38 @@ const vAppearTransition = {
 };
 </script>
 <style lang="scss" scoped>
-.section_contacts {
+.section{
   @include md-screen {
+    @include md-grid;
     padding: 0 var(--s-md);
+    &__title-wrapper {
+      grid-column-start: 1;
+      grid-column-end: 13;
+    }
+    &__paragraph {
+      grid-column-start: 2;
+      grid-column-end: 12;
+      font-size: var(--fz-lg);
+    }
+    .mail-link {
+      grid-column-start: 6;
+      grid-column-end: 8;
+    }
+  }
+  @include lg-screen {
+    @include lg-grid;
+    padding: 0 var(--s-xl);
+    &__paragraph {
+      grid-column-start: 3;
+      grid-column-end: 11;
+    }
+  }
+  @include xl-screen {
+    padding: 0 var(--s-xxl);
+    &__paragraph {
+      grid-column-start: 4;
+      grid-column-end: 10;
+    }
   }
 }
 </style>

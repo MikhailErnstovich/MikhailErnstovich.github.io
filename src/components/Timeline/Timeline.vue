@@ -97,9 +97,6 @@ const cardData: TimelineEvent = reactive({
     &_hidden {
       max-height: calc(var(--lh-sm) + var(--s-xs));
     }
-    &_selected .timeline__item-timestamp{
-      color: var(--primary-color);
-    }
     &-timestamp {
       grid-column-start: 2;
       grid-column-end: 3;
@@ -109,12 +106,17 @@ const cardData: TimelineEvent = reactive({
       line-height: var(--lh-sm);
       font-family: var(--font-light);
       color: var(--boulders-4);
-      &:hover{
+      transition: color 0.25s cubic-bezier(0.645,0.045,0.355,1);
+      &:hover,
+      &:focus {
         color: var(--primary-color);
       }
       cursor: pointer;
     }
   }
+  &__item_selected:not(.timeline__item_hidden) .timeline__item-timestamp {
+      color: var(--primary-color);
+    }
   &__card {
     grid-column-start: 2;
     grid-column-end: 3;
@@ -150,9 +152,10 @@ const cardData: TimelineEvent = reactive({
   .timeline {
     &__item {
       &-timestamp {
-        color: var(--bays-0);
-        &:hover {
-          color: var(--bays-1);
+        color: var(--boulders-0);
+        &:hover,
+        &:focus {
+          color: var(--bays-0);
         }
       }
     }
@@ -167,20 +170,15 @@ const cardData: TimelineEvent = reactive({
   }
 }
 
-@mixin md-xl-screen {
-  @include md-screen {
-    @content;
-  }
-  @include lg-screen {
-    @content;
-  }
-  @include xl-screen {
-    @content;
-  }
-}
 .timeline {
   @include md-screen {
     @include md-grid;
+  }
+  @include lg-screen {
+    @include lg-grid;
+  }
+  @include xl-screen {
+    @include lg-grid;
   }
   @include md-xl-screen {
     width: 100%;
@@ -217,6 +215,7 @@ const cardData: TimelineEvent = reactive({
         border-bottom: 2px solid var(--bays-1);
       }
       &-timestamp {
+        font-family: var(--font-regular);
         font-size: var(--fz-md);
         line-height: var(--lh-md);
         height: var(--lh-md);
@@ -275,12 +274,6 @@ const cardData: TimelineEvent = reactive({
       grid-column-end: 13;
       background: linear-gradient(180deg, var(--bays-0-01), transparent);
     }
-  }
-  @include lg-screen {
-    @include lg-grid;
-  }
-  @include xl-screen {
-    @include lg-grid;
   }
 }    
 </style>
