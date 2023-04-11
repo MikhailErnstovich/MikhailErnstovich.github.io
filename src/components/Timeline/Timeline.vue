@@ -114,9 +114,6 @@ const cardData: TimelineEvent = reactive({
       cursor: pointer;
     }
   }
-  &__item_selected:not(.timeline__item_hidden) .timeline__item-timestamp {
-      color: var(--primary-color);
-    }
   &__card {
     grid-column-start: 2;
     grid-column-end: 3;

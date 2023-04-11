@@ -73,10 +73,10 @@ function getMenuItemTitle(item: MenuItem): string {
   }
   @include md-screen {
     &__filler {
-      width: 40%;
+      flex-grow: 1;
     }
     &__wrapper {
-      width: 60%;
+      width: min(75vw, 400px);
     }
     &__theme-toggle {
       margin: var(--s-sm) 0 0 var(--s-sm);
