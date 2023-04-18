@@ -83,7 +83,7 @@ const cardData: TimelineEvent = reactive({
   &__item {
     display: grid;
     grid-template-columns: 18px 1fr;
-    grid-template-rows: var(--lh-sm) 1fr;
+    grid-template-rows: clamp(1.25rem, 1.075rem + 0.748vw, 2rem) 1fr;
     column-gap: var(--s-xs);
     max-height: 1000px;
     transition: all 0.5s cubic-bezier(0.645,0.045,0.355,1);
@@ -95,15 +95,15 @@ const cardData: TimelineEvent = reactive({
       }
     }
     &_hidden {
-      max-height: calc(var(--lh-sm) + var(--s-xs));
+      max-height: calc(clamp(1.25rem, 1.075rem + 0.748vw, 2rem) + var(--s-xs));
     }
     &-timestamp {
       grid-column-start: 2;
       grid-column-end: 3;
       grid-row-start: 1;
       grid-row-end: 2;
-      font-size: var(--fz-sm);
-      line-height: var(--lh-sm);
+      font-size: clamp(0.875rem, 0.787rem + 0.374vw, 1.25rem);
+      line-height: clamp(1.25rem, 1.075rem + 0.748vw, 2rem);
       font-family: var(--font-light);
       color: var(--boulders-4);
       transition: color 0.25s cubic-bezier(0.645,0.045,0.355,1);
@@ -170,26 +170,19 @@ const cardData: TimelineEvent = reactive({
 .timeline {
   @include md-screen {
     @include md-grid;
-  }
-  @include lg-screen {
-    @include lg-grid;
-  }
-  @include xl-screen {
-    @include lg-grid;
-  }
-  @include md-xl-screen {
+    column-gap: var(--s-sm);
     width: 100%;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
     &__list {
       grid-column-start: 1;
-      grid-column-end: 4;
+      grid-column-end: 5;
     }
     &__item {
       position: relative;
       display: block;
       padding: var(--s-xs) 0;
-      max-height: calc(var(--lh-md) + 2 * var(--s-xs));
+      max-height: calc(clamp(1.5rem, 1.383rem + 0.498vw, 2rem) + 2 * var(--s-xs));
       overflow: visible;
       &::before,
       &::after {
@@ -213,9 +206,7 @@ const cardData: TimelineEvent = reactive({
       }
       &-timestamp {
         font-family: var(--font-regular);
-        font-size: var(--fz-md);
-        line-height: var(--lh-md);
-        height: var(--lh-md);
+        height: clamp(1.5rem, 1.383rem + 0.498vw, 2rem);
         text-align: center;
         span {
           width:100%;
@@ -267,10 +258,23 @@ const cardData: TimelineEvent = reactive({
     }
     &__tab {
       display: block;
-      grid-column-start: 4;
+      grid-column-start: 5;
       grid-column-end: 13;
       background: linear-gradient(180deg, var(--bays-0-01), transparent);
     }
   }
+  @include lg-screen {
+    @include lg-grid;
+    &__list {
+      grid-column-end: 4;
+    }
+    &__tab {
+      grid-column-start: 4;
+    }
+  }
+  @include xl-screen {
+    @include lg-grid;
+  }
+ 
 }    
 </style>

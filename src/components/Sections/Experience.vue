@@ -26,7 +26,6 @@ const vAppearTransition = {
 .section {
   @include md-screen {
     @include md-grid;
-    padding: 0 var(--s-md);
     &__title-wrapper {
       grid-column-start: 1;
       grid-column-end: 13;
@@ -36,12 +35,8 @@ const vAppearTransition = {
       grid-column-end: 13;
     }
   }
-  @include lg-screen {
-    @include lg-grid;
-    padding: 0 var(--s-xl);
-  }
-  @include xl-screen {
-    padding: 0 var(--s-xxl);
-  }
+  // @include lg-screen {
+  //   @include lg-grid;
+  // }
 }
 </style>

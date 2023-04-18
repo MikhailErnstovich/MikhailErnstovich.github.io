@@ -25,17 +25,19 @@ const vAppearTransition = {
 <style  lang="scss" scoped>
 .skills {
   &__list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0 var(--s-xs);
-    padding: 0 var(--s-sm);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;      
     list-style: none;
     &-item {
+      display: block;
+      width: 40%;
       position: relative;
       padding-left: var(--s-sm);
-      height: var(--s-md);
-      line-height: var(--s-md);
-      font-size: var(--fz-sm);
+      height: clamp(2rem, 1.757rem + 1.036vw, 3rem);
+      font-family: var(--font-light);
+      line-height: clamp(1.25rem, 1.129rem + 0.518vw, 1.75rem);
+      font-size: clamp(0.875rem, 0.784rem + 0.388vw, 1.25rem);
       &::before {
         display: block;
         content: '⚙︎';
@@ -44,6 +46,7 @@ const vAppearTransition = {
         height: inherit;
         line-height: inherit;
         color: var(--bays-1);
+        font-size: 0.9em;
       }
       &:nth-child(2) {
         transition-delay: .6s;
@@ -60,16 +63,6 @@ const vAppearTransition = {
       &:nth-child(6) {
         transition-delay: 1s;
       }
-    }
-  }
-  @include md-screen {
-    &__list-item {
-      font-size: var(--fz-md);
-    }
-  }
-  @include lg-screen {
-    &__list-item {
-      font-size: var(--fz-lg);
     }
   }
 }

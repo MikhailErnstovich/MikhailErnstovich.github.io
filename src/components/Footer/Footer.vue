@@ -15,6 +15,7 @@ const vAppearTransition = {
 </script>
 <style lang="scss" scoped>
 .footer {
+  padding: 0 var(--s-sm);
   .social-media {
     margin: 0 auto;
   }
