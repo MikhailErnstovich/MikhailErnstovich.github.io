@@ -49,7 +49,6 @@ const vAppearTransition = {
 
 onMounted(() => {
   Object.assign(cardData, timeline[0]);
-  console.log(itemRefs)
 });
 
 function toggleCard(i: number) {

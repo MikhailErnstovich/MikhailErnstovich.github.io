@@ -60,6 +60,9 @@ const vAppearTransition = {
   }
   &__skills-wrapper {
     order: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   &__skills-wrapper {
@@ -70,8 +73,11 @@ const vAppearTransition = {
   @include md-screen {
     @include md-grid;
     column-gap: var(--s-sm);
-    .section__paragraph:nth-child(2){
-      margin-bottom: clamp(1rem, 0.757rem + 1.036vw, 2rem);
+    .section__paragraph {
+      text-indent: 3em;
+      &:first-child {
+        margin-bottom: clamp(1rem, 0.757rem + 1.036vw, 2rem);
+      }
     }
     &__title-wrapper {
       grid-column-start: 1;
@@ -84,8 +90,6 @@ const vAppearTransition = {
       grid-column-end: 13;
       grid-row-start: 2;
       grid-row-end: 3;
-      text-align: justify;
-      text-indent: 2em;
     }
     .photo {
       grid-column-start: 8;
@@ -94,18 +98,21 @@ const vAppearTransition = {
       grid-row-end: 4;
       margin: 0;
       padding: 0;
-      max-width: 30cqw;
       justify-self: center;
     }
     &__skills-wrapper {
+      display: block;
       grid-column-start: 1;
       grid-column-end: 8;
       grid-row-start: 3;
       grid-row-end: 4;
       .section__paragraph {
-        text-indent: 2em;
         text-align: justify;
+        &:first-child {
+          margin-bottom: clamp(1rem, 0.606rem + 0.821vw, 1.25rem);
+        }
       }
+
     }
   }
   @include lg-screen {
@@ -117,10 +124,11 @@ const vAppearTransition = {
       width: 100%
     }
     &__text-content {
-      max-width: 60%;
+      max-width: calc(100% - 600px);
       .skills,
       .section__paragraph:nth-child(2) {
         display: block;
+        margin-bottom: clamp(1rem, 0.527rem + 0.602vw, 1.25rem);
       }
     }
     &__skills-wrapper {
@@ -128,7 +136,6 @@ const vAppearTransition = {
     }
     .photo {
       max-width: 560px;
-      width: calc(40% - var(--s-sm));
     }
   }
 }
