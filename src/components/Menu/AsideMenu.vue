@@ -88,10 +88,10 @@ function getMenuItemTitle(item: MenuItem): string {
   &-list {
     list-style: none;
     &__item {
-      padding: 0 20px 20px 20px;
+      padding: clamp(0.5rem, -0.139rem + 2.727vw, 2rem) 0;
       text-align: center;
       counter-increment: item 1;
-      font-size: var(--fz-lg);
+      font-size: clamp(1.125rem, 0.752rem + 1.591vw, 2rem);
       letter-spacing: 2px;
       color: var(--boulders-4);
       transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
@@ -122,15 +122,6 @@ function getMenuItemTitle(item: MenuItem): string {
           text-align: center;
           color: var(--primary-color);
         }
-      }
-    }
-  }
-  @include md-screen {
-    &-list{
-      &__item {
-        font-size: var(--fz-h-xs);
-        line-height: var(--lh-h-xs);
-        letter-spacing: 2px;
       }
     }
   }

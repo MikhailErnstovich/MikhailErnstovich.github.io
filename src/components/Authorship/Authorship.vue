@@ -13,9 +13,6 @@
 .authorship {
   margin: var(--s-sm) 0;
   text-align: center;
-  font-size: var(--fz-xs);
-  @include md-screen {
-    font-size: var(--fz-sm);
-  }
+  font-size: clamp(0.75rem, 0.692rem + 0.249vw, 1rem);
 }
 </style>
