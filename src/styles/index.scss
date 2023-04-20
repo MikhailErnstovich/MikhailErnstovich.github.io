@@ -186,7 +186,7 @@ html {
 
 .section {
   &_numbered {
-    margin:  0 0 clamp(2.875rem, 2.602rem + 1.165vw, 4rem) 0;
+    margin:  0 0 clamp(3rem, 2.757rem + 1.036vw, 4rem) 0;
   }
   &__title {
     display: flex;
@@ -204,7 +204,7 @@ html {
     }
     &-wrapper {
       display: flex;
-      padding: 0 0 var(--s-md);
+      padding: 0 0 clamp(2rem, 1.515rem + 2.071vw, 4rem);
       align-items: center;
       &::before,
       &::after {
