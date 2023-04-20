@@ -43,7 +43,6 @@ const vAppearTransition = {
     &__paragraph {
       grid-column-start: 2;
       grid-column-end: 12;
-      font-size: var(--fz-lg);
     }
     .mail-link {
       grid-column-start: 6;

@@ -145,6 +145,9 @@ html {
   font-size: var(--fz-md);
 }
 
+.no-scroll-y {
+  overflow-y: hidden;
+}
 .main {
   max-width: calc(100% - 2 * var(--s-xs));
   margin: 0 auto;
@@ -190,7 +193,7 @@ html {
     }
     &-wrapper {
       display: flex;
-      padding: var(--s-xs) 0 var(--s-md);
+      padding: 0 0 var(--s-md);
       align-items: center;
       &::before,
       &::after {

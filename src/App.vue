@@ -12,13 +12,12 @@
 </template>
 
 <script setup lang="tsx">
-import { ref } from 'vue';
+import { ref, defineAsyncComponent, watch } from 'vue';
 import Header from './components/Header/Header.vue';
 import Intro from './components/Sections/Intro.vue';
 import { items as sectionTitles } from '~/components/Menu/menu-data';
-import { defineAsyncComponent } from 'vue'
 const show = ref(false);
-
+watch (() => show.value, (newVal, oldVal) => document.body.classList.toggle('no-scroll-y'));
 const About = defineAsyncComponent(() => import('~/components/Sections/About.vue'));
 const Experience = defineAsyncComponent(() => import('~/components/Sections/Experience.vue'));
 const Contacts = defineAsyncComponent(() => import('~/components/Sections/Contacts.vue'));
