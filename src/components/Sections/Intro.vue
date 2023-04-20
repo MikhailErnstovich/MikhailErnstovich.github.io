@@ -42,7 +42,7 @@ const transitionNames = ['drop','rise','slide-left'];
   }
   .big-title {
     font-family: var(--font-medium);
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     font-size: clamp(2rem, 1.6359rem + 1.5534vw, 3.5rem);
     line-height: clamp(2rem, 0.8932rem + 2.589vw, 4rem);
   }
@@ -60,6 +60,16 @@ const transitionNames = ['drop','rise','slide-left'];
     &__paragraph {
       width: 80%;
     }
+    .big-title {
+      letter-spacing: 3px;
+    }
+  }
+  @include lg-screen {
+    .big-title {
+      letter-spacing: 4px;
+    }
+  }
+  @include xl-screen {
     .big-title {
       letter-spacing: 5px;
     }

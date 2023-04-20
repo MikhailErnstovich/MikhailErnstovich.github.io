@@ -60,7 +60,7 @@ const isDark = useDark();
 }
 
 input:checked + .slider {
-  background-color: var(--boulders-3);
+  background-color: var(--boulders-4);
 }
 
 input:checked + .slider:before {

@@ -24,11 +24,13 @@
       </button>
     </CustomTransition>
     <AsideMenu :toggle="show" @toggle-menu="toggleMenu"/>
+    <TopMenu />
   </header>
 </template>
 <script setup lang="tsx">
 import { ref } from 'vue';
 import AsideMenu from '~/components/Menu/AsideMenu.vue';
+import TopMenu from '~/components/Menu/TopMenu.vue';
 import Logo from '~/components/Logo/Logo.vue';
 import CustomTransition from '~/components/Transitions/CustomTransition.vue';
 
@@ -48,7 +50,7 @@ const toggleMenu = () => {
   position: absolute;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
   height: calc(var(--s-sm) + var(--fz-h-sm));
   z-index: 2;
@@ -82,9 +84,9 @@ const toggleMenu = () => {
     width: var(--fz-h-sm);
     aspect-ratio: 1 / 1;
   }
-  // @include md-screen {
-  //   display: none;
-  // }
+  @include md-screen {
+    display: none;
+  }
 }
 .dark {
   .menu-toggle {

@@ -14,7 +14,6 @@
     font-style: normal;
     font-size:  var(--fz-h-md);
     font-family: var(--font-bold);
-    line-height: var(--lh-h-xs);
   }
 }
 </style>
