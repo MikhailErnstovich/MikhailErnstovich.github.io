@@ -13,6 +13,6 @@
 .authorship {
   margin: var(--s-sm) 0;
   text-align: center;
-  font-size: clamp(0.75rem, 0.692rem + 0.249vw, 1rem);
+  font-size: clamp(var(--fz-xs), 0.692rem + 0.249vw, var(--fz-md));
 }
 </style>

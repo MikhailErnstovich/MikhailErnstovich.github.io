@@ -81,8 +81,8 @@ const cardData: TimelineEvent = reactive({
   }
   &__item {
     display: grid;
-    grid-template-columns: 18px 1fr;
-    grid-template-rows: clamp(1.25rem, 1.075rem + 0.748vw, 2rem) 1fr;
+    grid-template-columns: var(--s-xs) 1fr;
+    grid-template-rows: clamp(var(--s-sm), 1.075rem + 0.748vw, var(--s-md)) 1fr;
     column-gap: var(--s-xs);
     max-height: 1000px;
     transition: all 0.5s cubic-bezier(0.645,0.045,0.355,1);
@@ -101,8 +101,8 @@ const cardData: TimelineEvent = reactive({
       grid-column-end: 3;
       grid-row-start: 1;
       grid-row-end: 2;
-      font-size: clamp(0.875rem, 0.787rem + 0.374vw, 1.25rem);
-      line-height: clamp(1.25rem, 1.075rem + 0.748vw, 2rem);
+      font-size: clamp(var(--fz-sm), 0.787rem + 0.374vw, var(--fz-xl));
+      line-height: clamp(var(--lh-sm), 1.075rem + 0.748vw, var(--lh-xl));
       font-family: var(--font-light);
       color: var(--boulders-4);
       transition: color 0.25s cubic-bezier(0.645,0.045,0.355,1);

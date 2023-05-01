@@ -1,38 +1,38 @@
 :root {
   //regular text font sizes
-  --fz-xs: 12px;
-  --fz-sm: 14px;
-  --fz-md: 16px;
-  --fz-lg: 18px;
-  --fz-xl: 20px;
+  --fz-xs: 0.75rem
+  --fz-sm: 0.875rem;
+  --fz-md: 1rem;
+  --fz-lg: 1.125rem;
+  --fz-xl: 1.25rem;
 
   //regular text line heights
-  --lh-xs: 16px;
-  --lh-sm: 20px;
-  --lh-md: 24px;
-  --lh-lg: 28px;
-  --lh-xl: 32px;
+  --lh-xs: 1rem;
+  --lh-sm: 1.25rem;
+  --lh-md: 1.5rem;
+  --lh-lg: 1.75rem;
+  --lh-xl: 2rem;
 
   //heading font sizes
-  --fz-h-xs: 24px;
-  --fz-h-sm: 32px;
-  --fz-h-md: 48px;
-  --fz-h-lg: 56px;
+  --fz-h-xs: 1.5rem;
+  --fz-h-sm: 2rem;
+  --fz-h-md: 3rem;
+  --fz-h-lg: 3.5rem;
   
   //heading line heights  
-  --lh-h-xs: 32px;
-  --lh-h-sm: 40px;
-  --lh-h-md: 56px;
-  --lh-h-lg: 64px;
+  --lh-h-xs: 2rem;
+  --lh-h-sm: 2.5rem;
+  --lh-h-md: 3.5rem;
+  --lh-h-lg: 4rem;
 
   //spacing
-  --s-xss: 8px;
-  --s-xs: 16px;
-  --s-sm: 24px;
-  --s-md: 32px;
-  --s-lg: 48px;
-  --s-xl: 64px;
-  --s-xxl: 96px;
+  --s-xss: 0.5rem;
+  --s-xs: 1rem;
+  --s-sm: 1.5rem;
+  --s-md: 2rem;
+  --s-lg: 3rem;
+  --s-xl: 4rem;
+  --s-xxl: 6rem;
 
   //Estonian color theme
   --primary-color: #0000f0;

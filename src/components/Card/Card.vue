@@ -37,28 +37,28 @@ const props = defineProps<{
   background: linear-gradient(45deg, var(--bays-0-01), var(--bays-0-02));
   border: none;
   border-radius: clamp(0.5rem, 0.266rem + 0.997vw, 1.5rem);
-  padding: clamp(1rem, 0.766rem + 0.997vw, 2rem);
+  padding: clamp(var(--s-xs), 0.766rem + 0.997vw, var(--s-md));
   &__title {
-    font-size: clamp(1.125rem, 0.921rem + 0.872vw, 2rem);
-    line-height: clamp(1.75rem, 1.575rem + 0.748vw, 2.5rem);
+    font-size: clamp(var(--fz-lg), 0.921rem + 0.872vw, var(--fz-h-sm));
+    line-height: clamp(var(--lh-lg), 1.575rem + 0.748vw, var(--lh-h-sm));
     font-family: var(--font-medium);
     letter-spacing: 1px;
   }
   &__link {
-    font-size: clamp(1rem, 0.883rem + 0.498vw, 1.5rem);
-    line-height: clamp(1.5rem, 1.383rem + 0.498vw, 2rem);
+    font-size: clamp(var(--fz-md), 0.883rem + 0.498vw, var(--fz-h-xs));
+    line-height: clamp(var(--lh-md), 1.383rem + 0.498vw, var(--lh-h-xs));
     font-family: var(--font-medium);
   }
   &__title-wrapper {
-    margin-bottom: clamp(0.5rem, 0.442rem + 0.249vw, 0.75rem);
+    margin-bottom: clamp(var(--s-xss), 0.442rem + 0.249vw, calc(var(--s-xss) * 1.5));
   }
   &__list {
     li {
       position: relative;
-      font-size: clamp(1rem, 0.8786rem + 0.5178vw, 1.5rem);
-      line-height: clamp(1.5rem, 1.383rem + 0.498vw, 2rem);
-      margin-bottom: clamp(0.5rem, 0.442rem + 0.249vw, 0.75rem);
-      padding-left: clamp(1.5rem, 1.383rem + 0.498vw, 2rem);
+      font-size: clamp(var(--fz-md), 0.8786rem + 0.5178vw, var(--fz-h-xs));
+      line-height: clamp(var(--lh-md), 1.383rem + 0.498vw, var(--lh-h-xs));
+      margin-bottom: clamp(var(--s-xss), 0.442rem + 0.249vw,  calc(var(--s-xss) * 1.5));
+      padding-left: clamp(var(--s-sm), 1.383rem + 0.498vw, var(--s-md));
       list-style: none;
       &::before {
         display: block;

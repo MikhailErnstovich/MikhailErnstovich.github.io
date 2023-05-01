@@ -88,10 +88,10 @@ function getMenuItemTitle(item: MenuItem): string {
   &-list {
     list-style: none;
     &__item {
-      padding: clamp(0.5rem, -0.139rem + 2.727vw, 2rem) 0;
+      padding: clamp(var(--s-xss), -0.139rem + 2.727vw, var(--s-md)) 0;
       text-align: center;
       counter-increment: item 1;
-      font-size: clamp(1.125rem, 0.752rem + 1.591vw, 2rem);
+      font-size: clamp(var(--fz-lg), 0.752rem + 1.591vw, var(--fz-h-sm));
       letter-spacing: 2px;
       color: var(--boulders-4);
       transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);

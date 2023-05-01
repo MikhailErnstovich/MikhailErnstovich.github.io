@@ -53,7 +53,7 @@ function getMenuItemTitle(item: MenuItem): string {
       margin-left: var(--s-sm);
       text-align: center;
       counter-increment: item 1;
-      font-size: clamp(1rem, 0.8786rem + 0.5178vw, 1.5rem);
+      font-size: clamp(var(--fz-md), 0.8786rem + 0.5178vw, var(--fz-h-xs));
       letter-spacing: 2px;
       color: var(--boulders-4);
       transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
@@ -90,7 +90,7 @@ function getMenuItemTitle(item: MenuItem): string {
     border: 2px solid var(--bays-1);
     color: var(--bays-1);
     margin-left: var(--s-sm);
-    padding: clamp(0.5rem, 0.417rem + 0.174vw, 0.625rem) clamp(1rem, 0.667rem + 0.694vw, 1.5rem);
+    padding: clamp(var(--s-xss), 0.417rem + 0.174vw, calc(var(--s-xss) * 1.25)) clamp(var(--s-xs), 0.667rem + 0.694vw, var(--s-sm));
     &:hover,
     &:focus,
     &:active {

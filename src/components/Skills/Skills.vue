@@ -27,7 +27,7 @@ const vAppearTransition = {
   &__list {
     display: grid;
     grid-template-columns: repeat(2, max-content);
-    grid-column-gap: clamp(1.5rem, -2.805rem + 18.367vw, 6rem);
+    grid-column-gap: clamp(var(--s-sm), -2.805rem + 18.367vw, var(--s-xxl));
     width: max-content;
     padding-right: var(--s-xs);
     &-item {

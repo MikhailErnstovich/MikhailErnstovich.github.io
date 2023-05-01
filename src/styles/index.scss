@@ -90,22 +90,18 @@ figure {
 @mixin xs-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  // column-gap: var(--s-xs);
 }
 @mixin sm-grid {
   display: grid;
   grid-template-columns: repeat(8, 1fr);;
-  // column-gap: var(--s-xs);
 }
 @mixin md-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);;
-  // column-gap: var(--s-sm);
 }
 @mixin lg-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);;
-  // column-gap: var(--s-md);
 }
 
 //filter from black to specific color
@@ -166,7 +162,7 @@ html {
   filter: none;
   transition: filter 0.5s cubic-bezier(0.645,0.045,0.355,1);
   will-change: filter;
-  font-size: clamp(1rem, 0.8786rem + 0.5178vw, 1.5rem);
+  font-size: clamp(var(--fz-md), 0.8786rem + 0.5178vw, var(--fz-h-xs));
   @include sm-screen {
     max-width: calc(100% - 2 * var(--s-md));
   }
@@ -190,9 +186,9 @@ html {
   }
   &__title {
     display: flex;
-    margin: 0 clamp(1rem, 0.757rem + 1.036vw, 2rem);
-    font-size: clamp(1.5rem, 1.136rem + 1.553vw, 3rem);
-    line-height: clamp(2rem, 1.636rem + 1.553vw, 3.5rem);
+    margin: 0 clamp(var(--s-xs), 0.757rem + 1.036vw, var(--s-md));
+    font-size: clamp(var(--fz-h-xs), 1.136rem + 1.553vw, var(--fz-h-md));
+    line-height: clamp(var(--lh-h-xs), 1.636rem + 1.553vw, var(--lh-h-md));
     font-family: var(--font-medium);
     letter-spacing: 2px;
     &-text {
@@ -204,7 +200,7 @@ html {
     }
     &-wrapper {
       display: flex;
-      padding: 0 0 clamp(2rem, 1.515rem + 2.071vw, 4rem);
+      padding: 0 0 clamp(var(--s-md), 1.515rem + 2.071vw, var(--s-xl));
       align-items: center;
       &::before,
       &::after {
@@ -225,7 +221,7 @@ html {
   }
   &__paragraph {
     margin: 0;
-    line-height: clamp(1.5rem, 1.379rem + 0.518vw, 2rem);
+    line-height: clamp(var(--lh-md), 1.379rem + 0.518vw, var(--lh-xl));
     &_center {
       text-align: center;
     }

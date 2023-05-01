@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header" ref="header">
     <CustomTransition :toggle="true" :appear="true" :name="'slide-right'">
       <Logo />
     </CustomTransition>
@@ -43,20 +43,45 @@ const toggleMenu = () => {
   show.value = !show.value;
   emit('toggleBlur', show.value);
 }
-
+window.onscroll = function() {handleScroll()};
+const header = ref<HTMLInputElement | null>(null);
+function handleScroll() {
+  if(!header.value) {
+    return;
+  }
+  const sticky = header.value.offsetTop;
+  console.log(sticky, window.pageYOffset);
+  if (window.pageYOffset > sticky) {
+    header.value.classList.add("sticky");
+  } else {
+    header.value.classList.remove("sticky");
+  }
+}
 </script>
 <style lang="scss" scoped>
 .header {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
   height: calc(var(--s-sm) + var(--fz-h-sm));
   z-index: 2;
-  padding: var(--s-xs) var(--s-xs) 0 var(--s-xs);
+  padding: var(--s-xs);
   @include md-screen {
-    padding: var(--s-sm) var(--s-sm) 0 var(--s-sm);
+    padding: var(--s-sm);
+  }
+}
+.sticky {
+  box-shadow: 0 0 8px var(--bays-4-07);
+  background-color: #fff;
+}
+.dark {
+  .sticky {
+    background-color: var(--bays-0-02);
+    box-shadow: 0 0 8px #000;
   }
 }
 .animation-wrapper:nth-child(2) {

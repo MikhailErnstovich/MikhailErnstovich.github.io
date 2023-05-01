@@ -33,28 +33,28 @@ const transitionNames = ['drop','rise','slide-left'];
   height: 100vh;
   span {
     display: block;
-    margin: 0 0 clamp(0.5rem, 0.379rem + 0.518vw, 1rem);
+    margin: 0 0 clamp(var(--s-xss), 0.379rem + 0.518vw, var(--s-xs));
     font-family: var(--font-regular);
-    font-size: clamp(1rem, 0.7573rem + 1.0356vw, 2rem);
-    line-height: clamp(1.5rem, 0.8932rem + 2.589vw, 2.5rem);
+    font-size: clamp(var(--fz-md), 0.7573rem + 1.0356vw, var(--fz-h-sm));
+    line-height: clamp(var(--lh-md), 0.8932rem + 2.589vw, var(--lh-h-sm));
     color: var(--bays-1);
     letter-spacing: 2px;
   }
   .big-title {
     font-family: var(--font-medium);
     letter-spacing: 2px;
-    font-size: clamp(2rem, 1.6359rem + 1.5534vw, 3.5rem);
-    line-height: clamp(2rem, 0.8932rem + 2.589vw, 4rem);
+    font-size: clamp(var(--fz-h-sm), 1.6359rem + 1.5534vw, var(--fz-h-lg));
+    line-height: clamp(var(--lh-h-xs), 0.8932rem + 2.589vw, var(--lh-h-lg));
   }
   h1 {
     margin: 0 0 0.5rem;
   }
   h2 {
-    margin: 0 0 clamp(1.5rem, 1.379rem + 0.518vw, 2rem);
+    margin: 0 0 clamp(var(--s-sm), 1.379rem + 0.518vw, var(--s-md));
     color: rgba(0,0,0, 0.8);
   }
   .resume-link {
-    margin: clamp(3rem, 2.757rem + 1.036vw, 4rem) 0 0;
+    margin: clamp(var(--s-lg), 2.757rem + 1.036vw, var(--s-xl)) 0 0;
   }
   @include md-screen {
     &__paragraph {

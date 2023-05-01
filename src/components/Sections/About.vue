@@ -67,7 +67,7 @@ const vAppearTransition = {
 
   &__skills-wrapper {
     .section__paragraph {
-      margin-bottom: clamp(0.5rem, 0.257rem + 1.036vw, 1.5rem);
+      margin-bottom: clamp(var(--s-xss), 0.257rem + 1.036vw, var(--s-sm));
     }
   }
   @include md-screen {
@@ -76,7 +76,7 @@ const vAppearTransition = {
     .section__paragraph {
       text-indent: 3em;
       &:first-child {
-        margin-bottom: clamp(1rem, 0.757rem + 1.036vw, 2rem);
+        margin-bottom: clamp(var(--s-xs), 0.757rem + 1.036vw, var(--s-md));
       }
     }
     &__title-wrapper {
@@ -109,7 +109,7 @@ const vAppearTransition = {
       .section__paragraph {
         text-align: justify;
         &:first-child {
-          margin-bottom: clamp(1rem, 0.606rem + 0.821vw, 1.25rem);
+          margin-bottom: clamp(var(--s-xs), 0.606rem + 0.821vw, calc(var(--s-xs) * 1.25));
         }
       }
 
@@ -128,7 +128,7 @@ const vAppearTransition = {
       .skills,
       .section__paragraph:nth-child(2) {
         display: block;
-        margin-bottom: clamp(1rem, 0.527rem + 0.602vw, 1.25rem);
+        margin-bottom: clamp(var(--s-xs), 0.527rem + 0.602vw, calc(var(--s-xs) * 1.25));
       }
     }
     &__skills-wrapper {
