@@ -65,6 +65,7 @@ const header = ref<HTMLInputElement | null>(null);
 .sticky {
   box-shadow: 0 0 8px #000;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   background-color: rgba(255,255,255,0.5);
 }
 .animation-wrapper:nth-child(2) {
