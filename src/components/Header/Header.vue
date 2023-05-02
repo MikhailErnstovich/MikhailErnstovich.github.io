@@ -82,6 +82,17 @@ function handleScroll() {
   .sticky {
     background-color: var(--bays-0-02);
     box-shadow: 0 0 8px #000;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      z-index: -1;
+    }
   }
 }
 .animation-wrapper:nth-child(2) {
