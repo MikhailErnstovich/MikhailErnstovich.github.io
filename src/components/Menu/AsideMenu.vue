@@ -47,6 +47,7 @@ function getMenuItemTitle(item: MenuItem): string {
   right: 0px;
   display: flex;
   width: 100%;
+  height: 100vh;
   &__filler {
     width: 20%;
   }
