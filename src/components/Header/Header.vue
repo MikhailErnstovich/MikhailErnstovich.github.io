@@ -33,7 +33,7 @@ import AsideMenu from '~/components/Menu/AsideMenu.vue';
 import TopMenu from '~/components/Menu/TopMenu.vue';
 import Logo from '~/components/Logo/Logo.vue';
 import CustomTransition from '~/components/Transitions/CustomTransition.vue';
-
+import handleSticky from '~/helpers/sticky-handler';
 const hamburgerIcon = new URL('~/assets/icons/hamburger.svg', import.meta.url).href;
 const crossIcon = new URL('~/assets/icons/cross.svg', import.meta.url).href;
 
@@ -43,20 +43,8 @@ const toggleMenu = () => {
   show.value = !show.value;
   emit('toggleBlur', show.value);
 }
-window.onscroll = function() {handleScroll()};
+window.onscroll = () => handleSticky(header.value);
 const header = ref<HTMLInputElement | null>(null);
-function handleScroll() {
-  if(!header.value) {
-    return;
-  }
-  const sticky = header.value.offsetTop;
-  console.log(sticky, window.pageYOffset);
-  if (window.pageYOffset > sticky) {
-    header.value.classList.add("sticky");
-  } else {
-    header.value.classList.remove("sticky");
-  }
-}
 </script>
 <style lang="scss" scoped>
 .header {
@@ -75,25 +63,9 @@ function handleScroll() {
   }
 }
 .sticky {
-  box-shadow: 0 0 8px var(--bays-4-07);
-  background-color: #fff;
-}
-.dark {
-  .sticky {
-    background-color: var(--bays-0-02);
-    box-shadow: 0 0 8px #000;
-    &::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      display: block;
-      width: 100%;
-      height: 100%;
-      background-color: #000;
-      z-index: -1;
-    }
-  }
+  box-shadow: 0 0 8px #000;
+  backdrop-filter: blur(10px);
+  background-color: rgba(255,255,255,0.5);
 }
 .animation-wrapper:nth-child(2) {
   z-index: 2;
@@ -134,6 +106,9 @@ function handleScroll() {
     &:active {
       @include filter-primary;
     }
+  }
+  .sticky {
+    background-color: rgba(0,0,0,0.5);
   }
 }
 </style>
