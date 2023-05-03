@@ -15,11 +15,11 @@
     >
       Send message
     </a>
-    <!-- <Map /> -->
+    <Map />
   </section>
 </template>
 <script setup lang="tsx">
-// import Map from '~/components/Map/Map.vue';
+import Map from '~/components/Map/Map.vue';
 import { contacts } from '~/components/SocialMedia/social-media-data';
 import { MenuItem } from '~/components/Menu/menu-data';
 import { appearAnimation } from '~/helpers/appear-animation';
@@ -37,29 +37,30 @@ const vAppearTransition = {
   @include md-screen {
     @include md-grid;
     &__title-wrapper {
-      grid-column-start: 1;
-      grid-column-end: 13;
+      grid-column: 1 / 13;
+      grid-row: 1 / 2;
+    }
+    #map {
+      grid-column: 1 / 8;
+      grid-row: 2 / 16;
     }
     &__paragraph {
-      grid-column-start: 2;
-      grid-column-end: 12;
+      grid-column: 9 / 13;
+      grid-row: 2 / 3;
+    }
+    &__paragraph.section__paragraph_center {
+      text-align: left;
     }
     .mail-link {
-      grid-column-start: 6;
-      grid-column-end: 8;
+      grid-column: 9 / 10;
+      grid-row-start: 3;
+      align-self: start;
     }
   }
   @include lg-screen {
-    @include lg-grid;
-    &__paragraph {
-      grid-column-start: 3;
-      grid-column-end: 11;
-    }
-  }
-  @include xl-screen {
-    &__paragraph {
-      grid-column-start: 4;
-      grid-column-end: 10;
+  @include lg-grid;
+    #map {
+      max-height: 500px;
     }
   }
 }

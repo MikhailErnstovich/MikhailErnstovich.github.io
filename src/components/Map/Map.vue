@@ -2,7 +2,24 @@
   <div id="map"></div>
 </template>
 <script setup lang="tsx">
-import { onBeforeMount, onMounted } from 'vue';
+import { computed, onBeforeMount, onMounted, ref } from 'vue';
+
+const position = ref<GeolocationPosition>();
+const coords = computed(() => [position.value?.coords.latitude, position.value?.coords.longitude]);
+const myPosition = [55.991892, 37.214385];
+
+onMounted(() => {
+  // fetch('http://worldtimeapi.org/api/timezone/').then(res => res.json()).then(d => console.log(d))
+  const successCallback = (pos: GeolocationPosition) => {
+    position.value = pos;
+  };
+
+  const errorCallback = (error: GeolocationPositionError) => {
+    console.log(error);
+  };
+  navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+
+});
 
 let mapApiKey = '';
 
@@ -34,14 +51,72 @@ onMounted(async () => {
         map.controls.remove('typeSelector');
         map.controls.remove('rulerControl');
 
-        const myPlacemark = new ymaps.GeoObject({
+        const myPlacemark = new ymaps.GeoObject(
+          {
             geometry: {
-                type: "Point",
-                coordinates: [55.991892, 37.214385]
-            }
-        });
+              type: "Point",
+              coordinates: myPosition,
+            },
+            properties: {
+              iconContent: 'Mikhail M'
+            },
+          },
+          {
+            preset: 'islands#darkBlueStretchyIcon',
+          }
+        );
 
-        map.geoObjects.add(myPlacemark); 
+        const userPosition = new ymaps.GeoObject(
+          {
+            geometry: {
+              type: "Point",
+              coordinates: coords.value,
+            },
+            properties: {
+              iconContent: 'You',
+            },
+          }, 
+          {
+            preset: 'islands#redStretchyIcon',
+          }
+        );
+        
+        const myPolyline = new ymaps.GeoObject(
+          {
+            geometry: {
+              type: "LineString",
+              coordinates: [
+                myPosition,
+                coords.value
+              ]
+            },
+            properties: {
+              balloonContent: '123'
+            }
+          },
+          {
+            // Включение режима отображения в виде геодезических кривых.
+            geodesic: true,
+            // Установка ширины до 5 пикселей.
+            strokeWidth: 3,
+            // Установка цвета линии.
+            strokeColor: "#0062f5"
+          }
+        );
+        myPolyline.Balloon
+       
+
+        map.geoObjects
+          .add(myPlacemark) 
+          .add(userPosition)
+          .add(myPolyline); 
+        map.setBounds(
+          map.geoObjects.getBounds(),
+          {
+            checkZoomRange: true,
+            zoomMargin: 30,
+          }
+        );
       });
     });
   });
