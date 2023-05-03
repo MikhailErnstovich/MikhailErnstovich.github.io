@@ -18,7 +18,6 @@ onMounted(() => {
     console.log(error);
   };
   navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
-
 });
 
 let mapApiKey = '';
@@ -65,58 +64,58 @@ onMounted(async () => {
             preset: 'islands#darkBlueStretchyIcon',
           }
         );
-
-        const userPosition = new ymaps.GeoObject(
-          {
-            geometry: {
-              type: "Point",
-              coordinates: coords.value,
-            },
-            properties: {
-              iconContent: 'You',
-            },
-          }, 
-          {
-            preset: 'islands#redStretchyIcon',
-          }
-        );
-        
-        const myPolyline = new ymaps.GeoObject(
-          {
-            geometry: {
-              type: "LineString",
-              coordinates: [
-                myPosition,
-                coords.value
-              ]
-            },
-            properties: {
-              balloonContent: '123'
+        if (coords.value[0] && coords.value[1]) {
+          const userPosition = new ymaps.GeoObject(
+            {
+              geometry: {
+                type: "Point",
+                coordinates: coords.value,
+              },
+              properties: {
+                iconContent: 'You',
+              },
+            }, 
+            {
+              preset: 'islands#redStretchyIcon',
             }
-          },
-          {
-            // Включение режима отображения в виде геодезических кривых.
-            geodesic: true,
-            // Установка ширины до 5 пикселей.
-            strokeWidth: 3,
-            // Установка цвета линии.
-            strokeColor: "#0062f5"
-          }
-        );
-        myPolyline.Balloon
-       
-
-        map.geoObjects
-          .add(myPlacemark) 
-          .add(userPosition)
-          .add(myPolyline); 
-        map.setBounds(
-          map.geoObjects.getBounds(),
-          {
-            checkZoomRange: true,
-            zoomMargin: 30,
-          }
-        );
+          );
+          
+          const myPolyline = new ymaps.GeoObject(
+            {
+              geometry: {
+                type: "LineString",
+                coordinates: [
+                  myPosition,
+                  coords.value
+                ]
+              },
+              properties: {
+                balloonContent: '123'
+              }
+            },
+            {
+              // Включение режима отображения в виде геодезических кривых.
+              geodesic: true,
+              // Установка ширины до 5 пикселей.
+              strokeWidth: 3,
+              // Установка цвета линии.
+              strokeColor: "#0062f5"
+            }
+          );
+          map.geoObjects
+            .add(myPlacemark) 
+            .add(userPosition)
+            .add(myPolyline); 
+          map.setBounds(
+            map.geoObjects.getBounds(),
+            {
+              checkZoomRange: true,
+              zoomMargin: 30,
+            }
+          );
+        } else {
+          map.geoObjects.add(myPlacemark) 
+        }
       });
     });
   });
