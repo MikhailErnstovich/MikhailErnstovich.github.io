@@ -24,6 +24,7 @@ const successCallback = (pos: GeolocationPosition) => {
 }
 const errorCallback = (error: GeolocationPositionError) => {
   console.log(error);
+  createMap();
 };
 const createMap = async () => {
   //install Yandex map scripts
@@ -37,7 +38,7 @@ const createMap = async () => {
       //map settings
       const settings = {
         //card center
-        center: [55.991892, 37.214385],
+        center: myPosition,
         // 0 (whole world) < zoom < 19
         zoom: 4,
       }
@@ -118,9 +119,6 @@ const createMap = async () => {
     });
   });
 }
-
-
-
 </script>
 <style lang="scss" scoped>
   #map {
