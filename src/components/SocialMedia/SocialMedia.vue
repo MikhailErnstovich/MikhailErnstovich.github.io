@@ -57,18 +57,18 @@ const vAppearTransition = {
     height: 40px;
     padding: var(--s-xss);
     &-link {
-      @include filter-bays-1;
-      &:hover,
-      &:focus {
-        @include filter-primary;
-      }
-      &:active {
-        @include filter-bays-3;
-      }
       img {
         display: block;
         width: 100%;
         height: 100%;
+        @include filter-bays-1;
+        &:hover,
+        &:focus {
+          @include filter-primary;
+        }
+        &:active {
+          @include filter-bays-3;
+        }
       }
     }
     &:nth-child(2),
@@ -87,13 +87,15 @@ const vAppearTransition = {
   .social-media{
     &__item {
       &-link {
-        @include filter-bays-0;
-        &:hover,
-        &:focus {
-          @include filter-bays-1;
-        }
-        &:active {
-          @include filter-primary;
+        img {
+          @include filter-bays-0;
+          &:hover,
+          &:focus {
+            @include filter-bays-1;
+          }
+          &:active {
+            @include filter-primary;
+          }
         }
       }
     }
