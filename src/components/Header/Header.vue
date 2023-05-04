@@ -53,14 +53,11 @@ const header = ref<HTMLInputElement | null>(null);
   left: 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
-  height: calc(var(--s-sm) + var(--fz-h-sm));
+  height: calc(var(--s-xs) * 2 + var(--fz-h-sm));
   z-index: 2;
   padding: var(--s-xs);
-  @include md-screen {
-    padding: var(--s-sm);
-  }
 }
 .sticky {
   box-shadow: 0 0 8px #000;
