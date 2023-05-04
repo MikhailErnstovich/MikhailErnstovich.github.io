@@ -1,31 +1,53 @@
 <template>
-  <div id="map"></div>
+  <div id="map" v-inserted></div>
 </template>
 <script setup lang="tsx">
 import { computed, onBeforeMount, onMounted, ref } from 'vue';
 import handleGeolocation from '~/helpers/geolocation';
+import { createObserver } from '~/helpers/lazy-loaders';
+
 const position = ref<GeolocationPosition>();
 const coords = computed(() => [position.value?.coords.latitude, position.value?.coords.longitude]);
 const myPosition = [55.991892, 37.214385];
-
-onMounted(() => {
-  // fetch('http://worldtimeapi.org/api/timezone/').then(res => res.json()).then(d => console.log(d))
-});
-
 let mapApiKey = '';
 
 onBeforeMount(async () => {
   await fetch('/config.json').then(res => res.json()).then(d => mapApiKey = d.mapApiKey);
 });
-onMounted(async () => handleGeolocation(successCallback, errorCallback));
-const successCallback = (pos: GeolocationPosition) => {
-  position.value = pos;
-  createMap();
-}
-const errorCallback = (error: GeolocationPositionError) => {
-  console.log(error);
-  createMap();
+
+onMounted(async () => handleGeolocation(geoSuccessCallback, geoErrorCallback));
+// onMounted(() => {
+  // fetch('http://worldtimeapi.org/api/timezone/').then(res => res.json()).then(d => console.log(d))
+// });
+const geoSuccessCallback = (pos: GeolocationPosition) => position.value = pos;
+const geoErrorCallback = (error: GeolocationPositionError) => console.log(error);
+
+const vInserted = {
+  mounted: insertMap,
 };
+
+function insertMap (el: HTMLElement) {
+  const handleIntersect = (
+    entries: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ):void => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        createMap();
+        observer.unobserve(el);
+      }
+    });
+  };
+  //if browser doesn't have observer, than loading starts immidiatly 
+  if (!window['IntersectionObserver']) {
+    createMap();
+  } else {
+    createObserver(el, handleIntersect);
+  }
+}
+
 const createMap = async () => {
   //install Yandex map scripts
   let scriptYandexMap = document.createElement('script');
