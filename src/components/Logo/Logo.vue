@@ -14,6 +14,8 @@ const logoURL = new URL('~/assets/images/logo.svg', import.meta.url).href;
   display: flex;
   img {
     height: 2rem;
+    width: calc(37rem / 16);
+    width: auto;
     @include filter-bays-1;
   }
   i {
