@@ -1,6 +1,5 @@
 <template>
   <div class="logo">
-    <!-- <i>M</i> -->
     <img :src="logoURL" alt="">
   </div>
 </template>

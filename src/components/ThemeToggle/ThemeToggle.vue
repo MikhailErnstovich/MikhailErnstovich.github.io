@@ -1,7 +1,7 @@
  <template>
   <article class="theme-toggle">
     <label class="theme-toggle__switch">
-      <input type="checkbox" v-model="isDark">
+      <input type="checkbox" v-model="isDark" aria-label="Dark theme">
       <span class="slider round"></span>
     </label>
   </article>
