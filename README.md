@@ -1,6 +1,6 @@
 # PersonalWebsite
 
-This template should help get you started developing with Vue 3 in Vite.
+Inspired by Estonian brandbook (https://brand.estonia.ee/)
 
 ## Recommended IDE Setup
 
@@ -33,9 +33,9 @@ npm install
 npm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Compile and Minify for Production
 
 ```sh
-npm run build
+npm run build-only
 ```
-https://www.figma.com/proto/gNUBMZVMKTUeJRcYrUcGr4dL/Brand-Estonia---Design-System?node-id=12088-1635&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A0
+`npm run build` was changed with `npm run build-only` because Yandex maps doesn't provide proper types for Typescript
