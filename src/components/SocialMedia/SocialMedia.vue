@@ -81,6 +81,14 @@ const vAppearTransition = {
   }
   @include md-screen {
     max-width: 500px;
+    &__item {
+      padding: calc(var(--s-xss) / 2);
+    }
+  }
+  @include lg-screen {
+    &__item {
+      padding: 0;
+    }
   }
 }
 .dark {
