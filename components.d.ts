@@ -24,6 +24,7 @@ declare module '@vue/runtime-core' {
     SocialMedia: typeof import('./src/components/SocialMedia/SocialMedia.vue')['default']
     ThemeToggle: typeof import('./src/components/ThemeToggle/ThemeToggle.vue')['default']
     Timeline: typeof import('./src/components/Timeline/Timeline.vue')['default']
+    Timezones: typeof import('./src/components/Timezones/Timezones.vue')['default']
     TopMenu: typeof import('./src/components/Menu/TopMenu.vue')['default']
   }
 }

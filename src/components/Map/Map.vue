@@ -2,25 +2,21 @@
   <div id="map" v-inserted></div>
 </template>
 <script setup lang="tsx">
-import { computed, onBeforeMount, onMounted, ref } from 'vue';
-import handleGeolocation from '~/helpers/geolocation';
+import { onBeforeMount, ref } from 'vue';
 import { createObserver } from '~/helpers/lazy-loaders';
+import { MapPositions } from '~/Types';
 
-const position = ref<GeolocationPosition>();
-const coords = computed(() => [position.value?.coords.latitude, position.value?.coords.longitude]);
-const myPosition = [55.991892, 37.214385];
-let mapApiKey = '';
+const props = defineProps<{
+  positions: MapPositions,
+}>();
+
+const mapApiKey = ref('');
 
 onBeforeMount(async () => {
-  await fetch('/config.json').then(res => res.json()).then(d => mapApiKey = d.mapApiKey);
+  await fetch('/config.json')
+    .then(res => res.json())
+    .then(d => mapApiKey.value = d.mapApiKey);
 });
-
-onMounted(async () => handleGeolocation(geoSuccessCallback, geoErrorCallback));
-// onMounted(() => {
-  // fetch('http://worldtimeapi.org/api/timezone/').then(res => res.json()).then(d => console.log(d))
-// });
-const geoSuccessCallback = (pos: GeolocationPosition) => position.value = pos;
-const geoErrorCallback = (error: GeolocationPositionError) => console.log(error);
 
 const vInserted = {
   mounted: insertMap,
@@ -40,7 +36,7 @@ function insertMap (el: HTMLElement) {
       }
     });
   };
-  //if browser doesn't have observer, than loading starts immidiatly 
+  //if browser doesn't have observer, than loading starts immediately 
   if (!window['IntersectionObserver']) {
     createMap();
   } else {
@@ -51,7 +47,7 @@ function insertMap (el: HTMLElement) {
 const createMap = async () => {
   //install Yandex map scripts
   let scriptYandexMap = document.createElement('script');
-      scriptYandexMap.setAttribute('src', `https://api-maps.yandex.ru/2.1/?apikey=${mapApiKey}&lang=en_US`);
+      scriptYandexMap.setAttribute('src', `https://api-maps.yandex.ru/2.1/?apikey=${mapApiKey.value}&lang=en_US`);
       scriptYandexMap.setAttribute('type', 'text/javascript');
       document.head.appendChild(scriptYandexMap);
   //initialize Yandex map
@@ -60,7 +56,7 @@ const createMap = async () => {
       //map settings
       const settings = {
         //card center
-        center: myPosition,
+        center: props.positions.myPosition,
         // 0 (whole world) < zoom < 19
         zoom: 4,
       }
@@ -76,7 +72,7 @@ const createMap = async () => {
         {
           geometry: {
             type: "Point",
-            coordinates: myPosition,
+            coordinates: props.positions.myPosition,
           },
           properties: {
             iconContent: 'Mikhail M'
@@ -86,12 +82,12 @@ const createMap = async () => {
           preset: 'islands#darkBlueStretchyIcon',
         }
       );
-      if (coords.value[0] && coords.value[1]) {
+      if (props.positions.userPosition[0] || props.positions.userPosition[1]) {
         const userPosition = new ymaps.GeoObject(
           {
             geometry: {
               type: "Point",
-              coordinates: coords.value,
+              coordinates: props.positions.userPosition,
             },
             properties: {
               iconContent: 'You',
@@ -107,8 +103,8 @@ const createMap = async () => {
             geometry: {
               type: "LineString",
               coordinates: [
-                myPosition,
-                coords.value
+                props.positions.myPosition,
+                props.positions.userPosition
               ]
             },
             properties: {

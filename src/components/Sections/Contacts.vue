@@ -15,7 +15,8 @@
     >
       Send message
     </a>
-    <Map />
+    <Map :positions="positions"/>
+    <Timezones :positions="positions"/>
   </section>
 </template>
 <script setup lang="tsx">
@@ -23,6 +24,10 @@ import Map from '~/components/Map/Map.vue';
 import { contacts } from '~/components/SocialMedia/social-media-data';
 import { MenuItem } from '~/components/Menu/menu-data';
 import { appearAnimation } from '~/helpers/appear-animation';
+import Timezones from '~/components/Timezones/Timezones.vue';
+import { Position, MapPositions } from '~/Types';
+import { computed, onBeforeMount, onMounted, ref, reactive } from 'vue';
+import handleGeolocation from '~/helpers/geolocation';
 
 const props = defineProps<{
   title: MenuItem 
@@ -31,6 +36,33 @@ const props = defineProps<{
 const vAppearTransition = {
   mounted: (el: HTMLElement) => appearAnimation(el, 'start'),
 };
+
+const myPosition: Position = [55.991892, 37.214385];
+const userPosition = ref<Position>([0,0]);
+const positions = computed({
+  get():MapPositions {
+    return {
+      myPosition: myPosition,
+      userPosition: userPosition.value,
+    }
+  },
+  set(newVal: MapPositions) {
+    userPosition.value = newVal.userPosition
+  }
+});
+
+onBeforeMount(async () => {
+  handleGeolocation(geoSuccessCallback, geoErrorCallback);
+});
+const geoSuccessCallback = (data: GeolocationPosition) => {
+  positions.value = {
+    myPosition: myPosition,
+    userPosition: [data.coords.latitude, data.coords.longitude]
+  }
+};
+const geoErrorCallback = (error: GeolocationPositionError) => console.log(error);
+
+
 </script>
 <style lang="scss" scoped>
 .section{
