@@ -22,7 +22,6 @@ const vAppearTransition = {
 };
 const myOffset = ref(0);
 onBeforeMount(async () => {
-  // -180 * 60000;
   await fetch('/config.json')
     .then(res => res.json())
     .then(d => myOffset.value = +d.myUTCOffset * 60 * 60000);
@@ -75,7 +74,7 @@ const clocks = () => {
     date.value = new Date();
     clocks();
   }, 1000)
-}
+};
 </script>
 <style lang="scss" scoped>
 .timezones {
