@@ -1,103 +1,89 @@
 <template>
   <article class="timezones animation animation_opacity animation_drop start" v-appear-transition>
-    <div class="timezones__data" v-show="userData?.gmtOffset && userTime">
-      <h4>You</h4>
-      <div>{{ handlePrefix(userData?.gmtOffset) }}</div>
-      <div> {{ userTime }}</div>
-    </div>
-    <div class="timezones__data" v-show="myData?.gmtOffset && myTime">
-      <h4>Mikhail</h4>
-      <div>{{ handlePrefix(myData?.gmtOffset) }}</div>
-      <div> {{ myTime }}</div>
-    </div>
     <div class="timezones__difference">
-      <h4>Time difference: </h4>
-      <div>{{ handleTimeDifference }}</div>
+      <div>{{ timeDifference }}</div>
+    </div>
+    <div class="timezones__data">
+      <div>Your clock:</div>
+      <div class="timezones__clock">{{ userClock }}</div>
+    </div>
+    <div class="timezones__data">
+      <div>Mikhail's clock:</div>
+      <div class="timezones__clock">{{ myClock }}</div>
     </div>
   </article>
 </template>
 <script setup lang="tsx">
-import { onBeforeMount, onMounted, ref, Ref, computed } from 'vue';
+import { onMounted, ref, computed, onBeforeMount } from 'vue';
 import { appearAnimation } from '~/helpers/appear-animation';
-import { MapPositions, TimezoneResponse, TimeData, ConvertResponse, Position } from '~/Types';
-
-const props = defineProps<{
-  positions: MapPositions,
-}>();
 
 const vAppearTransition = {
   mounted: (el: HTMLElement) => appearAnimation(el, 'start'),
 };
-const timezoneApiKey = ref('');
-const userData = ref<TimeData>({
-  gmtOffset: 0,
-  zoneName: ''
-});
-const myData = ref<TimeData>({
-  gmtOffset: 0,
-  zoneName: ''
-});
-const timeDifference = ref<number>()
-const handleTimeDifference = computed(() => timeDifference.value?.toString() + ' hours');
-const handlePrefix = (seconds: number):string => {
-  const hours = Math.round(seconds / 3600);
-  return hours < 0 ? `UTC${hours}` : `UTC+${hours}`;
-};
-
-//timezonedb.com free api provides suppurt of no more than 1 request per second
-//therefore requestDelay function is applied
-const requestDelay = async (callback:Function, args: any) => {
-  await callback(...args);
-  return new Promise((resolve) => setTimeout(() => resolve(true), 1000));
-};
-const fetchTimeData = async (apiKey: string, position: Position, storage: Ref<TimeData>) => {
-  const URL = `http://api.timezonedb.com/v2.1/get-time-zone?key=${apiKey}&format=json&by=position&lat=${[position[0]]}&lng=${position[1]}`;
-  await fetch(URL)
-    .then(res => res.json())
-    .then((d:TimezoneResponse) => {
-      storage.value = (({ gmtOffset, zoneName }) => ({ gmtOffset, zoneName }))(d);
-    });
-};
-const fetchDifference = async (apiKey: string, zoneFrom: string, zoneTo: string, storage: Ref<number>) => {
-  const URL = `http://api.timezonedb.com/v2.1/convert-time-zone?key=${apiKey}&format=json&from=${zoneFrom}&to=${zoneTo}`;
-  await fetch(URL)
-    .then(res => res.json())
-    .then((d:ConvertResponse) => storage.value = Math.round(d.offset / 3600));
-};
+const myOffset = ref(0);
 onBeforeMount(async () => {
+  // -180 * 60000;
   await fetch('/config.json')
     .then(res => res.json())
-    .then(d => timezoneApiKey.value = d.timezoneApiKey);
-  await fetchTimeData(timezoneApiKey.value, props.positions.myPosition, myData);
-  await requestDelay(fetchTimeData, [timezoneApiKey.value, props.positions.userPosition, userData]);
-  await requestDelay(fetchDifference, [timezoneApiKey.value, userData.value?.zoneName, myData.value?.zoneName, timeDifference]);
+    .then(d => myOffset.value = +d.myUTCOffset * 60 * 60000);
+})
+
+const date = ref(new Date());
+
+const userClock = computed(() => {
+  const d = new Date(date.value.getTime() - date.value.getTimezoneOffset() * 60000);
+  return dateFormatter(d);
 });
 
-const calcTime = (offset:number) => {
-  const date = new Date();
-  const localTime = date.getTime();
-  const localOffset = date.getTimezoneOffset() * 60000;
-  return new Date(localTime + localOffset + offset * 1000).toLocaleString();
+const myClock = computed(() => {
+  const d = new Date(date.value.getTime() - myOffset.value);
+  return dateFormatter(d);
+});
+
+const timeDifference = computed(():string => {
+  const userTime = new Date(date.value.getTime() - date.value.getTimezoneOffset() * 60000).getTime();
+  const myTime = new Date(date.value.getTime() - myOffset.value).getTime();
+  const difference = Math.round((userTime - myTime) / 3600000);
+  if (difference > 0) {
+    return `Your clock is ${Math.abs(difference)} hours ahead Mikhail's.`;
+  } else if (difference < 0) {
+    return `Your clock is ${Math.abs(difference)} hours behind Mikhail's.`;
+  } else {
+    return 'You are in the same time zone as Mikhail.';
+  }
+});
+
+const dateFormatter = (d: Date):string => {
+  const hours = toTwoDigitFormat(d.getUTCHours());
+  const minutes = toTwoDigitFormat(d.getUTCMinutes());
+  const seconds = toTwoDigitFormat(d.getUTCSeconds());
+  const day = toTwoDigitFormat(d.getUTCDate());
+  const month = toTwoDigitFormat(d.getUTCMonth() + 1);
+  const year = d.getUTCFullYear(); 
+  return `${hours}:${minutes}:${seconds} ${day}.${month}.${year}`;
+}
+
+const toTwoDigitFormat = (num: number):string => {
+  const str = num.toString();
+  return str.length === 1 ? `0${str}` : str;
 };
 
-const userTime = ref('');
-const myTime = ref('');
+onMounted(() => clocks());
+
 const clocks = () => {
   setTimeout(() => {
-    userTime.value = calcTime(userData.value?.gmtOffset);
-    myTime.value = calcTime(myData.value?.gmtOffset);
+    date.value = new Date();
     clocks();
   }, 1000)
 }
-onMounted(() => clocks());
 </script>
 <style lang="scss" scoped>
 .timezones {
-  &__data,
-  &__difference {
-    div {
-      font-family: monospace;
-    }
+  &__clock {
+    font-family: monospace;
+  }
+  @include md-screen {
+    display: none;
   }
 }
 </style>

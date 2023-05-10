@@ -16,7 +16,7 @@
       Send message
     </a>
     <Map :positions="positions"/>
-    <!-- <Timezones :positions="positions"/> -->
+    <Timezones />
   </section>
 </template>
 <script setup lang="tsx">
