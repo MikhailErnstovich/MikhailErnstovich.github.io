@@ -1,5 +1,5 @@
 <template>
-  <section v-geo-permission class="section section_numbered section" :id="props.title.id">
+  <section class="section section_numbered section" :id="props.title.id">
     <div class="section__title-wrapper animation animation_opacity animation_drop start" v-appear-transition>
       <h2 class="section__title">
         <span class="section__title-text">{{ props.title.title }}</span>
@@ -29,9 +29,9 @@ import { MenuItem } from '~/components/Menu/menu-data';
 import { appearAnimation } from '~/helpers/appear-animation';
 import Timezones from '~/components/Timezones/Timezones.vue';
 import { Position, MapPositions } from '~/Types';
-import { computed, ref } from 'vue';
+import { computed, ref, onBeforeMount } from 'vue';
 import handleGeolocation from '~/helpers/geolocation';
-import { createObserver } from '~/helpers/lazy-loaders';
+
 
 const props = defineProps<{
   title: MenuItem 
@@ -56,31 +56,7 @@ const positions = computed({
 });
 const geoPermission = ref(false);
 
-const vGeoPermission = {
-  mounted: handleGeoPermission,
-};
-
-function handleGeoPermission (el: HTMLElement) {
-  const handleIntersect = (
-    entries: IntersectionObserverEntry[],
-    observer: IntersectionObserver
-  ):void => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) {
-        return;
-      } else {
-        handleGeolocation(geoSuccessCallback, geoErrorCallback);
-        observer.unobserve(el);
-      }
-    });
-  };
-  //if browser doesn't have observer, than loading starts immediately 
-  if (!window['IntersectionObserver']) {
-    handleGeolocation(geoSuccessCallback, geoErrorCallback);
-  } else {
-    createObserver(el, handleIntersect);
-  }
-}
+onBeforeMount(() => handleGeolocation(geoSuccessCallback, geoErrorCallback));
 
 const geoSuccessCallback = (data: GeolocationPosition) => {
   positions.value = {
