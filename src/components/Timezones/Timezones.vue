@@ -1,15 +1,33 @@
 <template>
   <article class="timezones animation animation_opacity animation_drop start" v-appear-transition>
-    <div class="timezones__difference">
-      <div>{{ timeDifference }}</div>
+    <p class="timezones__difference" v-if="timeDifference > 0">
+      Your clock is 
+      <time :datetime="timeDifference + 'h'">
+        {{ Math.abs(timeDifference) + 'h' }}
+      </time> 
+      ahead Mikhail's
+    </p>
+    <p class="timezones__difference" v-else-if="timeDifference < 0">
+      Your clock is 
+      <time :datetime="Math.abs(timeDifference) + 'h'">
+        {{ Math.abs(timeDifference) + 'h' }}
+      </time> 
+      behind Mikhail's
+    </p>
+    <div class="timezones__clock">
+      <p class="timezones__clock-name" v-if="timeDifference !== 0">Your clock</p>
+      <p class="timezones__difference" v-else>
+        You are in the same time zone as Mikhail
+      </p>
+      <time :datetime="userDatetime" class="timezones__clock-data">
+        {{ userClock }}
+      </time>
     </div>
-    <div class="timezones__data">
-      <div>Your clock:</div>
-      <div class="timezones__clock">{{ userClock }}</div>
-    </div>
-    <div class="timezones__data">
-      <div>Mikhail's clock:</div>
-      <div class="timezones__clock">{{ myClock }}</div>
+    <div class="timezones__clock" v-if="timeDifference !== 0">
+      <p class="timezones__clock-name">Mikhail's clock</p>
+      <time :datetime="myDatetime" class="timezones__clock-data">
+        {{ myClock }}
+      </time>
     </div>
   </article>
 </template>
@@ -33,23 +51,24 @@ const userClock = computed(() => {
   const d = new Date(date.value.getTime() - date.value.getTimezoneOffset() * 60000);
   return dateFormatter(d);
 });
+const userDatetime = computed(() => {
+  const d = new Date(date.value.getTime() - date.value.getTimezoneOffset() * 60000);
+  return datetimeFormatter(d);
+});
 
 const myClock = computed(() => {
   const d = new Date(date.value.getTime() - myOffset.value);
   return dateFormatter(d);
 });
+const myDatetime = computed(() => {
+  const d =  new Date(date.value.getTime() - myOffset.value);
+  return datetimeFormatter(d);
+});
 
-const timeDifference = computed(():string => {
+const timeDifference = computed(():number => {
   const userTime = new Date(date.value.getTime() - date.value.getTimezoneOffset() * 60000).getTime();
   const myTime = new Date(date.value.getTime() - myOffset.value).getTime();
-  const difference = Math.round((userTime - myTime) / 3600000);
-  if (difference > 0) {
-    return `Your clock is ${Math.abs(difference)} hours ahead Mikhail's.`;
-  } else if (difference < 0) {
-    return `Your clock is ${Math.abs(difference)} hours behind Mikhail's.`;
-  } else {
-    return 'You are in the same time zone as Mikhail.';
-  }
+  return Math.round((userTime - myTime) / 3600000);
 });
 
 const dateFormatter = (d: Date):string => {
@@ -60,6 +79,15 @@ const dateFormatter = (d: Date):string => {
   const month = toTwoDigitFormat(d.getUTCMonth() + 1);
   const year = d.getUTCFullYear(); 
   return `${hours}:${minutes}:${seconds} ${day}.${month}.${year}`;
+}
+
+const datetimeFormatter = (d: Date):string => {
+  const hours = toTwoDigitFormat(d.getUTCHours());
+  const minutes = toTwoDigitFormat(d.getUTCMinutes());
+  const day = toTwoDigitFormat(d.getUTCDate());
+  const month = toTwoDigitFormat(d.getUTCMonth() + 1);
+  const year = d.getUTCFullYear(); 
+  return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
 const toTwoDigitFormat = (num: number):string => {
@@ -78,11 +106,38 @@ const clocks = () => {
 </script>
 <style lang="scss" scoped>
 .timezones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &__difference {
+    width: 100%;
+    font-family: var(--font-light);
+  }
   &__clock {
+    &-data {
+      font-family: 'Courier New', Courier, monospace;
+      font-weight: 100;
+      font-size: var(--fz-xs);
+    }
+    &-name {
+      font-family: var(--font-light);
+    }
+  }
+  time {
     font-family: monospace;
   }
   @include md-screen {
-    display: none;
+    &__clock:nth-child(3) {
+      order: 3;
+      text-align: right;
+    }
+    &__clock:nth-child(2) {
+      order: 1;
+    }
+    &__difference {
+      width: auto;
+      order: 2;
+    }
   }
 }
 </style>

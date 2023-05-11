@@ -112,11 +112,11 @@ const createMap = async () => {
             }
           },
           {
-            // Включение режима отображения в виде геодезических кривых.
+            // lines are displayed as geodesic curves
             geodesic: true,
-            // Установка ширины до 5 пикселей.
+            // line stroke width
             strokeWidth: 3,
-            // Установка цвета линии.
+            // line color
             strokeColor: "#0062f5"
           }
         );
@@ -142,5 +142,8 @@ const createMap = async () => {
   #map {
     width: 100%;
     aspect-ratio: 1 / 1;
+    @include md-screen {
+      aspect-ratio: 16 / 9;
+    }
   }
 </style>
