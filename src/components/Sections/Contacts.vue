@@ -56,6 +56,7 @@ const positions = computed({
 });
 const geoPermission = ref(false);
 
+
 onBeforeMount(() => handleGeolocation(geoSuccessCallback, geoErrorCallback));
 
 const geoSuccessCallback = (data: GeolocationPosition) => {
