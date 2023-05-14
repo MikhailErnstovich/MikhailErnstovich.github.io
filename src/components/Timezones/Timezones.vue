@@ -14,11 +14,14 @@
       </time> 
       behind Mikhail's
     </p>
+    <p class="timezones__difference" v-else>
+      You are in the same time zone as Mikhail
+    </p>
     <div class="timezones__clock">
       <p class="timezones__clock-name" v-if="timeDifference !== 0">Your clock</p>
-      <p class="timezones__difference" v-else>
+      <!-- <p class="timezones__difference" v-else>
         You are in the same time zone as Mikhail
-      </p>
+      </p> -->
       <time :datetime="userDatetime" class="timezones__clock-data">
         {{ userClock }}
       </time>

@@ -30,7 +30,7 @@ const transitionNames = ['drop','rise','slide-left'];
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   span {
     display: block;
     margin: 0 0 clamp(var(--s-xss), 0.379rem + 0.518vw, var(--s-xs));
