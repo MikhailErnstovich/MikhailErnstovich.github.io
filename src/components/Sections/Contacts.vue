@@ -77,7 +77,24 @@ const geoErrorCallback = (error: GeolocationPositionError) => geoPermission.valu
     font-family: var(--font-light);
     margin-bottom: var(--s-xss);
     &::before {
-      content: '🌍 ';
+      content: '🌎 ';
+      animation-duration: 1.5s;
+      animation-name: earth;
+      animation-iteration-count: infinite;
+      animation-direction: normal;
+      animation-timing-function: linear;
+      // 🌎🌍🌏
+    }
+    @keyframes earth {
+      0%, 33% {
+        content: '🌎 ';
+      }
+      34%, 66% {
+        content: '🌍 ';
+      }
+      67%, 100% {
+        content: '🌏 ';
+      }
     }
   }
   #map {
