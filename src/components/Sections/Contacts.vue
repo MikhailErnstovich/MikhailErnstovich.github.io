@@ -15,10 +15,10 @@
     >
       Send message
     </a>
+    <Map :positions="positions"/>
     <p class="tip-message" v-show="!geoPermission">
       <a class="link" href="https://browserhow.com/how-to-enable-disable-geolocation-access-in-google-chrome/">Enable location services</a> and reload the page to see your location on the map.
     </p>
-    <Map :positions="positions"/>
     <Timezones />
   </section>
 </template>
@@ -75,6 +75,7 @@ const geoErrorCallback = (error: GeolocationPositionError) => geoPermission.valu
   position: relative;
   .tip-message {
     font-family: var(--font-light);
+    font-size: 0.8em;
     margin-bottom: var(--s-xss);
     &::before {
       content: '🌎 ';
@@ -97,9 +98,7 @@ const geoErrorCallback = (error: GeolocationPositionError) => geoPermission.valu
       }
     }
   }
-  #map {
-    margin-bottom: var(--s-xss);
-  }
+
   @include md-screen {
     @include md-grid;
     &__title-wrapper {
@@ -108,12 +107,12 @@ const geoErrorCallback = (error: GeolocationPositionError) => geoPermission.valu
     }
     #map {
       grid-column: 1 / 13;
-      grid-row: 4 / 5;
-      margin-bottom: var(--s-lg);
+      grid-row: 3 / 4;
     }
     .tip-message {
       grid-column: 1 / 13;
-      grid-row: 3 / 4;
+      grid-row: 4 / 5;
+      margin-bottom: 0;
     }
     .timezones {
       grid-column: 1 / 13;
@@ -122,6 +121,7 @@ const geoErrorCallback = (error: GeolocationPositionError) => geoPermission.valu
     &__paragraph {
       grid-column: 1 / 13;
       grid-row: 5 / 6;
+      margin-top: var(--s-lg);
     }
     .mail-link {
       grid-column: 1 / 13;
