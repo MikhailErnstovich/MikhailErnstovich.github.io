@@ -16,7 +16,7 @@
       Send message
     </a>
     <Map :positions="positions"/>
-    <p class="tip-message" v-show="!geoPermission">
+    <p class="tip-message" v-show="!geoPermission && hasGeoModule">
       <a class="link" href="https://browserhow.com/how-to-enable-disable-geolocation-access-in-google-chrome/">Enable location services</a> and reload the page to see your location on the map.
     </p>
     <Timezones />
@@ -55,16 +55,26 @@ const positions = computed({
   }
 });
 const geoPermission = ref(false);
+const hasGeoModule = ref(true);
 
 
-onBeforeMount(() => handleGeolocation(geoSuccessCallback, geoErrorCallback));
-
-const geoSuccessCallback = (data: GeolocationPosition) => {
-  positions.value = {
-    myPosition: myPosition,
-    userPosition: [data.coords.latitude, data.coords.longitude]
+onBeforeMount(async () => {
+  if (!('geolocation' in navigator)) {
+    hasGeoModule.value = false;
   }
-  geoPermission.value = true;
+  await handleGeolocation()
+    .then(geoSuccessCallback)
+    .catch(geoErrorCallback)
+});
+
+const geoSuccessCallback = (data: GeolocationPosition | GeolocationPositionError) => {
+  if ('coords' in data) {
+    positions.value = {
+      myPosition: myPosition,
+      userPosition: [data.coords.latitude, data.coords.longitude]
+    }
+    geoPermission.value = true;
+  }
 };
 const geoErrorCallback = (error: GeolocationPositionError) => geoPermission.value = false;
 
