@@ -29,7 +29,7 @@ import { MenuItem } from '~/components/Menu/menu-data';
 import { appearAnimation } from '~/helpers/appear-animation';
 import Timezones from '~/components/Timezones/Timezones.vue';
 import { Position, MapPositions } from '~/Types';
-import { computed, ref, onBeforeMount } from 'vue';
+import { computed, ref, onBeforeMount, onMounted } from 'vue';
 import handleGeolocation from '~/helpers/geolocation';
 
 
@@ -58,7 +58,15 @@ const geoPermission = ref(false);
 const hasGeoModule = ref(true);
 
 
-onBeforeMount(async () => {
+// onBeforeMount(async () => {
+//   if (!('geolocation' in navigator)) {
+//     hasGeoModule.value = false;
+//   }
+//   await handleGeolocation()
+//     .then(geoSuccessCallback)
+//     .catch(geoErrorCallback)
+// });
+onMounted(async () => {
   if (!('geolocation' in navigator)) {
     hasGeoModule.value = false;
   }
