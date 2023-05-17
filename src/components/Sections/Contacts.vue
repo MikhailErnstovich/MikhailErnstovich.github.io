@@ -16,7 +16,7 @@
       Send message
     </a>
     <Map :positions="positions"/>
-    <p class="tip-message" v-show="!geoPermission && hasGeoModule">
+    <p class="tip-message" v-show="!geoPermission">
       <a class="link" href="https://browserhow.com/how-to-enable-disable-geolocation-access-in-google-chrome/">Enable location services</a> and reload the page to see your location on the map.
     </p>
     <Timezones />
@@ -29,7 +29,7 @@ import { MenuItem } from '~/components/Menu/menu-data';
 import { appearAnimation } from '~/helpers/appear-animation';
 import Timezones from '~/components/Timezones/Timezones.vue';
 import { Position, MapPositions } from '~/Types';
-import { computed, ref, onBeforeMount, onMounted } from 'vue';
+import { computed, ref, onBeforeMount } from 'vue';
 import handleGeolocation from '~/helpers/geolocation';
 
 
@@ -55,13 +55,8 @@ const positions = computed({
   }
 });
 const geoPermission = ref(false);
-const hasGeoModule = ref(true);
-
 
 onBeforeMount(async () => {
-  if (!('geolocation' in navigator)) {
-    hasGeoModule.value = false;
-  }
   await handleGeolocation()
     .then(geoSuccessCallback)
     .catch(geoErrorCallback)
