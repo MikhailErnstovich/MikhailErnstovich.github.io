@@ -58,15 +58,7 @@ const geoPermission = ref(false);
 const hasGeoModule = ref(true);
 
 
-// onBeforeMount(async () => {
-//   if (!('geolocation' in navigator)) {
-//     hasGeoModule.value = false;
-//   }
-//   await handleGeolocation()
-//     .then(geoSuccessCallback)
-//     .catch(geoErrorCallback)
-// });
-onMounted(async () => {
+onBeforeMount(async () => {
   if (!('geolocation' in navigator)) {
     hasGeoModule.value = false;
   }
@@ -74,6 +66,7 @@ onMounted(async () => {
     .then(geoSuccessCallback)
     .catch(geoErrorCallback)
 });
+
 
 const geoSuccessCallback = (data: GeolocationPosition | GeolocationPositionError) => {
   if ('coords' in data) {
