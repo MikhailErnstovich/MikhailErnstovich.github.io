@@ -15,7 +15,7 @@
     >
       Send message
     </a>
-    <Map :positions="positions"/>
+    <Map :positions="positions" v-if="!geoPermission"/>
     <p class="tip-message" v-show="!geoPermission">
       <a class="link" href="https://browserhow.com/how-to-enable-disable-geolocation-access-in-google-chrome/">Enable location services</a> and reload the page to see your location on the map.
     </p>
