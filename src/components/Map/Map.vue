@@ -1,13 +1,13 @@
 <template>
-  <div id="map" v-inserted></div>
+  <div id="map"></div>
 </template>
 <script setup lang="tsx">
-import { onBeforeMount, ref } from 'vue';
-import { createObserver } from '~/helpers/lazy-loaders';
+import { onBeforeMount, ref, watch } from 'vue';
 import { MapPositions } from '~/Types';
 
 const props = defineProps<{
   positions: MapPositions,
+  toggleMap: boolean
 }>();
 
 const mapApiKey = ref('');
@@ -18,31 +18,7 @@ onBeforeMount(async () => {
     .then(d => mapApiKey.value = d.mapApiKey);
 });
 
-const vInserted = {
-  mounted: insertMap,
-};
-
-function insertMap (el: HTMLElement) {
-  const handleIntersect = (
-    entries: IntersectionObserverEntry[],
-    observer: IntersectionObserver
-  ):void => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) {
-        return;
-      } else {
-        createMap();
-        observer.unobserve(el);
-      }
-    });
-  };
-  //if browser doesn't have observer, than loading starts immediately 
-  if (!window['IntersectionObserver']) {
-    createMap();
-  } else {
-    createObserver(el, handleIntersect);
-  }
-}
+watch(() => props.toggleMap, () => createMap());
 
 const createMap = async () => {
   //install Yandex map scripts
