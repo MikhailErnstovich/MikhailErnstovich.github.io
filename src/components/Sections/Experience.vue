@@ -35,8 +35,5 @@ const vAppearTransition = {
       grid-column-end: 13;
     }
   }
-  // @include lg-screen {
-  //   @include lg-grid;
-  // }
 }
 </style>
