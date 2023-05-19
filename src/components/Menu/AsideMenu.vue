@@ -4,6 +4,7 @@
       <div class="aside-menu__filler" @click="toggleMenu"></div>
       <div class="aside-menu__wrapper">
         <ThemeToggle class="aside-menu__theme-toggle"/>
+        <!-- <LangToggle /> -->
         <nav class="navigation">
           <menu class="navigation-list">
             <li class="navigation-list__item" v-for="item in items">
@@ -25,6 +26,7 @@
 
 <script lang="tsx" setup>
 import ThemeToggle from '~/components/ThemeToggle/ThemeToggle.vue';
+import LangToggle from '~/components/LangToggle/LangToggle.vue';
 import { items, MenuItem } from './menu-data';
 
 const props = defineProps<{

@@ -3,8 +3,7 @@
   "intro": {
     "hello": "Hi, my name is",
     "title": "Mikhail Makarov.",
-    "subtitle": "Dictum est factum",
-    "subtitle-translation": "Said and done",
+    "subtitle": "I create web apps.",
     "text-1": "I am a software engineer specializing in front-end application development. I am currently part of the ",
     "text-2": " team developing a computer-telephony integration system.",
     "resume-link": "Check out my CV!"

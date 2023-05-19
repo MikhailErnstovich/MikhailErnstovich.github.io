@@ -17,6 +17,7 @@ declare module '@vue/runtime-core' {
     Footer: typeof import('./src/components/Footer/Footer.vue')['default']
     Header: typeof import('./src/components/Header/Header.vue')['default']
     Intro: typeof import('./src/components/Sections/Intro.vue')['default']
+    LangToggle: typeof import('./src/components/LangToggle/LangToggle.vue')['default']
     Logo: typeof import('./src/components/Logo/Logo.vue')['default']
     Map: typeof import('./src/components/Map/Map.vue')['default']
     Photo: typeof import('./src/components/Photo/Photo.vue')['default']

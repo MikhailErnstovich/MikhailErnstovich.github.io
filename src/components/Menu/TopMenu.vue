@@ -9,12 +9,14 @@
           </li>
         </menu>
         <ThemeToggle class="top-menu__theme-toggle"/>
+        <!-- <LangToggle /> -->
       </nav>
   </article>
 </template>
 
 <script lang="tsx" setup>
 import ThemeToggle from '~/components/ThemeToggle/ThemeToggle.vue';
+import LangToggle from '~/components/LangToggle/LangToggle.vue';
 import { items, MenuItem } from './menu-data';
 
 function getMenuItemTitle(item: MenuItem): string {

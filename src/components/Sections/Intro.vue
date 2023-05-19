@@ -7,12 +7,8 @@
       <h1 class="intro__title big-title">{{ $t('intro.title') }}</h1>
     </CustomTransition>
     <CustomTransition :appear="true" :name="transitionNames[0]" :toggle="true">
-      <h2 
-        class="intro__subtitle big-title"
-        :title="$t('intro.subtitle-translation')"
-        @click="handleTranslation"
-      >
-        <i>{{ subtitle }}</i><sup>*</sup>
+      <h2 class="intro__subtitle big-title">
+        {{ $t('intro.subtitle') }}
       </h2>
     </CustomTransition>
     <CustomTransition :appear="true" :name="transitionNames[2]" :toggle="true">
@@ -28,15 +24,7 @@
   </section>
 </template>
 <script setup lang="tsx">
-import { useI18n } from 'vue-i18n';
 import CustomTransition from '~/components/Transitions/CustomTransition.vue';
-import { ref, computed } from 'vue';
-
-const { t } = useI18n();
-const isTranslated = ref(false);
-const subtitle = computed(() => isTranslated.value ? t('intro.subtitle-translation') : t('intro.subtitle'));
-const handleTranslation = () => isTranslated.value = !isTranslated.value;
-
 const transitionNames = ['drop','rise','slide-left'];
 
 </script>
