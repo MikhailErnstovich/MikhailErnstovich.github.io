@@ -72,9 +72,11 @@ onMounted(() => selectedOpt.value = props.options.default);
     }
   }
   &__list {
+    position: absolute;
     list-style-type: none;
     width: max-content;
     min-width: 4rem; 
+    box-shadow: 0px 2px 4px 0px var(--boulders-2-04);
   }
   &__option {
     display: flex;
@@ -107,6 +109,9 @@ onMounted(() => selectedOpt.value = props.options.default);
       &::after {
         @include filter-bays-0;
       }
+    }
+    &__list {
+      box-shadow: 0px 2px 4px 0px var(--bays-2-04);
     }
     &__option {
       background-color: var(--bays-0-02);
