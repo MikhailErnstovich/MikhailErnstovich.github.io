@@ -138,6 +138,11 @@ figure {
   filter: invert(4%) sepia(86%) saturate(7498%) hue-rotate(236deg) brightness(96%) contrast(105%);
 }
 
+@mixin filter-boulders-4 {
+  -webkit-filter: invert(19%) sepia(9%) saturate(119%) hue-rotate(169deg) brightness(93%) contrast(93%);
+  filter: invert(19%) sepia(9%) saturate(119%) hue-rotate(169deg) brightness(93%) contrast(93%);
+}
+
 // UI
 
 html {
