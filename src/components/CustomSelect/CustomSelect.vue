@@ -64,7 +64,7 @@ onMounted(() => selectedOpt.value = props.options.default);
       border-bottom: 2px solid var(--primary-color);
     }
     &::after {
-      content: url(./assets/icons/angle-down.svg);
+      content: url('/assets/icons/angle-down.svg');
       display: block;
       width: 1rem;
       transform: scale(0.7);
@@ -89,7 +89,7 @@ onMounted(() => selectedOpt.value = props.options.default);
       background-color: var(--boulders-1);
     }
     &.selected::after {
-      content: url(./assets/icons/tick.svg);
+      content: url('/assets/icons/tick.svg');
       display: block;
       margin-left: 0.3rem;
       width: 1rem;

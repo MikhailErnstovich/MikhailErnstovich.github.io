@@ -65,10 +65,6 @@ function getMenuItemTitle(item: MenuItem): string {
     background-color: var(--boulders-0);
     box-shadow: -10px 0px 30px -15px var(--bays-4-07);
   }
-  // &__theme-toggle {
-  //   grid-row: 1 / 2;
-  //   margin: var(--s-xs) 0 0 var(--s-xs);
-  // }
   &__controls {
     grid-row: 1 / 2;
     display: flex;
