@@ -3,8 +3,10 @@
     <aside class="aside-menu">
       <div class="aside-menu__filler" @click="toggleMenu"></div>
       <div class="aside-menu__wrapper">
-        <ThemeToggle class="aside-menu__theme-toggle"/>
-        <!-- <LangToggle /> -->
+        <div class="aside-menu__controls">
+          <ThemeToggle class="aside-menu__theme-toggle"/>
+          <LangToggle />
+        </div>
         <nav class="navigation">
           <menu class="navigation-list">
             <li class="navigation-list__item" v-for="item in items">
@@ -63,14 +65,18 @@ function getMenuItemTitle(item: MenuItem): string {
     background-color: var(--boulders-0);
     box-shadow: -10px 0px 30px -15px var(--bays-4-07);
   }
-  &__theme-toggle {
-    grid-row-start: 1;
-    grid-row-end: 2;
+  // &__theme-toggle {
+  //   grid-row: 1 / 2;
+  //   margin: var(--s-xs) 0 0 var(--s-xs);
+  // }
+  &__controls {
+    grid-row: 1 / 2;
+    display: flex;
+    gap: var(--s-xs);
     margin: var(--s-xs) 0 0 var(--s-xs);
   }
   .navigation {
-    grid-row-start: 2;
-    grid-row-end: 3;
+    grid-row: 2 / 3;
     align-self: center;
     margin-bottom: calc(var(--s-sm) + var(--fz-h-sm));
   }
