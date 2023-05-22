@@ -46,7 +46,7 @@ onMounted(() => selectedOpt.value = props.options.default);
   position: relative;
   font-size: clamp(var(--fz-md), 0.8786rem + 0.5178vw, var(--fz-h-xs));
   line-height: clamp(var(--lh-md), 1.379rem + 0.518vw, var(--lh-xl));
-  max-width: 4rem;
+  width: 4rem;
   color: var(--boulders-4);
   user-select: none;
   &__output {
@@ -73,6 +73,7 @@ onMounted(() => selectedOpt.value = props.options.default);
   &__list {
     list-style-type: none;
     width: max-content;
+    min-width: 4rem; 
   }
   &__option {
     display: flex;
