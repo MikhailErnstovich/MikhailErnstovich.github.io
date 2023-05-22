@@ -12,6 +12,7 @@ declare module '@vue/runtime-core' {
     Authorship: typeof import('./src/components/Authorship/Authorship.vue')['default']
     Card: typeof import('./src/components/Card/Card.vue')['default']
     Contacts: typeof import('./src/components/Sections/Contacts.vue')['default']
+    CustomSelect: typeof import('./src/components/CustomSelect/CustomSelect.vue')['default']
     CustomTransition: typeof import('./src/components/Transitions/CustomTransition.vue')['default']
     Experience: typeof import('./src/components/Sections/Experience.vue')['default']
     Footer: typeof import('./src/components/Footer/Footer.vue')['default']
