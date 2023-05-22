@@ -68,6 +68,7 @@ onMounted(() => selectedOpt.value = props.options.default);
       display: block;
       width: 1rem;
       transform: scale(0.7);
+      @include filter-boulders-4;
     }
   }
   &__list {
@@ -93,7 +94,27 @@ onMounted(() => selectedOpt.value = props.options.default);
       margin-left: 0.3rem;
       width: 1rem;
       transform: scale(0.7);
+      @include filter-boulders-4;
     }
+  }
+}
+.dark {
+  .select {
+    color:#fff;
+    &__output {
+      border-bottom: 2px solid var(--bays-0);
+      background-color: var(--bays-0-02);
+      &::after {
+        @include filter-bays-0;
+      }
+    }
+    &__option {
+      background-color: var(--bays-0-02);
+      &.selected::after {
+        @include filter-bays-0;
+      }
+    }
+
   }
 }
 </style>
