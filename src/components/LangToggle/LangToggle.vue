@@ -1,27 +1,17 @@
 <template>
-  <article class="lang-toggle-1">
-    <select v-model="$i18n.locale">
-      <option 
-        v-for="locale in $i18n.availableLocales" 
-        :key="`locale-${locale}`" 
-        :value="locale">
-          {{ locale }}
-        </option>
-    </select>
-
+  <article class="lang-toggle">
+    <CustomSelect :options="options" @select="handleSelect"/>
   </article>
 </template>
 <script setup lang="tsx">
 import i18n from '~/plugins/i18n';
-import { ref, onMounted } from 'vue';
-const imgUrls = {
-  sm:  new URL('~/assets/icons/locale.svg', import.meta.url).href,
-}
+import CustomSelect from '~/components/CustomSelect/CustomSelect.vue';
 
-const setLocale = () => {
-  const locales = i18n.global.availableLocales;
-}
-
+const options = {
+  list: i18n.global.availableLocales,
+  default: 'en',
+};
+const handleSelect = (lang: string) => i18n.global.locale.value = lang;
 </script>
 <style lang="scss" scoped>
 
