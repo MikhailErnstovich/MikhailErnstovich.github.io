@@ -9,7 +9,7 @@
           </li>
         </menu>
         <ThemeToggle class="top-menu__theme-toggle"/>
-        <!-- <LangToggle /> -->
+        <LangToggle class="top-menu__lang-toggle"/>
       </nav>
   </article>
 </template>
@@ -38,6 +38,9 @@ function getMenuItemTitle(item: MenuItem): string {
       width: 60px;
       margin-left: var(--s-sm);
       transform: translateY(2px);
+    }
+    &__lang-toggle {
+      margin-left: var(--s-sm);
     }
     &__wrapper {
       width: min(75vw, 400px);
