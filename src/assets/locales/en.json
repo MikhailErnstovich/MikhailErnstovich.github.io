@@ -7,5 +7,13 @@
     "text-1": "I am a software engineer specializing in front-end application development. I am currently part of the ",
     "text-2": " team developing a computer-telephony integration system.",
     "resume-link": "Check out my CV!"
+  },
+  "about": {
+    "text-1": "My name is Mikhail Makarov. I started my way in the field of web development in early 2020. While on quarantine, I decided to try myself in another area and went through the ",
+    "link-1": "HTML, CSS and JS course by JSC Yandex and MIPT",
+    "text-2": ". That resulted in my new hobby and changing my career direction from ",
+    "link-2": "silicon photonics",
+    "text-3": " to web development. Today I work remotely as a frontend developer in ",
+    "text-4": "There are some key technologies below I have been working with up to date:"
   }
 }

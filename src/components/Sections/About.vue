@@ -7,21 +7,26 @@
     </div>
     <div class="section__text-content">
       <p class="section__paragraph animation animation_opacity animation_slide-left start" v-appear-transition>
-        My name is Mikhail Makarov. I started my way in the field of web development in early 2020.
-        While on quarantine, I decided to try myself in another area and went
-        through the <a class="link" href="https://www.coursera.org/account/accomplishments/specialization/KKPTF2MJ95M8">HTML, CSS and JS course by JSC Yandex and MIPT</a>. 
-        That resulted in my new hobby and changing my career direction from <a class="link" href="https://www.youtube.com/watch?v=gsTl2qkWnp0">silicon photonics</a> to web development.
-        Today I work remotely as a frontend developer in <a class="link" href="https://flat-soft.ru/">FlatSoftware</a>.
+        <span class="about__text-1">{{ $t('about.text-1') }}</span>
+        <a class="link about__link-1" href="https://www.coursera.org/account/accomplishments/specialization/KKPTF2MJ95M8">
+          {{ $t('about.link-1') }}
+        </a>
+        <span class="about__text-2">{{ $t('about.text-2') }}</span>
+        <a class="link about__link-2" href="https://www.youtube.com/watch?v=gsTl2qkWnp0">
+          {{ $t('about.link-2') }}
+        </a>
+        <span class="about__text-3">{{ $t('about.text-3') }}</span>
+        <a class="link" href="https://flat-soft.ru/">FlatSoftware</a>.
       </p>
-      <p class="section__paragraph animation animation_opacity animation_slide-left start" v-appear-transition>
-        There are some key technologies below I have been working with up to date:
+      <p class="section__paragraph about__text-4 animation animation_opacity animation_slide-left start" v-appear-transition>
+        {{ $t('about.text-4') }}
       </p>
       <Skills />
     </div>
     <Photo  class="animation animation_opacity animation_drop start" v-appear-transition/>
     <div class="section__skills-wrapper">
-      <p class="section__paragraph animation animation_opacity animation_slide-left start" v-appear-transition>
-        There are some key technologies below I have been working with up to date:
+      <p class="section__paragraph about__text-4 animation animation_opacity animation_slide-left start" v-appear-transition>
+        {{ $t('about.text-4') }}
       </p>
       <Skills />
     </div>
