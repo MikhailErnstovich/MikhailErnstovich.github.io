@@ -1,8 +1,8 @@
 <template>
   <div class="authorship">
-    Design & Built by Mikhail Makarov.
+    <span class="authorship__text"> {{ $t('authorship.text') }}</span>
     <a class="link authorship__link" target="_blank" href="https://github.com/MikhailErnstovich/MikhailErnstovich.github.io">
-      Check out the source code.
+      {{ $t('authorship.link') }}
     </a>
   </div>
 </template>

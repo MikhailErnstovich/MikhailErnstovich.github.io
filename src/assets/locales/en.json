@@ -30,5 +30,9 @@
     "text-5": "Your clock",
     "text-6": "Mikhail's clock",
     "hour": "h"
+  },
+  "authorship": {
+    "text": "Design & Built by Mikhail Makarov.",
+    "link": " Check out the source code."
   }
 }
