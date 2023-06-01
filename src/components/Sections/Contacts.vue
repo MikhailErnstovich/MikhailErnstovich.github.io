@@ -5,15 +5,15 @@
         <span class="section__title-text">{{ props.title.title }}</span>
       </h2>
     </div>
-    <p class="section__paragraph section__paragraph_center animation animation_opacity animation_rise start" v-appear-transition>
-      I am open to job offers (especially with relocation) and freelance work. However, feel free to contact me if you have any other questions. I'll try my best to answer you as soon as possible.
+    <p class="section__paragraph section__paragraph_center contacts__text-1 animation animation_opacity animation_rise start" v-appear-transition>
+      {{ $t('contacts.text-1') }}
     </p>
     <a
       class="mail-link animation animation_opacity animation_drop start" v-appear-transition
       target="_blank"
       :href="contacts.email.link"
     >
-      Send message
+      {{ $t('contacts.mail-link') }}
     </a>
     <Map :positions="positions" :toggleMap="toggleMap"/>
     <p class="tip-message" v-show="!geoPermission">

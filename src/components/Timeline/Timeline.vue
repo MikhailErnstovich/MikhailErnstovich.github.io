@@ -5,7 +5,7 @@
         class="timeline__item animation animation_opacity animation_rise start"       
         :class="i !== 0 ? 'timeline__item_hidden' : 'timeline__item_selected'"  
         v-for="(item, i) in timeline" 
-        :key="item.interval"
+        :key="item.order"
         v-appear-transition
         :ref="setItemRef"
       >
@@ -25,16 +25,22 @@
 </template>
 
 <script setup lang="tsx">
-import { reactive, onMounted } from 'vue';
-import { timeline, TimelineEvent } from './timeline-data';
+import { reactive, onMounted, computed, onBeforeUpdate, ref, Ref } from 'vue';
+import { timelineData, TimelineEvent } from './timeline-data';
 import { insertImage } from '~/helpers/lazy-loaders';
 import { appearAnimation } from '~/helpers/appear-animation';
 import Card from '~/components/Card/Card.vue';
+import { useI18n } from 'vue-i18n';
 
-let itemRefs: HTMLElement[] = [];
+const { locale } = useI18n({ useScope: 'global' });
+const timeline = computed(() => timelineData[locale.value as 'en' | 'ru']);
+const itemRefs: Ref<HTMLElement[]> = ref([]);
+//Clear itemRefs before list is updated. 
+//Items are added to itemRefs on component loading and every time when DOM changes, i.e. when changing the language 
+onBeforeUpdate(() => itemRefs.value.length = 0);
 const setItemRef = (el: HTMLElement) => {
   if (el) {
-    itemRefs.push(el)
+    itemRefs.value.push(el)
   }
   return undefined;
 }
@@ -48,22 +54,23 @@ const vAppearTransition = {
 };
 
 onMounted(() => {
-  Object.assign(cardData, timeline[0]);
+  Object.assign(cardData, timeline.value[0]);
 });
 
 function toggleCard(i: number) {
-  itemRefs[i].classList.toggle('timeline__item_hidden');
-  itemRefs.forEach((item, index) => {
+  itemRefs.value[i].classList.toggle('timeline__item_hidden');
+  itemRefs.value.forEach((item, index) => {
     if (index === i) {
       item.classList.add('timeline__item_selected');
     } else {
       item.classList.remove('timeline__item_selected');
     }
   });
-  Object.assign(cardData, timeline[i]);
+  Object.assign(cardData, timeline.value[i]);
 }
 
 const cardData: TimelineEvent = reactive({ 
+    order: 0,
     interval: '',
     title: '',
     organization: '',
