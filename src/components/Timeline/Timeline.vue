@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="tsx">
-import { reactive, onMounted, computed, onBeforeUpdate, ref, Ref } from 'vue';
+import { reactive, onMounted, computed, onBeforeUpdate, ref, Ref, watch } from 'vue';
 import { timelineData, TimelineEvent } from './timeline-data';
 import { insertImage } from '~/helpers/lazy-loaders';
 import { appearAnimation } from '~/helpers/appear-animation';
@@ -56,8 +56,13 @@ const vAppearTransition = {
 onMounted(() => {
   Object.assign(cardData, timeline.value[0]);
 });
+watch(locale, () => {
+  Object.assign(cardData, timeline.value[currentCard.value]);
+})
 
+const currentCard = ref(0);
 function toggleCard(i: number) {
+  currentCard.value = i;
   itemRefs.value[i].classList.toggle('timeline__item_hidden');
   itemRefs.value.forEach((item, index) => {
     if (index === i) {
