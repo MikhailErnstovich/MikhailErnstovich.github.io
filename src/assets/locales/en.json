@@ -18,6 +18,17 @@
   },
   "contacts": {
     "text-1": "I am open to job offers (especially with relocation) and freelance work. However, feel free to contact me if you have any other questions. I'll try my best to answer you as soon as possible.",
-    "mail-link": "Send message"
+    "mail-link": "Send message",
+    "tip-message-text": " and reload the page to see your location on the map.",
+    "tip-message-link": "Enable location services"
+  },
+  "timezones": {
+    "text-1": "Your clock is ",
+    "text-2": " ahead Mikhail's",
+    "text-3": " behind Mikhail's",
+    "text-4": "You are in the same time zone as Mikhail",
+    "text-5": "Your clock",
+    "text-6": "Mikhail's clock",
+    "hour": "h"
   }
 }

@@ -1,30 +1,34 @@
 <template>
   <article class="timezones animation animation_opacity animation_drop start" v-appear-transition>
     <p class="timezones__difference" v-if="timeDifference > 0">
-      Your clock is 
+      <span class="timezones__text-1"> {{ $t('timezones.text-1') }} </span>
       <time :datetime="timeDifference + 'h'">
-        {{ Math.abs(timeDifference) + 'h' }}
+        {{ Math.abs(timeDifference) + $t('timezones.hour') }}
       </time> 
-      ahead Mikhail's
+      <span class="timezones__text-2"> {{ $t('timezones.text-2') }} </span>
     </p>
     <p class="timezones__difference" v-else-if="timeDifference < 0">
-      Your clock is 
+      <span class="timezones__text-1"> {{ $t('timezones.text-1') }} </span>
       <time :datetime="Math.abs(timeDifference) + 'h'">
-        {{ Math.abs(timeDifference) + 'h' }}
+        {{ Math.abs(timeDifference) + $t('timezones.hour') }}
       </time> 
-      behind Mikhail's
+      <span class="timezones__text-3"> {{ $t('timezones.text-3') }} </span>
     </p>
-    <p class="timezones__difference" v-else>
-      You are in the same time zone as Mikhail
+    <p class="timezones__difference timezones__text-4" v-else>
+      {{ $t('timezones.text-4') }}
     </p>
     <div class="timezones__clock">
-      <p class="timezones__clock-name" v-if="timeDifference !== 0">Your clock</p>
+      <p class="timezones__clock-name timezones__text-5" v-if="timeDifference !== 0">
+        {{ $t('timezones.text-5') }}
+      </p>
       <time :datetime="userDatetime" class="timezones__clock-data">
         {{ userClock }}
       </time>
     </div>
     <div class="timezones__clock" v-if="timeDifference !== 0">
-      <p class="timezones__clock-name">Mikhail's clock</p>
+      <p class="timezones__clock-name timezones__text-6">
+        {{ $t('timezones.text-6') }}
+      </p>
       <time :datetime="myDatetime" class="timezones__clock-data">
         {{ myClock }}
       </time>

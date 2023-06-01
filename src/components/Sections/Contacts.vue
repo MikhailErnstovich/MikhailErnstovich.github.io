@@ -17,7 +17,12 @@
     </a>
     <Map :positions="positions" :toggleMap="toggleMap"/>
     <p class="tip-message" v-show="!geoPermission">
-      <a class="link" href="https://browserhow.com/how-to-enable-disable-geolocation-access-in-google-chrome/">Enable location services</a> and reload the page to see your location on the map.
+      <a class="link contacts__tip-message-link" href="https://browserhow.com/how-to-enable-disable-geolocation-access-in-google-chrome/">
+        {{ $t('contacts.tip-message-link') }}
+      </a> 
+      <span class="contacts__tip-message-text">
+        {{ $t('contacts.tip-message-text') }}
+      </span>
     </p>
     <Timezones />
   </section>
