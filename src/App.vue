@@ -16,6 +16,9 @@ import { ref, defineAsyncComponent, watch } from 'vue';
 import Header from './components/Header/Header.vue';
 import Intro from './components/Sections/Intro.vue';
 import { items as sectionTitles } from '~/components/Menu/menu-data';
+import { setLocale } from '~/helpers/locale';
+
+setLocale();
 const show = ref(false);
 watch (() => show.value, (newVal, oldVal) => document.body.classList.toggle('no-scroll-y'));
 const About = defineAsyncComponent(() => import('~/components/Sections/About.vue'));

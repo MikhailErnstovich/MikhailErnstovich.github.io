@@ -9,9 +9,12 @@ import CustomSelect from '~/components/CustomSelect/CustomSelect.vue';
 
 const options = {
   list: i18n.global.availableLocales,
-  default: 'en',
+  default: localStorage.getItem('locale') || 'en',
 };
-const handleSelect = (lang: string) => i18n.global.locale.value = lang;
+const handleSelect = (lang: string) => {
+  i18n.global.locale.value = lang as 'en' | 'ru'
+  localStorage.setItem('locale', lang);
+};
 </script>
 <style lang="scss" scoped>
 
