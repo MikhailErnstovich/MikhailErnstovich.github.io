@@ -17,7 +17,12 @@
 <script lang="tsx" setup>
 import ThemeToggle from '~/components/ThemeToggle/ThemeToggle.vue';
 import LangToggle from '~/components/LangToggle/LangToggle.vue';
-import { items, MenuItem } from './menu-data';
+import { computed } from 'vue';
+import { itemData, MenuItem } from './menu-data';
+import { useI18n } from 'vue-i18n';
+
+const { locale } = useI18n({ useScope: 'global' });
+const items = computed(() => itemData[locale.value as 'en' | 'ru']);
 
 function getMenuItemTitle(item: MenuItem): string {
   return item.title[0].toUpperCase() + item.title.slice(1);

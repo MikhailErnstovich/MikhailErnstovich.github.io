@@ -19,7 +19,9 @@
               </a>
             </li>
           </menu>
-          <a href="/CV.pdf" class="resume-link">Check out my CV!</a>
+          <a href="/CV.pdf" class="resume-link">
+            {{ $t('aside-menu.resume-link') }}
+          </a>
         </nav>
       </div>
     </aside>
@@ -29,12 +31,15 @@
 <script lang="tsx" setup>
 import ThemeToggle from '~/components/ThemeToggle/ThemeToggle.vue';
 import LangToggle from '~/components/LangToggle/LangToggle.vue';
-import { items, MenuItem } from './menu-data';
+import { computed } from 'vue';
+import { itemData, MenuItem } from './menu-data';
+import { useI18n } from 'vue-i18n';
 
 const props = defineProps<{
   toggle: boolean 
 }>();
-
+const { locale } = useI18n({ useScope: 'global' });
+const items = computed(() => itemData[locale.value as 'en' | 'ru']);
 const emit = defineEmits(['toggleMenu']);
 const toggleMenu = () => emit('toggleMenu');
 

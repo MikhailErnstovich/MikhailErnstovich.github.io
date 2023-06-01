@@ -34,5 +34,8 @@
   "authorship": {
     "text": "Design & Built by Mikhail Makarov.",
     "link": " Check out the source code."
+  },
+  "aside-menu": {
+    "resume-link": "Check out my CV!"
   }
 }

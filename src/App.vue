@@ -12,11 +12,15 @@
 </template>
 
 <script setup lang="tsx">
-import { ref, defineAsyncComponent, watch } from 'vue';
+import { ref, defineAsyncComponent, watch, computed } from 'vue';
 import Header from './components/Header/Header.vue';
 import Intro from './components/Sections/Intro.vue';
-import { items as sectionTitles } from '~/components/Menu/menu-data';
+import { itemData } from '~/components/Menu/menu-data';
 import { setLocale } from '~/helpers/locale';
+import { useI18n } from 'vue-i18n';
+
+const { locale } = useI18n({ useScope: 'global' });
+const sectionTitles = computed(() => itemData[locale.value as 'en' | 'ru']);
 
 setLocale();
 const show = ref(false);
