@@ -6,7 +6,7 @@ export const contacts = {
       img:  new URL('~/assets/icons/research-gate.svg', import.meta.url).href,
     },
     {
-      link: 'https://www.linkedin.com/in/mikhail-makarov-639a55164/',
+      link: 'https://www.linkedin.com/in/mikmakarov',
       title: 'LinkedIn',
       img: new URL('~/assets/icons/linkedin.svg', import.meta.url).href,
     },
