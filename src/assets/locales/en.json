@@ -5,8 +5,7 @@
     "title": "Mikhail Makarov.",
     "subtitle": "I create web apps.",
     "text-1": "I am a software engineer specializing in front-end application development. I am currently part of the ",
-    "text-2": " team developing a computer-telephony integration system.",
-    "resume-link": "Check out my CV!"
+    "text-2": " team developing a computer-telephony integration system."
   },
   "about": {
     "text-1": "My name is Mikhail Makarov. I started my way in the field of web development in early 2020. While on quarantine, I decided to try myself in another area and went through the ",
@@ -35,7 +34,9 @@
     "text": "Design & Built by Mikhail Makarov.",
     "link": " Check out the source code."
   },
-  "aside-menu": {
-    "resume-link": "Check out my CV!"
+  "resume": {
+    "title": "Check out my CV!",
+    "short": "Short",
+    "extended": "Extended"
   }
 }

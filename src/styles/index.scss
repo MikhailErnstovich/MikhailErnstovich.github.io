@@ -255,7 +255,6 @@ html {
   }
 }
 
-.resume-link,
 .mail-link {
   display: block;
   width: max-content;
@@ -266,6 +265,7 @@ html {
   line-height: clamp(1.25rem, 1.068rem + 0.777vw, 2rem);
   text-transform: uppercase;
   color: #ffffff;
+  user-select: none;
   transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
   &:hover,
   &:focus {

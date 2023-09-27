@@ -19,9 +19,7 @@
               </a>
             </li>
           </menu>
-          <a href="/CV.pdf" class="resume-link">
-            {{ $t('aside-menu.resume-link') }}
-          </a>
+          <Resume/>
         </nav>
       </div>
     </aside>
@@ -34,6 +32,7 @@ import LangToggle from '~/components/LangToggle/LangToggle.vue';
 import { computed } from 'vue';
 import { itemData, MenuItem } from './menu-data';
 import { useI18n } from 'vue-i18n';
+import Resume from '~/components/Resume/Resume.vue';
 
 const props = defineProps<{
   toggle: boolean 
@@ -95,6 +94,7 @@ function getMenuItemTitle(item: MenuItem): string {
 }
 
 .navigation {
+  overflow: hidden;
   &-list {
     list-style: none;
     &__item {
@@ -150,7 +150,7 @@ function getMenuItemTitle(item: MenuItem): string {
 .shift-leave-to {
   transform: translateX(100vw);
 }
-.resume-link {
+.resume {
   margin: 10% auto 0;
   letter-spacing: 2px;
 }

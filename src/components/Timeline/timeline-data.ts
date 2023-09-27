@@ -17,9 +17,11 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
       organization: 'FlatSoftware',
       link: 'https://flat-soft.ru/',
       activities: [
-        'Build new features and maintain existing frontend applications',
-        'Work with a variety different technologies: Typescript, Jenkins, Node.js, Express.js, pinia, Vite',
-        'Agile worker experience'
+        'Created an administrative panel website for the Tretyakov Gallery',
+        'Conducting bug fixing, security updates, migration to new API scheme, and routine maintaining of existing frontend applications',
+        'Implementing new features such as custom photo uploader, complex forms and validation rules',
+        'Working closely with the QA team and backend developer to set up CI/CD on Jenkins',
+        'Creating custom stylesheets to match the corporate theme',
       ],
       icon: new URL('~/assets/icons/pc.svg', import.meta.url).href
     },
@@ -91,9 +93,11 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
       organization: 'FlatSoftware',
       link: 'https://flat-soft.ru/',
       activities: [
-        'Поддерживал существующие решения и добавлял новые функции',
-        'Использовал следующие технологиями: Typescript, Jenkins, Node.js, Express.js, pinia, Vite',
-        'Работал по Agile'
+        'Сделал админку для Третьяковской галерии',
+        'Испралял баги, провёл миграцию на новую схему API, поддерживал работу существующих фронтенд приложений',
+        'Добавлял новые фичи: загрузчик фото и комплексные формы с валидацие',
+        'Работал с командой тестирования и бекэнд разработчиком над развёртыванием CI/CD на Jenkins',
+        'Написал CSS стили корпоративной темы',
       ],
       icon: new URL('~/assets/icons/pc.svg', import.meta.url).href
     },

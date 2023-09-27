@@ -95,29 +95,6 @@ function getMenuItemTitle(item: MenuItem): string {
       }
     }
   }
-  .resume-link {
-    background-color: transparent;
-    border: 2px solid var(--bays-1);
-    color: var(--bays-1);
-    margin-left: var(--s-sm);
-    padding: clamp(var(--s-xss), 0.417rem + 0.174vw, calc(var(--s-xss) * 1.25)) clamp(var(--s-xs), 0.667rem + 0.694vw, var(--s-sm));
-    &:hover,
-    &:focus,
-    &:active {
-      background-color: transparent;
-    }
-    &:hover,
-    &:focus {
-      background-color: transparent;
-      color: var(--primary-color);
-      border: 2px solid var(--primary-color);
-    }
-    &:active {
-      background-color: transparent;
-      border: 2px solid var(--bays-3);
-      color: var(--bays-3);
-    }
-  }
 }
 
 
@@ -125,20 +102,6 @@ function getMenuItemTitle(item: MenuItem): string {
   .top-menu {
     &__wrapper {
       background-color: var(--bays-4);
-    }
-  }
-  .navigation {
-    .resume-link {
-      border: 2px solid var(--boulders-0);
-      color: var(--boulders-0);
-      &:hover,
-      &:focus {
-        background-color: rgba(255, 255, 255, 0.15);
-      }
-      &:active {
-        background-color: rgba(255, 255, 255, 0.1);
-        color: var(--boulders-0);
-      }
     }
   }
   .navigation-list__item-link {

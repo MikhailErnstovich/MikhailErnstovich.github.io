@@ -19,7 +19,7 @@
       </p>
     </CustomTransition>
     <CustomTransition :appear="true" :name="transitionNames[1]" :toggle="true">
-      <a href="/CV.pdf" class="intro__resume-link resume-link">{{ $t('intro.resume-link') }}</a>
+      <Resume />
     </CustomTransition>
   </section>
 </template>
@@ -54,9 +54,6 @@ const transitionNames = ['drop','rise','slide-left'];
       color: var(--bays-1);
     }
   }
-  .resume-link {
-    margin: clamp(var(--s-lg), 2.757rem + 1.036vw, var(--s-xl)) 0 0;
-  }
   @include md-screen {
     &__paragraph {
       width: 80%;
@@ -76,14 +73,63 @@ const transitionNames = ['drop','rise','slide-left'];
     }
   }
 }
-.intro__hello {
-  display: block;
-  margin: 0 0 clamp(var(--s-xss), 0.379rem + 0.518vw, var(--s-xs));
-  font-family: var(--font-regular);
-  font-size: clamp(var(--fz-md), 0.7573rem + 1.0356vw, var(--fz-h-sm));
-  line-height: clamp(var(--lh-md), 0.8932rem + 2.589vw, var(--lh-h-sm));
-  color: var(--bays-1);
-  letter-spacing: 2px;
+.intro {
+  &__resume {
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+    margin: clamp(var(--s-lg), 2.757rem + 1.036vw, var(--s-xl)) 0 0;
+    padding: clamp(1rem, 0.939rem + 0.259vw, 1.25rem) clamp(1.5rem, 1.379rem + 0.518vw, 2rem);
+    border-radius: 100px;
+    background-color: var(--bays-1);
+    font-size: clamp(0.875rem, 0.814rem + 0.259vw, 1.125rem);
+    line-height: clamp(1.25rem, 1.068rem + 0.777vw, 2rem);
+    text-transform: uppercase;
+    color: #ffffff;
+    transition: background-color 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    &:hover,
+    &:focus {
+      background-color: var(--primary-color);
+    }
+    &:active {
+      background-color: var(--bays-3);
+    }
+    &-wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: calc(var(--s-xss) / 2);
+      border-radius: 100px;
+    }
+    &-link {
+      &:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      &:nth-child(2) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+  &__resume_visible {
+    padding: 0;
+    background-color: transparent;
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: transparent;
+    }
+  }
+
+  &__hello {
+    display: block;
+    margin: 0 0 clamp(var(--s-xss), 0.379rem + 0.518vw, var(--s-xs));
+    font-family: var(--font-regular);
+    font-size: clamp(var(--fz-md), 0.7573rem + 1.0356vw, var(--fz-h-sm));
+    line-height: clamp(var(--lh-md), 0.8932rem + 2.589vw, var(--lh-h-sm));
+    color: var(--bays-1);
+    letter-spacing: 2px;
+  }
 }
 .dark {
   .section {
