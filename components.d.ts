@@ -23,6 +23,8 @@ declare module '@vue/runtime-core' {
     Map: typeof import('./src/components/Map/Map.vue')['default']
     Photo: typeof import('./src/components/Photo/Photo.vue')['default']
     Resume: typeof import('./src/components/Resume/Resume.vue')['default']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
     Skills: typeof import('./src/components/Skills/Skills.vue')['default']
     SocialMedia: typeof import('./src/components/SocialMedia/SocialMedia.vue')['default']
     ThemeToggle: typeof import('./src/components/ThemeToggle/ThemeToggle.vue')['default']

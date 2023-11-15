@@ -3,9 +3,9 @@
       <nav class="navigation">
         <menu class="navigation-list">
           <li class="navigation-list__item" v-for="item in items">
-            <a class="navigation-list__item-link" :href="'#' + item.id">
+            <router-link class="navigation-list__item-link" :to="getRoute(item)">
               {{ getMenuItemTitle(item) }}
-            </a>
+            </router-link>
           </li>
         </menu>
         <ThemeToggle class="top-menu__theme-toggle"/>
@@ -18,15 +18,11 @@
 import ThemeToggle from '~/components/ThemeToggle/ThemeToggle.vue';
 import LangToggle from '~/components/LangToggle/LangToggle.vue';
 import { computed } from 'vue';
-import { itemData, MenuItem } from './menu-data';
+import { itemData, getRoute, getMenuItemTitle } from './menu-data';
 import { useI18n } from 'vue-i18n';
 
 const { locale } = useI18n({ useScope: 'global' });
 const items = computed(() => itemData[locale.value as 'en' | 'ru']);
-
-function getMenuItemTitle(item: MenuItem): string {
-  return item.title[0].toUpperCase() + item.title.slice(1);
-}
 </script>
 
 <style lang="scss" scoped>

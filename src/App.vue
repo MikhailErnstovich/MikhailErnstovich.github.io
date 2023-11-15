@@ -1,33 +1,22 @@
 <template>
   <div class="wrapper">
     <Header @toggle-blur="(isBlur) => show = isBlur"/>
-    <main class="main" :class="show ? 'blur' : ''">
-      <Intro />
-      <About :title="sectionTitles[0]" />
-      <Experience :title="sectionTitles[1]" />
-      <Contacts :title="sectionTitles[2]" />
-    </main>
+    <div class="view-wrapper" :class="show ? 'blur' : ''">
+      <router-view></router-view>
+    </div>
     <Footer />
   </div>
 </template>
 
 <script setup lang="tsx">
-import { ref, defineAsyncComponent, watch, computed } from 'vue';
+import { ref, defineAsyncComponent, watch } from 'vue';
 import Header from './components/Header/Header.vue';
-import Intro from './components/Sections/Intro.vue';
-import { itemData } from '~/components/Menu/menu-data';
 import { setLocale } from '~/helpers/locale';
-import { useI18n } from 'vue-i18n';
-
-const { locale } = useI18n({ useScope: 'global' });
-const sectionTitles = computed(() => itemData[locale.value as 'en' | 'ru']);
 
 setLocale();
 const show = ref(false);
 watch (() => show.value, (newVal, oldVal) => document.body.classList.toggle('no-scroll-y'));
-const About = defineAsyncComponent(() => import('~/components/Sections/About.vue'));
-const Experience = defineAsyncComponent(() => import('~/components/Sections/Experience.vue'));
-const Contacts = defineAsyncComponent(() => import('~/components/Sections/Contacts.vue'));
+
 const Footer = defineAsyncComponent(() => import('~/components/Footer/Footer.vue'));
 </script>
 

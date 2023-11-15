@@ -10,13 +10,20 @@
         <nav class="navigation">
           <menu class="navigation-list">
             <li class="navigation-list__item" v-for="item in items">
-              <a 
+              <!-- <a 
                 class="navigation-list__item-link" 
                 :href="'#' + item.id"
                 @click="toggleMenu"
               >
                 {{ getMenuItemTitle(item) }}
-              </a>
+              </a> -->
+              <router-link 
+                class="navigation-list__item-link" 
+                :to="getRoute(item)"
+                @click="toggleMenu"
+              >
+                {{ getMenuItemTitle(item) }}
+              </router-link>
             </li>
           </menu>
           <Resume/>
@@ -30,7 +37,7 @@
 import ThemeToggle from '~/components/ThemeToggle/ThemeToggle.vue';
 import LangToggle from '~/components/LangToggle/LangToggle.vue';
 import { computed } from 'vue';
-import { itemData, MenuItem } from './menu-data';
+import { itemData, getRoute, getMenuItemTitle } from './menu-data';
 import { useI18n } from 'vue-i18n';
 import Resume from '~/components/Resume/Resume.vue';
 
@@ -42,9 +49,7 @@ const items = computed(() => itemData[locale.value as 'en' | 'ru']);
 const emit = defineEmits(['toggleMenu']);
 const toggleMenu = () => emit('toggleMenu');
 
-function getMenuItemTitle(item: MenuItem): string {
-  return item.title[0].toUpperCase() + item.title.slice(1);
-}
+
 </script>
 
 <style lang="scss" scoped>

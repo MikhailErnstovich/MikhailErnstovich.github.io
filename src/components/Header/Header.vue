@@ -1,7 +1,9 @@
 <template>
   <header class="header" ref="header">
     <CustomTransition :toggle="true" :appear="true" :name="'slide-right'">
-      <Logo />
+      <router-link to="/">
+        <Logo />
+      </router-link>
     </CustomTransition>
     <CustomTransition :toggle="true" :appear="true" :name="'slide-left'">
       <button 
