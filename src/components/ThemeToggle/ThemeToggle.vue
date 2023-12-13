@@ -3,6 +3,8 @@
     <label class="theme-toggle__switch">
       <input type="checkbox" v-model="isDark" aria-label="Dark theme">
       <span class="slider round"></span>
+      <i class="theme-toggle__icon">🌜</i>
+      <i class="theme-toggle__icon">🌞</i>
     </label>
   </article>
 </template>
@@ -13,17 +15,27 @@ const isDark = useDark();
 </script>
 
 <style lang="scss" scoped>
-.theme-toggle__switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 32px;
-}
-
-.theme-toggle__switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
+.theme-toggle {
+  &__switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 32px;
+    input { 
+      display: none;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+  }
+  &__icon {
+    position: relative;
+    font-size: 21px;
+    top: 1px;
+    padding: 0;
+    margin: 0;
+    font-style: normal;
+  }
 }
 
 .slider {
@@ -56,6 +68,7 @@ const isDark = useDark();
     background-color: #ffffff;
     box-shadow: none;
     transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    z-index: 2;
   }
 }
 
