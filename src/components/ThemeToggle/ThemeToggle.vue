@@ -3,15 +3,18 @@
     <label class="theme-toggle__switch">
       <input type="checkbox" v-model="isDark" aria-label="Dark theme">
       <span class="slider round"></span>
-      <i class="theme-toggle__icon">🌜</i>
-      <i class="theme-toggle__icon">🌞</i>
+      <i class="theme-toggle__icon">{{ showIcon ? '🌜' : ' ' }}</i>
+      <i class="theme-toggle__icon">{{ !showIcon ? '🌞' : ' ' }}</i>
     </label>
   </article>
 </template>
 
 <script lang="tsx" setup>
-import { useDark } from "@vueuse/core";
+import { useDark } from '@vueuse/core';
+import { computed } from 'vue';
 const isDark = useDark();
+
+const showIcon = computed(() => isDark.value)
 </script>
 
 <style lang="scss" scoped>
@@ -35,6 +38,8 @@ const isDark = useDark();
     padding: 0;
     margin: 0;
     font-style: normal;
+    display: inline-block;
+    width: 28px;
   }
 }
 
