@@ -36,7 +36,7 @@
   },
   "resume": {
     "title": "Моё резюме",
-    "short": "Краткое",
-    "extended": "Полное"
+    "docx": ".docx",
+    "pdf": ".pdf"
   }
 }
