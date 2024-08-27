@@ -166,7 +166,8 @@ html {
 .no-scroll-y {
   overflow-y: hidden;
 }
-.main {
+.main,
+.projects {
   max-width: calc(100% - 2 * var(--s-xs));
   margin: 0 auto;
   counter-reset: section;
