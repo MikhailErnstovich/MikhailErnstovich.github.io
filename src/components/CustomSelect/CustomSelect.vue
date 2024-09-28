@@ -19,7 +19,7 @@
 </template>
 <script setup lang="tsx">
 import { onMounted, ref } from 'vue'
-import { SelectOptions } from '~/Types';
+import { SelectOptions } from '~/types';
 
 const props = defineProps<{
   options: SelectOptions,

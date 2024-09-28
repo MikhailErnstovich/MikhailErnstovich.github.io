@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_numbered section" :id="props.title.id">
+  <section class="section section_numbered section" :id="props.title.id" v-geolocation>
     <div class="section__title-wrapper animation animation_opacity animation_drop start" v-appear-transition>
       <h2 class="section__title">
         <span class="section__title-text">{{ props.title.title }}</span>
@@ -33,9 +33,9 @@ import { contacts } from '~/components/SocialMedia/social-media-data';
 import { MenuItem } from '~/components/Menu/menu-data';
 import { appearAnimation } from '~/helpers/appear-animation';
 import Timezones from '~/components/Timezones/Timezones.vue';
-import { Position, MapPositions } from '~/Types';
-import { computed, ref, onBeforeMount } from 'vue';
-import handleGeolocation from '~/helpers/geolocation';
+import { Position, MapPositions } from '~/types';
+import { computed, ref } from 'vue';
+import { handleGeoPermission } from '~/helpers/lazy-loaders';
 
 
 const props = defineProps<{
@@ -62,13 +62,9 @@ const positions = computed({
 const geoPermission = ref(false);
 const toggleMap = ref(false);
 
-onBeforeMount(async () => {
-  await handleGeolocation()
-    .then(geoSuccessCallback)
-    .catch(geoErrorCallback)
-    .finally(() => toggleMap.value = true);
-});
-
+const vGeolocation = {
+  mounted: (el: HTMLElement) => handleGeoPermission(el, geoSuccessCallback, geoErrorCallback),
+};
 
 const geoSuccessCallback = (data: GeolocationPosition | GeolocationPositionError) => {
   if ('coords' in data) {
@@ -78,8 +74,12 @@ const geoSuccessCallback = (data: GeolocationPosition | GeolocationPositionError
     }
     geoPermission.value = true;
   }
+  toggleMap.value = true;
 };
-const geoErrorCallback = (error: GeolocationPositionError) => geoPermission.value = false;
+const geoErrorCallback = (error: GeolocationPositionError) => {
+  geoPermission.value = false;
+  toggleMap.value = true;
+}
 
 
 </script>
