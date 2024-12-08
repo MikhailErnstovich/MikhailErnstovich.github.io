@@ -73,7 +73,7 @@ export function insertMap(
       }
     });
   };
-  //if browser doesn't have observer, than loading starts immidiatly 
+  //if browser doesn't have observer, than loading starts immediately 
   if (!window['IntersectionObserver']) {
     createMap(positions);
   } else {

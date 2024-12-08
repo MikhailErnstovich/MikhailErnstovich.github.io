@@ -15,7 +15,7 @@
     >
       {{ $t('contacts.mail-link') }}
     </a>
-    <Map :positions="positions" :toggleMap="toggleMap"/>
+    <Map :positions="positions" :geoPermission="geoPermission"/>
     <p class="tip-message" v-show="!geoPermission">
       <a class="link contacts__tip-message-link" href="https://browserhow.com/how-to-enable-disable-geolocation-access-in-google-chrome/">
         {{ $t('contacts.tip-message-link') }}
@@ -60,7 +60,6 @@ const positions = computed({
   }
 });
 const geoPermission = ref(false);
-const toggleMap = ref(false);
 
 const vGeolocation = {
   mounted: (el: HTMLElement) => handleGeoPermission(el, geoSuccessCallback, geoErrorCallback),
@@ -74,11 +73,9 @@ const geoSuccessCallback = (data: GeolocationPosition | GeolocationPositionError
     }
     geoPermission.value = true;
   }
-  toggleMap.value = true;
 };
 const geoErrorCallback = (error: GeolocationPositionError) => {
   geoPermission.value = false;
-  toggleMap.value = true;
 }
 
 
@@ -118,7 +115,7 @@ const geoErrorCallback = (error: GeolocationPositionError) => {
       grid-column: 1 / 13;
       grid-row: 1 / 2;
     }
-    #map {
+    #map-wrapper {
       grid-column: 1 / 13;
       grid-row: 3 / 4;
     }
@@ -144,7 +141,7 @@ const geoErrorCallback = (error: GeolocationPositionError) => {
   }
   @include lg-screen {
     @include lg-grid;
-    #map {
+    #map-wrapper {
       max-height: 500px;
     }
   }
