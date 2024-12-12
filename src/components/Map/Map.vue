@@ -1,7 +1,7 @@
 <template>
   <div id="map-wrapper" @click="mapHandler" ref="wrapper">
     <div id="map" v-if="toggleMap"></div>
-    <a id="map-toggle" v-else>Show map</a>
+    <a id="map-toggle" @click="$emit('geoPermission')" v-else>Show map</a>
   </div>
 </template>
 <script setup lang="tsx">
@@ -13,6 +13,7 @@ const props = defineProps<{
   positions: MapPositions,
   geoPermission: boolean
 }>();
+
 const toggleMap = ref(false);
 const mapHandler = (e: MouseEvent) => {
   if (!toggleMap.value) {

@@ -15,7 +15,7 @@
     >
       {{ $t('contacts.mail-link') }}
     </a>
-    <Map :positions="positions" :geoPermission="geoPermission"/>
+    <Map :positions="positions" :geoPermission="geoPermission" @geo-permission.once="() => handleGeoPermission(geoSuccessCallback, geoErrorCallback)"/>
     <p class="tip-message" v-show="!geoPermission">
       <a class="link contacts__tip-message-link" href="https://browserhow.com/how-to-enable-disable-geolocation-access-in-google-chrome/">
         {{ $t('contacts.tip-message-link') }}
@@ -35,8 +35,7 @@ import { appearAnimation } from '~/helpers/appear-animation';
 import Timezones from '~/components/Timezones/Timezones.vue';
 import { Position, MapPositions } from '~/types';
 import { computed, ref } from 'vue';
-import { handleGeoPermission } from '~/helpers/lazy-loaders';
-
+import handleGeolocation from '~/helpers/geolocation';
 
 const props = defineProps<{
   title: MenuItem 
@@ -60,10 +59,14 @@ const positions = computed({
   }
 });
 const geoPermission = ref(false);
-
-const vGeolocation = {
-  mounted: (el: HTMLElement) => handleGeoPermission(el, geoSuccessCallback, geoErrorCallback),
-};
+const handleGeoPermission = (
+  geoSuccessCallback: (data: GeolocationPosition | GeolocationPositionError) => void,
+  geoErrorCallback: (error: GeolocationPositionError) => void
+): void => {
+    handleGeolocation()
+      .then(geoSuccessCallback)
+      .catch(geoErrorCallback)
+}
 
 const geoSuccessCallback = (data: GeolocationPosition | GeolocationPositionError) => {
   if ('coords' in data) {
@@ -77,7 +80,6 @@ const geoSuccessCallback = (data: GeolocationPosition | GeolocationPositionError
 const geoErrorCallback = (error: GeolocationPositionError) => {
   geoPermission.value = false;
 }
-
 
 </script>
 <style lang="scss" scoped>

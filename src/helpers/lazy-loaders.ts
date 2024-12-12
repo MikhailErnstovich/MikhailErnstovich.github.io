@@ -24,37 +24,6 @@ export function insertImage(el: HTMLElement): void {
   }
 }
 
-export function handleGeoPermission(
-  el: HTMLElement,
-  geoSuccessCallback: (data: GeolocationPosition | GeolocationPositionError) => void,
-  geoErrorCallback: (error: GeolocationPositionError) => void
-): void {
-  const handleIntersect = (
-    entries: IntersectionObserverEntry[],
-    observer: IntersectionObserver
-  ): void => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) {
-        return;
-      } else {
-        handleGeolocation()
-          .then(geoSuccessCallback)
-          .catch(geoErrorCallback)
-          .finally(() => observer.unobserve(el))
-      }
-    });
-  };
-
-  if (!window['IntersectionObserver']) {
-    handleGeolocation()
-      .then(geoSuccessCallback)
-      .catch(geoErrorCallback)
-  } else {
-    createObserver(el, handleIntersect);
-  }
-}
-
-
 export function insertMap(
   el: HTMLElement,
   positions: MapPositions,
