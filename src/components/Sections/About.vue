@@ -8,25 +8,30 @@
     <div class="section__text-content">
       <p class="section__paragraph animation animation_opacity animation_slide-left start" v-appear-transition>
         <span class="about__text-1">{{ $t('about.text-1') }}</span>
-        <a class="link about__link-1" href="https://www.coursera.org/account/accomplishments/specialization/KKPTF2MJ95M8">
+        <span class="about__text-2">{{ $t('about.text-2') }}</span>
+      </p>
+      <p class="section__paragraph animation animation_opacity animation_slide-left start" v-appear-transition>
+        <span class="about__text-3">{{ $t('about.text-3') }}</span>
+        <a class="link about__link-1"
+          href="https://www.coursera.org/account/accomplishments/specialization/KKPTF2MJ95M8">
           {{ $t('about.link-1') }}
         </a>
-        <span class="about__text-2">{{ $t('about.text-2') }}</span>
+        <span class="about__text-4">{{ $t('about.text-4') }}</span>
         <a class="link about__link-2" href="https://www.youtube.com/watch?v=gsTl2qkWnp0">
           {{ $t('about.link-2') }}
         </a>
-        <span class="about__text-3">{{ $t('about.text-3') }}</span>
-        <a class="link" href="https://flat-soft.ru/">FlatSoftware</a>.
+        <span class="about__text-5">{{ $t('about.text-5') }}</span>
       </p>
-      <p class="section__paragraph about__text-4 animation animation_opacity animation_slide-left start" v-appear-transition>
-        {{ $t('about.text-4') }}
+      <p class="section__paragraph animation animation_opacity animation_slide-left start" v-appear-transition>
+        {{ $t('about.text-6') }}
       </p>
       <Skills />
     </div>
-    <Photo  class="animation animation_opacity animation_drop start" v-appear-transition/>
+    <Photo class="animation animation_opacity animation_drop start" v-appear-transition />
     <div class="section__skills-wrapper">
-      <p class="section__paragraph about__text-4 animation animation_opacity animation_slide-left start" v-appear-transition>
-        {{ $t('about.text-4') }}
+      <p class="section__paragraph about__text-4 animation animation_opacity animation_slide-left start"
+        v-appear-transition>
+        {{ $t('about.text-6') }}
       </p>
       <Skills />
     </div>
@@ -56,7 +61,7 @@ const vAppearTransition = {
   &__text-content {
     order: 2;
     .skills,
-    .section__paragraph:nth-child(2) {
+    .section__paragraph:nth-child(3) {
       display: none;
     }
   }
@@ -80,9 +85,10 @@ const vAppearTransition = {
     column-gap: var(--s-sm);
     .section__paragraph {
       text-indent: 3em;
-      &:first-child {
+      text-align: justify;
+      // &:first-child {
         margin-bottom: clamp(var(--s-xs), 0.757rem + 1.036vw, var(--s-md));
-      }
+      // }
     }
     &__title-wrapper {
       grid-column-start: 1;
@@ -113,9 +119,9 @@ const vAppearTransition = {
       grid-row-end: 4;
       .section__paragraph {
         text-align: justify;
-        &:first-child {
+        // &:first-child {
           margin-bottom: clamp(var(--s-xs), 0.606rem + 0.821vw, calc(var(--s-xs) * 1.25));
-        }
+        // }
       }
 
     }
@@ -131,7 +137,7 @@ const vAppearTransition = {
     &__text-content {
       max-width: calc(100% - 600px);
       .skills,
-      .section__paragraph:nth-child(2) {
+      .section__paragraph:nth-child(3) {
         display: block;
         margin-bottom: clamp(var(--s-xs), 0.527rem + 0.602vw, calc(var(--s-xs) * 1.25));
       }

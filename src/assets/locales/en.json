@@ -4,16 +4,18 @@
     "hello": "Hi, my name is",
     "title": "Mikhail Makarov.",
     "subtitle": "I create web apps.",
-    "text-1": "I am a software engineer specializing in front-end application development. I am currently part of the ",
-    "text-2": " team developing a computer-telephony integration system."
+    "text-1": "Frontend developer with 5 years of experience, working in teams ranging from 2 to 20 members, both remotely and on-site. ",
+    "text-2": "Expert in UI implementation, with hands-on experience in building custom UI component systems and enhancing page loading speed."
   },
   "about": {
-    "text-1": "My name is Mikhail Makarov. I started my way in the field of web development in early 2020. While on quarantine, I decided to try myself in another area and went through the ",
-    "link-1": "HTML, CSS and JS course by JSC Yandex and MIPT",
-    "text-2": ". That resulted in my new hobby and changing my career direction from ",
-    "link-2": "silicon photonics",
-    "text-3": " to web development. Today I work remotely as a frontend developer in ",
-    "text-4": "There are some key technologies below I have been working with up to date:"
+    "text-1": "I’m a Frontend Developer specializing in UI implementation, custom component systems, and performance optimization. I’ve built SPA and SSR web applications from scratch — gathering requirements, designing REST API schemas, and ensuring high-quality code with unit testing. ",
+    "text-2": "I’ve contributed to rewriting large-scale legacy projects, implementing robust testing, and mentoring junior developers. My work has included optimizing CI/CD pipelines, implementing multilingual support, and improving user interactions for better engagement.",
+    "text-3": "My journey into web development started in 2020, transitioning from ",
+    "link-1": "silicon photonics",
+    "text-4": " after completing an intensive ",
+    "link-2": "HTML, CSS and JS course by JSC Yandex and MIPT",
+    "text-5": ". Since then, I’ve been passionate about progressive web applications, browser hardware features, and performance-driven development.",
+    "text-6": "There are some key technologies below I have been working with up to date:"
   },
   "contacts": {
     "text-1": "I am open to job offers (especially with relocation) and freelance work. However, feel free to contact me if you have any other questions. I'll try my best to answer you as soon as possible.",

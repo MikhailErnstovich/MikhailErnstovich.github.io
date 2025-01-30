@@ -6,7 +6,9 @@ export const skills: string[] = [
   'Next.js',
   'git',
   'Redux / Vuex',
-  'npm',
   'Webpack',
-  'Vite'
+  'npm',
+  'React hook form',
+  'Material UI',
+  'Vite',
 ];

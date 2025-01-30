@@ -14,8 +14,7 @@
     <CustomTransition :appear="true" :name="transitionNames[2]" :toggle="true">
       <p class="section__paragraph">
         <span class="intro__text-1">{{ $t('intro.text-1') }}</span>
-        <a class="link" href="https://flat-soft.ru/">FlatSoftware</a> 
-        <span class="intro__text-2">{{ $t('intro.text-2') }}</span>
+        <span class="intro__text-2">{{ $t('intro.text-2') }}</span> 
       </p>
     </CustomTransition>
     <CustomTransition :appear="true" :name="transitionNames[1]" :toggle="true">

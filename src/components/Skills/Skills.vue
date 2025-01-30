@@ -28,7 +28,7 @@ const vAppearTransition = {
     display: grid;
     grid-template-columns: repeat(2, max-content);
     grid-column-gap: clamp(var(--s-sm), -2.805rem + 18.367vw, var(--s-xxl));
-    width: max-content;
+    width: fit-content;
     padding-right: var(--s-xs);
     &-item {
       height: clamp(2rem, 1.757rem + 1.036vw, 3rem);
@@ -72,8 +72,8 @@ const vAppearTransition = {
   }
   @include xl-screen {
     &__list {
-      grid-template-columns: repeat(5, max-content);
-      grid-column-gap: clamp(var(--s-sm), -0.545rem + 10vw, var(--s-xxl));
+      grid-template-columns: repeat(6, max-content);
+      grid-column-gap: clamp(var(--s-sm), -0.545rem + 3vw, var(--s-xxl));
     }
   }
 }
