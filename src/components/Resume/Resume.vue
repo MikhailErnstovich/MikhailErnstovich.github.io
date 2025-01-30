@@ -2,8 +2,8 @@
   <article class="resume" :class="toggle ? 'resume_visible' : ''" @click="handleCVtoggle">
     <span class="resume__title" v-show="!toggle">{{ $t('resume.title') }}</span>
     <div class="resume__wrapper" v-show="toggle">
-      <a href="/CV.docx" class="resume__link" @click="handleCVlink">{{ $t('resume.docx') }}</a>
-      <a href="/CV.pdf" class="resume__link" @click="handleCVlink">{{ $t('resume.pdf') }}</a>
+      <a href="/Mikhail_Makarov_frontend.docx" class="resume__link" @click="handleCVlink">{{ $t('resume.docx') }}</a>
+      <a href="/Mikhail_Makarov_frontend.pdf" class="resume__link" @click="handleCVlink">{{ $t('resume.pdf') }}</a>
     </div>
   </article>
 </template>
