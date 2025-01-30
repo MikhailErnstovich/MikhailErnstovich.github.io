@@ -59,8 +59,21 @@ const vAppearTransition = {
   @include md-screen {
     container-type: inline-size;
     &__list {
+      grid-template-columns: repeat(2, max-content);
       grid-column-gap: 20cqw;
       padding-right: 0;
+    }
+  }
+  @include lg-screen {
+    &__list {
+      grid-template-columns: repeat(3, max-content);
+      grid-column-gap: clamp(var(--s-sm), -0.545rem + 4vw, var(--s-xxl));
+    }
+  }
+  @include xl-screen {
+    &__list {
+      grid-template-columns: repeat(5, max-content);
+      grid-column-gap: clamp(var(--s-sm), -0.545rem + 10vw, var(--s-xxl));
     }
   }
 }
