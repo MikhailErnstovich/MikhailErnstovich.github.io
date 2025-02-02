@@ -1,30 +1,18 @@
 <template>
   <section class="section intro">
-    <CustomTransition :appear="true" :name="transitionNames[0]" :toggle="true">
       <span class="intro__hello">{{ $t('intro.hello') }}</span>
-    </CustomTransition>
-    <CustomTransition :appear="true" :name="transitionNames[0]" :toggle="true">
       <h1 class="intro__title big-title">{{ $t('intro.title') }}</h1>
-    </CustomTransition>
-    <CustomTransition :appear="true" :name="transitionNames[0]" :toggle="true">
       <h2 class="intro__subtitle big-title">
         {{ $t('intro.subtitle') }}
       </h2>
-    </CustomTransition>
-    <CustomTransition :appear="true" :name="transitionNames[2]" :toggle="true">
       <p class="section__paragraph">
         <span class="intro__text-1">{{ $t('intro.text-1') }}</span>
         <span class="intro__text-2">{{ $t('intro.text-2') }}</span> 
       </p>
-    </CustomTransition>
-    <CustomTransition :appear="true" :name="transitionNames[1]" :toggle="true">
       <Resume />
-    </CustomTransition>
   </section>
 </template>
 <script setup lang="tsx">
-import CustomTransition from '~/components/Transitions/CustomTransition.vue';
-const transitionNames = ['drop','rise','slide-left'];
 
 </script>
 <style lang="scss" scoped>

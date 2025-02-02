@@ -1,7 +1,7 @@
 <template>
   <header class="header" ref="header">
     <CustomTransition :toggle="true" :appear="true" :name="'slide-right'">
-      <router-link to="/">
+      <router-link to="/" aria-label="home page">
         <Logo />
       </router-link>
     </CustomTransition>

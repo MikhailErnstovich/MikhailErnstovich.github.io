@@ -45,7 +45,7 @@ const vAppearTransition = {
   mounted: (el: HTMLElement) => appearAnimation(el, 'start'),
 };
 
-const myPosition: Position = [55.991892, 37.214385];
+const myPosition: Position = [37.214385, 55.991892];
 const userPosition = ref<Position>([0,0]);
 const positions = computed({
   get():MapPositions {
@@ -72,7 +72,7 @@ const geoSuccessCallback = (data: GeolocationPosition | GeolocationPositionError
   if ('coords' in data) {
     positions.value = {
       myPosition: myPosition,
-      userPosition: [data.coords.latitude, data.coords.longitude]
+      userPosition: [data.coords.longitude, data.coords.latitude]
     }
     geoPermission.value = true;
   }

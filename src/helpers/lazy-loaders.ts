@@ -26,8 +26,7 @@ export function insertImage(el: HTMLElement): void {
 
 export function insertMap(
   el: HTMLElement,
-  positions: MapPositions,
-  createMap: (positions: MapPositions) => Promise<void>
+  createMap: () => Promise<void>
 ): void {
   const handleIntersect = (
     entries: IntersectionObserverEntry[],
@@ -37,14 +36,14 @@ export function insertMap(
       if (!entry.isIntersecting) {
         return;
       } else {
-        createMap(positions);
+        createMap();
         observer.unobserve(el);
       }
     });
   };
   //if browser doesn't have observer, than loading starts immediately 
   if (!window['IntersectionObserver']) {
-    createMap(positions);
+    createMap();
   } else {
     createObserver(el, handleIntersect);
   }

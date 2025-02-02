@@ -13,10 +13,12 @@ import Components from 'unplugin-vue-components/vite'
 export default defineConfig({
   build: {
     outDir: path.join(__dirname, "docs"),
+    target: 'esnext'
   },
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, './src')}/`
+      '~/': `${path.resolve(__dirname, './src')}/`,
+      vue: 'vue/dist/vue.esm-bundler.js'
     }
   },
   css: {

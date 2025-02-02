@@ -11,11 +11,12 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "lib": ["esnext", "dom"],
+    "lib": ["esnext", "dom", "dom.iterable"],
+    "typeRoots": ["./node_modules/@types", "./node_modules/@yandex/ymaps3-types", "@intlify/unplugin-vue-i18n/messages"],
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "ymaps3": ["./node_modules/@yandex/ymaps3-types"]
     },
-    "types": ["@intlify/unplugin-vue-i18n/messages"],
     "skipLibCheck": true
   }
 }

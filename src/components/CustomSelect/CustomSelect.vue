@@ -1,5 +1,5 @@
 <template>
-  <div class="select" @blur="hideOptions" tabindex="100">
+  <div class="select" @blur="hideOptions" tabindex="0">
     <div class="select__output" :class="isVisible ? 'open' : ''" @click="handleVisibility">
       <span>{{ selectedOpt }}</span>
     </div>
