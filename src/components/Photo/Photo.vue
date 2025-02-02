@@ -2,19 +2,9 @@
   <div class="photo">
     <figure class="photo__wrapper">
       <picture v-inserted class="photo__content">
-        <source 
-          :data-url="imgUrls.lg"
-          media="(min-width: 1256px)"
-        />
-        <source 
-          :data-url="imgUrls.md"
-          media="(min-width: 768px)"
-        />
-        <img 
-          class="photo__img"
-          :data-url="imgUrls.sm"
-          alt="Mikhail Makarov"
-        />
+        <source :data-url="imgUrls.lg" media="(min-width: 1256px)" />
+        <source :data-url="imgUrls.md" media="(min-width: 768px)" />
+        <img class="photo__img" :data-url="imgUrls.sm" alt="Mikhail Makarov" />
       </picture>
     </figure>
   </div>
@@ -22,10 +12,10 @@
 <script setup lang="tsx">
 import { insertImage } from '~/helpers/lazy-loaders';
 const imgUrls = {
-  sm:  new URL('~/assets/images/me-sm.webp', import.meta.url).href,
-  md:  new URL('~/assets/images/me-md.webp', import.meta.url).href,
-  lg:  new URL('~/assets/images/me.webp', import.meta.url).href
-}
+  sm: new URL('~/assets/images/me-sm.webp', import.meta.url).href,
+  md: new URL('~/assets/images/me-md.webp', import.meta.url).href,
+  lg: new URL('~/assets/images/me.webp', import.meta.url).href,
+};
 
 const vInserted = {
   mounted: insertImage,
@@ -62,7 +52,7 @@ const vInserted = {
       border-top: none;
       border-left: none;
       transform: translate(var(--s-xs), calc(15px - 100%));
-      transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+      transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
       z-index: -1;
       will-change: transform;
     }

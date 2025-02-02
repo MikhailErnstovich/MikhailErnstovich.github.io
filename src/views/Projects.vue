@@ -1,6 +1,6 @@
 <template>
   <main class="projects">
-    <ProjectGallery :title="sectionTitles[3]"/>
+    <ProjectGallery :title="sectionTitles[3]" />
   </main>
 </template>
 
@@ -14,8 +14,8 @@ const { locale } = useI18n({ useScope: 'global' });
 const sectionTitles = computed(() => itemData[locale.value as 'en' | 'ru']);
 </script>
 
-<style  lang="scss">
+<style lang="scss">
 .projects .section__title {
-  counter-set: section 3
+  counter-set: section 3;
 }
 </style>

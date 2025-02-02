@@ -1,6 +1,6 @@
 <template>
   <article class="lang-toggle">
-    <CustomSelect :options="options" @select="handleSelect"/>
+    <CustomSelect :options="options" @select="handleSelect" />
   </article>
 </template>
 <script setup lang="tsx">
@@ -20,26 +20,27 @@ const handleSelect = (lang: string) => {
 const setFont = (lang: 'en' | 'ru') => {
   const root = document.documentElement;
   switch (lang) {
-    case 'ru': 
-      root.style.setProperty('--font-regular', 'NunitoSans-regular, sans-serif');
+    case 'ru':
+      root.style.setProperty(
+        '--font-regular',
+        'NunitoSans-regular, sans-serif',
+      );
       root.style.setProperty('--font-bold', 'NunitoSans-bold, sans-serif');
       root.style.setProperty('--font-light', 'NunitoSans-light, sans-serif');
       root.style.setProperty('--font-medium', 'NunitoSans-medium, sans-serif');
       break;
-    case 'en': 
+    case 'en':
       root.style.setProperty('--font-regular', 'Intel-regular');
       root.style.setProperty('--font-bold', 'Intel-bold');
       root.style.setProperty('--font-light', 'Intel-light');
       root.style.setProperty('--font-medium', 'Intel-medium');
       break;
-    default: 
+    default:
       root.style.setProperty('--font-regular', 'Intel-regular');
       root.style.setProperty('--font-bold', 'Intel-bold');
       root.style.setProperty('--font-light', 'Intel-light');
       root.style.setProperty('--font-medium', 'Intel-medium');
   }
-}
+};
 </script>
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

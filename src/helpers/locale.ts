@@ -4,7 +4,7 @@ export const setLocale = () => {
   onBeforeMount(() => {
     const locale = localStorage.getItem('locale');
     if (locale) {
-      i18n.global.locale.value = locale as 'en' | 'ru'
+      i18n.global.locale.value = locale as 'en' | 'ru';
     }
   });
-}
+};

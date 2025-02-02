@@ -1,25 +1,35 @@
 <template>
-  <section class="section section_numbered section" :id="props.title.id">
-    <div class="section__title-wrapper animation animation_opacity animation_drop start" v-appear-transition>
+  <section :id="props.title.id" class="section section_numbered section">
+    <div
+      v-appear-transition
+      class="section__title-wrapper animation animation_opacity animation_drop start"
+    >
       <h2 class="section__title">
         <span class="section__title-text">{{ props.title.title }}</span>
       </h2>
     </div>
-    <p class="section__paragraph section__paragraph_center contacts__text-1 animation animation_opacity animation_rise start" v-appear-transition>
+    <p
+      v-appear-transition
+      class="section__paragraph section__paragraph_center contacts__text-1 animation animation_opacity animation_rise start"
+    >
       {{ $t('contacts.text-1') }}
     </p>
     <a
-      class="mail-link animation animation_opacity animation_drop start" v-appear-transition
+      v-appear-transition
+      class="mail-link animation animation_opacity animation_drop start"
       target="_blank"
       :href="contacts.email.link"
     >
       {{ $t('contacts.mail-link') }}
     </a>
     <Map @geo-permission="handleTip"></Map>
-    <p class="tip-message" v-show="!showTip">
-      <a class="link contacts__tip-message-link" href="https://browserhow.com/how-to-enable-disable-geolocation-access-in-google-chrome/">
+    <p v-show="!showTip" class="tip-message">
+      <a
+        class="link contacts__tip-message-link"
+        href="https://browserhow.com/how-to-enable-disable-geolocation-access-in-google-chrome/"
+      >
         {{ $t('contacts.tip-message-link') }}
-      </a> 
+      </a>
       <span class="contacts__tip-message-text">
         {{ $t('contacts.tip-message-text') }}
       </span>
@@ -36,7 +46,7 @@ import Timezones from '~/components/Timezones/Timezones.vue';
 import { ref } from 'vue';
 
 const props = defineProps<{
-  title: MenuItem 
+  title: MenuItem;
 }>();
 
 const vAppearTransition = {
@@ -44,11 +54,10 @@ const vAppearTransition = {
 };
 
 const showTip = ref(false);
-const handleTip = (geoPermission: boolean) => showTip.value = geoPermission;
-
+const handleTip = (geoPermission: boolean) => (showTip.value = geoPermission);
 </script>
 <style lang="scss" scoped>
-.section{
+.section {
   position: relative;
   .tip-message {
     font-family: var(--font-light);
@@ -64,13 +73,16 @@ const handleTip = (geoPermission: boolean) => showTip.value = geoPermission;
       // 🌎🌍🌏
     }
     @keyframes earth {
-      0%, 33% {
+      0%,
+      33% {
         content: '🌎 ';
       }
-      34%, 66% {
+      34%,
+      66% {
         content: '🌍 ';
       }
-      67%, 100% {
+      67%,
+      100% {
         content: '🌏 ';
       }
     }

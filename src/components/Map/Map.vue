@@ -1,6 +1,11 @@
 <template>
-  <div id="map-wrapper" @click="mapHandler" ref="wrapper">
-    <YMap :location="location" :margin="[32, 32, 32, 32]" id="map" v-if="toggleMap && scriptLoaded">
+  <div id="map-wrapper" ref="wrapper" @click="mapHandler">
+    <YMap
+      v-if="toggleMap && scriptLoaded"
+      id="map"
+      :location="location"
+      :margin="[32, 32, 32, 32]"
+    >
       <YMapDefaultSchemeLayer />
       <YMapDefaultFeaturesLayer />
       <YMapMarker :coordinates="positions.myPosition" :draggable="false">
@@ -8,16 +13,27 @@
           <span>Mikhail M</span>
         </div>
       </YMapMarker>
-      <YMapMarker :coordinates="positions.userPosition" :draggable="false"
-        v-if="positions.userPosition[0] || positions.userPosition[1]">
+      <YMapMarker
+        v-if="positions.userPosition[0] || positions.userPosition[1]"
+        :coordinates="positions.userPosition"
+        :draggable="false"
+      >
         <div class="marker">
           <span>You</span>
         </div>
       </YMapMarker>
     </YMap>
-    <a id="map-toggle"
-      @click="() => handleGeoPermission(geoSuccessCallback, geoErrorCallback).then(() => $emit('geoPermission', geoPermission))"
-      v-else>Show map</a>
+    <a
+      v-else
+      id="map-toggle"
+      @click="
+        () =>
+          handleGeoPermission(geoSuccessCallback, geoErrorCallback).then(() =>
+            emit('geoPermission', geoPermission),
+          )
+      "
+      >Show map</a
+    >
   </div>
 </template>
 <script setup lang="tsx">
@@ -27,18 +43,22 @@ import { YMapLocationRequest, LngLatBounds } from '@yandex/ymaps3-types';
 import { Position, MapPositions } from '~/types';
 import handleGeolocation from '~/helpers/geolocation';
 
+const emit = defineEmits(['geoPermission']);
 const toggleMap = ref(false);
 const mapHandler = (e: MouseEvent) => {
   if (!toggleMap.value) {
     toggleMap.value = true;
-    insertMap(e.currentTarget as HTMLElement, createMap)
+    insertMap(e.currentTarget as HTMLElement, createMap);
   }
-}
-const bounds = ref<LngLatBounds>([[0, 0], [0, 0]]);
+};
+const bounds = ref<LngLatBounds>([
+  [0, 0],
+  [0, 0],
+]);
 const location = computed<YMapLocationRequest>(() => ({
   duration: 2000,
   easing: 'ease-in-out',
-  bounds: bounds.value
+  bounds: bounds.value,
 }));
 const myPosition: Position = [37.214385, 55.991892];
 const userPosition = ref<Position>([0, 0]);
@@ -47,34 +67,36 @@ const positions = computed({
     return {
       myPosition: myPosition,
       userPosition: userPosition.value,
-    }
+    };
   },
   set(newVal: MapPositions) {
-    userPosition.value = newVal.userPosition
-  }
+    userPosition.value = newVal.userPosition;
+  },
 });
 const geoPermission = ref(false);
 const handleGeoPermission = (
-  geoSuccessCallback: (data: GeolocationPosition | GeolocationPositionError) => void,
-  geoErrorCallback: (error: GeolocationPositionError) => void
+  geoSuccessCallback: (
+    data: GeolocationPosition | GeolocationPositionError,
+  ) => void,
+  geoErrorCallback: (error: GeolocationPositionError) => void,
 ): Promise<void> => {
-  return handleGeolocation()
-    .then(geoSuccessCallback)
-    .catch(geoErrorCallback)
-}
+  return handleGeolocation().then(geoSuccessCallback).catch(geoErrorCallback);
+};
 
-const geoSuccessCallback = (data: GeolocationPosition | GeolocationPositionError) => {
+const geoSuccessCallback = (
+  data: GeolocationPosition | GeolocationPositionError,
+) => {
   if ('coords' in data) {
     positions.value = {
       myPosition: myPosition,
-      userPosition: [data.coords.longitude, data.coords.latitude]
-    }
+      userPosition: [data.coords.longitude, data.coords.latitude],
+    };
     geoPermission.value = true;
   }
 };
-const geoErrorCallback = (error: GeolocationPositionError) => {
+const geoErrorCallback = () => {
   geoPermission.value = false;
-}
+};
 
 const scriptLoaded = ref<boolean>(false);
 const componentsLoaded = ref(false);
@@ -90,41 +112,56 @@ const loadScript = (src: string): Promise<void> => {
       resolve();
       return;
     }
-    const script = document.createElement("script");
+    const script = document.createElement('script');
     script.src = src;
     script.async = true;
     script.onload = () => resolve();
     script.onerror = () => reject(new Error(`Failed to load script: ${src}`));
     document.head.appendChild(script);
   });
-}
+};
 const createMap = async (): Promise<void> => {
   let link = '';
   await fetch('/config.json')
-    .then(res => res.json())
-    .then(d => link = `https://api-maps.yandex.ru/v3/?apikey=${d.mapApiKey}&lang=en_US`);
+    .then((res) => res.json())
+    .then(
+      (d) =>
+        (link = `https://api-maps.yandex.ru/v3/?apikey=${d.mapApiKey}&lang=en_US`),
+    );
   await loadScript(link);
   scriptLoaded.value = true;
-  const module = await import("~/lib/ymaps");
+  const module = await import('~/lib/ymaps');
   YMap.value = module.YMap;
   YMapDefaultSchemeLayer.value = module.YMapDefaultSchemeLayer;
   YMapDefaultFeaturesLayer.value = module.YMapDefaultFeaturesLayer;
   YMapMarker.value = module.YMapMarker;
   YMapFeature.value = module.YMapFeature;
   componentsLoaded.value = true;
-  bounds.value = getBounds(positions.value.myPosition, positions.value.userPosition);
-}
+  bounds.value = getBounds(
+    positions.value.myPosition,
+    positions.value.userPosition,
+  );
+};
 
-watch(() => userPosition.value, () => {
-  bounds.value = getBounds(positions.value.myPosition, positions.value.userPosition);
-});
+watch(
+  () => userPosition.value,
+  () => {
+    bounds.value = getBounds(
+      positions.value.myPosition,
+      positions.value.userPosition,
+    );
+  },
+);
 
-const getBounds = (myPosition: [lng: number, lat: number], userPosition: [lng: number, lat: number]): LngLatBounds => {
+const getBounds = (
+  myPosition: [lng: number, lat: number],
+  userPosition: [lng: number, lat: number],
+): LngLatBounds => {
   if (!userPosition[0] && !userPosition[1]) {
     return [
       [myPosition[0] - 2, myPosition[1] - 2],
       [myPosition[0] + 2, myPosition[1] + 2],
-    ]
+    ];
   }
   let minLat = Infinity,
     minLng = Infinity;
@@ -144,13 +181,13 @@ const getBounds = (myPosition: [lng: number, lat: number], userPosition: [lng: n
     maxLat = userPosition[1];
   } else {
     minLat = userPosition[1];
-    maxLat = myPosition[1]
+    maxLat = myPosition[1];
   }
   return [
     [minLng, minLat],
-    [maxLng, maxLat]
+    [maxLng, maxLat],
   ] as LngLatBounds;
-}
+};
 </script>
 <style lang="scss" scoped>
 #map-wrapper {
@@ -173,7 +210,8 @@ const getBounds = (myPosition: [lng: number, lat: number], userPosition: [lng: n
     display: flex;
     flex-direction: row;
     width: max-content;
-    padding: clamp(1rem, 0.939rem + 0.259vw, 1.25rem) clamp(1.5rem, 1.379rem + 0.518vw, 2rem);
+    padding: clamp(1rem, 0.939rem + 0.259vw, 1.25rem)
+      clamp(1.5rem, 1.379rem + 0.518vw, 2rem);
     border-radius: 100px;
     background-color: var(--bays-1);
     font-size: clamp(0.875rem, 0.814rem + 0.259vw, 1.125rem);

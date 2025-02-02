@@ -1,15 +1,19 @@
 <template>
-  <div class="select" @blur="hideOptions" tabindex="0">
-    <div class="select__output" :class="isVisible ? 'open' : ''" @click="handleVisibility">
+  <div class="select" tabindex="0" @blur="hideOptions">
+    <div
+      class="select__output"
+      :class="isVisible ? 'open' : ''"
+      @click="handleVisibility"
+    >
       <span>{{ selectedOpt }}</span>
     </div>
-    <ul class="select__list" v-show="isVisible">
-      <li 
+    <ul v-show="isVisible" class="select__list">
+      <li
+        v-for="option in props.options.list"
+        :key="option"
         class="select__option"
         :class="option === selectedOpt ? 'selected' : ''"
-        v-for="option in props.options.list"
         :value="option"
-        :key="option"
         @click="() => select(option)"
       >
         {{ option }}
@@ -18,27 +22,26 @@
   </div>
 </template>
 <script setup lang="tsx">
-import { onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue';
 import { SelectOptions } from '~/types';
 
 const props = defineProps<{
-  options: SelectOptions,
+  options: SelectOptions;
 }>();
 const emit = defineEmits<{
-  (e: 'select', value: string):void
+  (e: 'select', value: string): void;
 }>();
 
 const selectedOpt = ref('');
 const select = (item: string) => {
-  selectedOpt.value = item; 
+  selectedOpt.value = item;
   isVisible.value = false;
   emit('select', selectedOpt.value);
 };
 const isVisible = ref(false);
-const handleVisibility = () => isVisible.value = !isVisible.value;
-const hideOptions = () => isVisible.value = false;
-onMounted(() => selectedOpt.value = props.options.default);
-
+const handleVisibility = () => (isVisible.value = !isVisible.value);
+const hideOptions = () => (isVisible.value = false);
+onMounted(() => (selectedOpt.value = props.options.default));
 </script>
 <style lang="scss" scoped>
 .select {
@@ -75,7 +78,7 @@ onMounted(() => selectedOpt.value = props.options.default);
     position: absolute;
     list-style-type: none;
     width: max-content;
-    min-width: 4rem; 
+    min-width: 4rem;
     box-shadow: 0px 2px 4px 0px var(--boulders-2-04);
   }
   &__option {
@@ -102,7 +105,7 @@ onMounted(() => selectedOpt.value = props.options.default);
 }
 .dark {
   .select {
-    color:#fff;
+    color: #fff;
     &__output {
       border-bottom: 2px solid var(--bays-0);
       background-color: var(--bays-0-02);
@@ -119,7 +122,6 @@ onMounted(() => selectedOpt.value = props.options.default);
         @include filter-bays-0;
       }
     }
-
   }
 }
 </style>

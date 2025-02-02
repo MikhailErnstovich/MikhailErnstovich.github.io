@@ -1,36 +1,58 @@
 <template>
-  <section class="section section_numbered" :id="props.title.id">
-    <div class="section__title-wrapper animation animation_opacity animation_drop start" v-appear-transition>
+  <section :id="props.title.id" class="section section_numbered">
+    <div
+      v-appear-transition
+      class="section__title-wrapper animation animation_opacity animation_drop start"
+    >
       <h2 class="section__title">
         <span class="section__title-text">{{ props.title.title }}</span>
       </h2>
     </div>
     <div class="section__text-content">
-      <p class="section__paragraph animation animation_opacity animation_slide-left start" v-appear-transition>
+      <p
+        v-appear-transition
+        class="section__paragraph animation animation_opacity animation_slide-left start"
+      >
         <span class="about__text-1">{{ $t('about.text-1') }}</span>
         <span class="about__text-2">{{ $t('about.text-2') }}</span>
       </p>
-      <p class="section__paragraph animation animation_opacity animation_slide-left start" v-appear-transition>
+      <p
+        v-appear-transition
+        class="section__paragraph animation animation_opacity animation_slide-left start"
+      >
         <span class="about__text-3">{{ $t('about.text-3') }}</span>
-        <a class="link about__link-1"
-          href="https://www.coursera.org/account/accomplishments/specialization/KKPTF2MJ95M8">
+        <a
+          class="link about__link-1"
+          href="https://www.coursera.org/account/accomplishments/specialization/KKPTF2MJ95M8"
+        >
           {{ $t('about.link-1') }}
         </a>
         <span class="about__text-4">{{ $t('about.text-4') }}</span>
-        <a class="link about__link-2" href="https://www.youtube.com/watch?v=gsTl2qkWnp0">
+        <a
+          class="link about__link-2"
+          href="https://www.youtube.com/watch?v=gsTl2qkWnp0"
+        >
           {{ $t('about.link-2') }}
         </a>
         <span class="about__text-5">{{ $t('about.text-5') }}</span>
       </p>
-      <p class="section__paragraph animation animation_opacity animation_slide-left start" v-appear-transition>
+      <p
+        v-appear-transition
+        class="section__paragraph animation animation_opacity animation_slide-left start"
+      >
         {{ $t('about.text-6') }}
       </p>
       <Skills />
     </div>
-    <Photo class="animation animation_opacity animation_drop start" v-appear-transition />
+    <Photo
+      v-appear-transition
+      class="animation animation_opacity animation_drop start"
+    />
     <div class="section__skills-wrapper">
-      <p class="section__paragraph about__text-4 animation animation_opacity animation_slide-left start"
-        v-appear-transition>
+      <p
+        v-appear-transition
+        class="section__paragraph about__text-4 animation animation_opacity animation_slide-left start"
+      >
         {{ $t('about.text-6') }}
       </p>
       <Skills />
@@ -44,12 +66,11 @@ import { MenuItem } from '~/components/Menu/menu-data';
 import { appearAnimation } from '~/helpers/appear-animation';
 
 const props = defineProps<{
-  title: MenuItem
+  title: MenuItem;
 }>();
 const vAppearTransition = {
   mounted: (el: HTMLElement) => appearAnimation(el, 'start'),
 };
-
 </script>
 <style lang="scss" scoped>
 .section {
@@ -87,7 +108,7 @@ const vAppearTransition = {
       text-indent: 3em;
       text-align: justify;
       // &:first-child {
-        margin-bottom: clamp(var(--s-xs), 0.757rem + 1.036vw, var(--s-md));
+      margin-bottom: clamp(var(--s-xs), 0.757rem + 1.036vw, var(--s-md));
       // }
     }
     &__title-wrapper {
@@ -120,10 +141,13 @@ const vAppearTransition = {
       .section__paragraph {
         text-align: justify;
         // &:first-child {
-          margin-bottom: clamp(var(--s-xs), 0.606rem + 0.821vw, calc(var(--s-xs) * 1.25));
+        margin-bottom: clamp(
+          var(--s-xs),
+          0.606rem + 0.821vw,
+          calc(var(--s-xs) * 1.25)
+        );
         // }
       }
-
     }
   }
   @include lg-screen {
@@ -132,14 +156,18 @@ const vAppearTransition = {
     flex-wrap: wrap;
     justify-content: space-between;
     &__title-wrapper {
-      width: 100%
+      width: 100%;
     }
     &__text-content {
       max-width: calc(100% - 600px);
       .skills,
       .section__paragraph:nth-child(3) {
         display: block;
-        margin-bottom: clamp(var(--s-xs), 0.527rem + 0.602vw, calc(var(--s-xs) * 1.25));
+        margin-bottom: clamp(
+          var(--s-xs),
+          0.527rem + 0.602vw,
+          calc(var(--s-xs) * 1.25)
+        );
       }
     }
     &__skills-wrapper {

@@ -1,16 +1,16 @@
 <template>
   <article class="top-menu">
-      <nav class="navigation">
-        <menu class="navigation-list">
-          <li class="navigation-list__item" v-for="item in items">
-            <router-link class="navigation-list__item-link" :to="getRoute(item)">
-              {{ getMenuItemTitle(item) }}
-            </router-link>
-          </li>
-        </menu>
-        <ThemeToggle class="top-menu__theme-toggle"/>
-        <LangToggle class="top-menu__lang-toggle"/>
-      </nav>
+    <nav class="navigation">
+      <menu class="navigation-list">
+        <li v-for="item in items" :key="item.id" class="navigation-list__item">
+          <router-link class="navigation-list__item-link" :to="getRoute(item)">
+            {{ getMenuItemTitle(item) }}
+          </router-link>
+        </li>
+      </menu>
+      <ThemeToggle class="top-menu__theme-toggle" />
+      <LangToggle class="top-menu__lang-toggle" />
+    </nav>
   </article>
 </template>
 
@@ -62,7 +62,7 @@ const items = computed(() => itemData[locale.value as 'en' | 'ru']);
       font-size: clamp(var(--fz-md), 0.8786rem + 0.5178vw, var(--fz-h-xs));
       letter-spacing: 2px;
       color: var(--boulders-4);
-      transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+      transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
       cursor: pointer;
       &:hover,
       &:focus {
@@ -84,7 +84,7 @@ const items = computed(() => itemData[locale.value as 'en' | 'ru']);
           color: var(--bays-3);
         }
         &::before {
-          content: "0" counter(item) ".";
+          content: '0' counter(item) '.';
           text-align: center;
           color: var(--primary-color);
         }
@@ -92,7 +92,6 @@ const items = computed(() => itemData[locale.value as 'en' | 'ru']);
     }
   }
 }
-
 
 .dark {
   .top-menu {

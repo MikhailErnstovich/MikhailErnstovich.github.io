@@ -1,14 +1,14 @@
 <template>
   <article class="skills">
     <ul class="skills__list">
-        <li 
-          class="skills__list-item animation animation_opacity animation_slide-left start" 
-          v-for="item in skills" 
-          :key="item"
-          v-appear-transition
-        >
-          {{ item }}
-        </li>
+      <li
+        v-for="item in skills"
+        :key="item"
+        v-appear-transition
+        class="skills__list-item animation animation_opacity animation_slide-left start"
+      >
+        {{ item }}
+      </li>
     </ul>
   </article>
 </template>
@@ -22,7 +22,7 @@ const vAppearTransition = {
 };
 </script>
 
-<style  lang="scss" scoped>
+<style lang="scss" scoped>
 .skills {
   &__list {
     display: grid;
@@ -40,16 +40,16 @@ const vAppearTransition = {
         color: var(--bays-1);
       }
       &:nth-child(2) {
-        transition-delay: .6s;
+        transition-delay: 0.6s;
       }
       &:nth-child(3) {
-        transition-delay: .2s;
+        transition-delay: 0.2s;
       }
       &:nth-child(4) {
-        transition-delay: .8s;
+        transition-delay: 0.8s;
       }
       &:nth-child(5) {
-        transition-delay: .4s;
+        transition-delay: 0.4s;
       }
       &:nth-child(6) {
         transition-delay: 1s;
@@ -79,13 +79,13 @@ const vAppearTransition = {
 }
 html.dark {
   .skills {
-  &__list {
-    &-item {
-      &::before {
-        color: var(--bays-0);
+    &__list {
+      &-item {
+        &::before {
+          color: var(--bays-0);
+        }
       }
     }
   }
-}
 }
 </style>

@@ -1,17 +1,17 @@
 export type TimelineEvent = {
-  interval: string,
-  title: string,
-  organization: string,
-  link: string,
-  activities: string[],
-  icon: string,
-  order: number,
+  interval: string;
+  title: string;
+  organization: string;
+  link: string;
+  activities: string[];
+  icon: string;
+  order: number;
 };
 
-export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
+export const timelineData: { en: TimelineEvent[]; ru: TimelineEvent[] } = {
   en: [
     {
-      order: 6, 
+      order: 6,
       interval: 'Aug 2022 — till now',
       title: 'Frontend developer',
       organization: 'FlatSoftware',
@@ -23,7 +23,7 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
         'Working closely with the QA team and backend developer to set up CI/CD on Jenkins',
         'Creating custom stylesheets to match the corporate theme',
       ],
-      icon: new URL('~/assets/icons/pc.svg', import.meta.url).href
+      icon: new URL('~/assets/icons/pc.svg', import.meta.url).href,
     },
     {
       order: 5,
@@ -35,7 +35,7 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
         'Solving algoritmic task using JavaScript',
         'Object oriented programming',
       ],
-      icon: new URL('~/assets/icons/book.svg', import.meta.url).href
+      icon: new URL('~/assets/icons/book.svg', import.meta.url).href,
     },
     {
       order: 4,
@@ -47,7 +47,7 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
         'Creating website layouts with HTML & CSS',
         'In deep learning of Javascript (ES5)',
       ],
-      icon: new URL('~/assets/icons/book.svg', import.meta.url).href
+      icon: new URL('~/assets/icons/book.svg', import.meta.url).href,
     },
     {
       order: 3,
@@ -58,20 +58,20 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
       activities: [
         'Theoretical and numerical simulation of various integrated optics devices using Comsol Multiphysics software',
         'Writing scientific papers and their further public presentations',
-        'Communication with multi-diciplinary teams of scientists, engineers and managers'
+        'Communication with multi-diciplinary teams of scientists, engineers and managers',
       ],
-      icon: new URL('~/assets/icons/chip.svg', import.meta.url).href
+      icon: new URL('~/assets/icons/chip.svg', import.meta.url).href,
     },
     {
       order: 2,
       interval: 'Sep 2014 — Jun 2016',
-      title: 'Master\'s Degree program',
+      title: "Master's Degree program",
       organization: 'Moscow Institute of Physics and Technology (MIPT)',
       link: 'https://mipt.ru/english/',
       activities: [
         'Master degree in Applied Mathematics and Physics on Faculty of Physical and Quantum Electronics',
       ],
-      icon: new URL('~/assets/icons/book.svg', import.meta.url).href
+      icon: new URL('~/assets/icons/book.svg', import.meta.url).href,
     },
     {
       order: 1,
@@ -82,12 +82,12 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
       activities: [
         'Bachelor degree in Applied Mathematics and Physics on Faculty of Physical and Quantum Electronics',
       ],
-      icon: new URL('~/assets/icons/book.svg', import.meta.url).href
+      icon: new URL('~/assets/icons/book.svg', import.meta.url).href,
     },
   ],
   ru: [
     {
-      order: 6, 
+      order: 6,
       interval: '08.2022 — ...',
       title: 'Front-end разработчик',
       organization: 'FlatSoftware',
@@ -99,7 +99,7 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
         'Работал с командой тестирования и бекэнд разработчиком над развёртыванием CI/CD на Jenkins',
         'Написал CSS стили корпоративной темы',
       ],
-      icon: new URL('~/assets/icons/pc.svg', import.meta.url).href
+      icon: new URL('~/assets/icons/pc.svg', import.meta.url).href,
     },
     {
       order: 5,
@@ -107,11 +107,8 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
       title: 'Курс JavaScript Algorithms and Data Structures',
       organization: 'Freecodecamp',
       link: 'https://www.freecodecamp.org/certification/fcc0fb53d16-e07a-4e60-9166-8b61529a2b34/javascript-algorithms-and-data-structures',
-      activities: [
-        'Решал алгоритмические задачки на Javascript',
-        'Изучал ООП',
-      ],
-      icon: new URL('~/assets/icons/book.svg', import.meta.url).href
+      activities: ['Решал алгоритмические задачки на Javascript', 'Изучал ООП'],
+      icon: new URL('~/assets/icons/book.svg', import.meta.url).href,
     },
     {
       order: 4,
@@ -123,7 +120,7 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
         'Верстал pixel perfect на чистых HTML & CSS',
         'Изучал как устроен Javascript (ES5)',
       ],
-      icon: new URL('~/assets/icons/book.svg', import.meta.url).href
+      icon: new URL('~/assets/icons/book.svg', import.meta.url).href,
     },
     {
       order: 3,
@@ -134,9 +131,9 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
       activities: [
         'Занимался численным моделированием различных устройств интегральной оптики в среде Comsol Multiphysics',
         'Писал научные статьи и презентовал и выступал на конференциях',
-        'Работал в команде с учёными, инженерами и менеджерами'
+        'Работал в команде с учёными, инженерами и менеджерами',
       ],
-      icon: new URL('~/assets/icons/chip.svg', import.meta.url).href
+      icon: new URL('~/assets/icons/chip.svg', import.meta.url).href,
     },
     {
       order: 2,
@@ -147,7 +144,7 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
       activities: [
         'Учился по специальности "Прикладные математика и физика", факультет Физической и квантовой электроники',
       ],
-      icon: new URL('~/assets/icons/book.svg', import.meta.url).href
+      icon: new URL('~/assets/icons/book.svg', import.meta.url).href,
     },
     {
       order: 1,
@@ -158,7 +155,7 @@ export const timelineData: { en: TimelineEvent[], ru: TimelineEvent[]}  = {
       activities: [
         'Учился по специальности "Прикладные математика и физика", факультет Физической и квантовой электроники',
       ],
-      icon: new URL('~/assets/icons/book.svg', import.meta.url).href
+      icon: new URL('~/assets/icons/book.svg', import.meta.url).href,
     },
   ],
 };

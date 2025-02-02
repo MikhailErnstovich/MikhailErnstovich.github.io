@@ -1,24 +1,23 @@
 <template>
   <transition :name="props.name" :appear="props.appear">
-    <div class="animation-wrapper" v-if="props.toggle">
+    <div v-if="props.toggle" class="animation-wrapper">
       <slot></slot>
     </div>
   </transition>
 </template>
 <script setup lang="tsx">
 const props = defineProps<{
-  name: string,
-  appear: boolean,
-  toggle: boolean
+  name: string;
+  appear: boolean;
+  toggle: boolean;
 }>();
-
 </script>
 <style lang="scss" scoped>
 .slide-right-enter-active,
 .slide-right-leave-active {
   transition-property: opacity, transform;
   transition-duration: 1s;
-  transition-timing-function: cubic-bezier(0.645,0.045,0.355,1);
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .slide-right-enter-from,
@@ -31,7 +30,7 @@ const props = defineProps<{
 .slide-left-leave-active {
   transition-property: opacity, transform;
   transition-duration: 1s;
-  transition-timing-function: cubic-bezier(0.645,0.045,0.355,1);
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .slide-left-enter-from,
@@ -44,7 +43,7 @@ const props = defineProps<{
 .rise-leave-active {
   transition-property: opacity, transform;
   transition-duration: 1s;
-  transition-timing-function: cubic-bezier(0.645,0.045,0.355,1);
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .rise-enter-from,
@@ -57,7 +56,7 @@ const props = defineProps<{
 .drop-leave-active {
   transition-property: opacity, transform;
   transition-duration: 1s;
-  transition-timing-function: cubic-bezier(0.645,0.045,0.355,1);
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .drop-enter-from,
@@ -67,16 +66,16 @@ const props = defineProps<{
 }
 
 :nth-child(2) {
-  transition-delay: .2s;
+  transition-delay: 0.2s;
 }
 :nth-child(3) {
-  transition-delay: .4s;
+  transition-delay: 0.4s;
 }
 :nth-child(4) {
-  transition-delay: .6s;
+  transition-delay: 0.6s;
 }
 :nth-child(5) {
-  transition-delay: .8s;
+  transition-delay: 0.8s;
 }
 :nth-child(6) {
   transition-delay: 1s;

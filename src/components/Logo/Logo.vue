@@ -1,6 +1,6 @@
 <template>
   <div class="logo">
-    <img :src="logoURL" alt="">
+    <img :src="logoURL" alt="" />
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 const logoURL = new URL('~/assets/images/logo.svg', import.meta.url).href;
 </script>
 
-<style  lang="scss" scoped>
+<style lang="scss" scoped>
 .logo {
   display: flex;
   img {
@@ -20,7 +20,7 @@ const logoURL = new URL('~/assets/images/logo.svg', import.meta.url).href;
   i {
     display: block;
     font-style: normal;
-    font-size:  var(--fz-h-md);
+    font-size: var(--fz-h-md);
     font-family: var(--font-bold);
   }
 }

@@ -16,12 +16,15 @@ import { useI18n } from 'vue-i18n';
 
 const { locale } = useI18n({ useScope: 'global' });
 const sectionTitles = computed(() => itemData[locale.value as 'en' | 'ru']);
-const About = defineAsyncComponent(() => import('~/components/Sections/About.vue'));
-const Experience = defineAsyncComponent(() => import('~/components/Sections/Experience.vue'));
-const Contacts = defineAsyncComponent(() => import('~/components/Sections/Contacts.vue'));
-
+const About = defineAsyncComponent(
+  () => import('~/components/Sections/About.vue'),
+);
+const Experience = defineAsyncComponent(
+  () => import('~/components/Sections/Experience.vue'),
+);
+const Contacts = defineAsyncComponent(
+  () => import('~/components/Sections/Contacts.vue'),
+);
 </script>
 
-<style  lang="scss">
-
-</style>
+<style lang="scss"></style>

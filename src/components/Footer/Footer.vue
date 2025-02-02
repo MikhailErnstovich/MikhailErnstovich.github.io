@@ -1,7 +1,10 @@
 <template>
   <footer class="footer">
     <SocialMedia />
-    <Authorship class="animation animation_opacity animation_rise start" v-appear-transition/>
+    <Authorship
+      v-appear-transition
+      class="animation animation_opacity animation_rise start"
+    />
   </footer>
 </template>
 <script setup lang="tsx">

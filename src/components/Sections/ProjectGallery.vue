@@ -1,12 +1,18 @@
 <template>
-  <section class="section" :id="props.title.id">
-    <div class="section__title-wrapper animation animation_opacity animation_drop start" v-appear-transition>
+  <section :id="props.title.id" class="section">
+    <div
+      v-appear-transition
+      class="section__title-wrapper animation animation_opacity animation_drop start"
+    >
       <h2 class="section__title">
         <span class="section__title-text">{{ props.title.title }}</span>
       </h2>
     </div>
     <div class="section__text-content">
-      <p class="section__paragraph animation animation_opacity animation_slide-left start" v-appear-transition>
+      <p
+        v-appear-transition
+        class="section__paragraph animation animation_opacity animation_slide-left start"
+      >
         <span>This page is still under construction</span>
       </p>
     </div>
@@ -17,13 +23,11 @@ import { appearAnimation } from '~/helpers/appear-animation';
 import { MenuItem } from '~/components/Menu/menu-data';
 
 const props = defineProps<{
-  title: MenuItem
+  title: MenuItem;
 }>();
 const vAppearTransition = {
   mounted: (el: HTMLElement) => appearAnimation(el, 'start'),
 };
-
-
 </script>
 <style lang="scss" scoped>
 .section {

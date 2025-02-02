@@ -2,9 +2,9 @@
 export function insertImage(el: HTMLElement): void {
   const handleIntersect = (
     entries: IntersectionObserverEntry[],
-    observer: IntersectionObserver
+    observer: IntersectionObserver,
   ): void => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (!entry.isIntersecting) {
         return;
       } else {
@@ -23,13 +23,13 @@ export function insertImage(el: HTMLElement): void {
 
 export function insertMap(
   el: HTMLElement,
-  createMap: () => Promise<void>
+  createMap: () => Promise<void>,
 ): void {
   const handleIntersect = (
     entries: IntersectionObserverEntry[],
-    observer: IntersectionObserver
+    observer: IntersectionObserver,
   ): void => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (!entry.isIntersecting) {
         return;
       } else {
@@ -38,7 +38,7 @@ export function insertMap(
       }
     });
   };
-  //if browser doesn't have observer, than loading starts immediately 
+  //if browser doesn't have observer, than loading starts immediately
   if (!window['IntersectionObserver']) {
     createMap();
   } else {
@@ -46,10 +46,13 @@ export function insertMap(
   }
 }
 
-export function createObserver(el: HTMLElement, callback: IntersectionObserverCallback): void {
+export function createObserver(
+  el: HTMLElement,
+  callback: IntersectionObserverCallback,
+): void {
   const options = {
     root: null,
-    threshold: 0
+    threshold: 0,
   };
   const observer = new IntersectionObserver(callback, options);
   observer.observe(el);
@@ -57,14 +60,14 @@ export function createObserver(el: HTMLElement, callback: IntersectionObserverCa
 
 //Take content link from data-url attribute and put it to img or picture src attribute. Content starts loading
 function loadImage(el: HTMLElement) {
-  const imgElements = Array.from(el.children).filter(el => {
-    return el.nodeName === 'IMG' || el.nodeName === 'SOURCE'
+  const imgElements = Array.from(el.children).filter((el) => {
+    return el.nodeName === 'IMG' || el.nodeName === 'SOURCE';
   });
 
   if (imgElements.length) {
-    (imgElements as HTMLImageElement[]).forEach(item => {
+    (imgElements as HTMLImageElement[]).forEach((item) => {
       item.addEventListener('load', () => {
-        setTimeout(() => item.classList.add('loaded'), 100)
+        setTimeout(() => item.classList.add('loaded'), 100);
       });
       item.addEventListener('error', () => console.log('error'));
       if (!item.dataset.url) {
@@ -82,4 +85,4 @@ function loadImage(el: HTMLElement) {
       }
     });
   }
-};
+}

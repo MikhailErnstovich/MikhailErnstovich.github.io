@@ -1,5 +1,5 @@
-export default function handleSticky (elem: HTMLInputElement | null) {
-  if(!elem) {
+export default function handleSticky(elem: HTMLInputElement | null) {
+  if (!elem) {
     return;
   }
   const offsetTop = elem.offsetTop;

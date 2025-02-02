@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Header @toggle-blur="(isBlur) => show = isBlur"/>
+    <Header @toggle-blur="(isBlur) => (show = isBlur)" />
     <div class="view-wrapper" :class="show ? 'blur' : ''">
       <router-view></router-view>
     </div>
@@ -15,11 +15,14 @@ import { setLocale } from '~/helpers/locale';
 
 setLocale();
 const show = ref(false);
-watch (() => show.value, (newVal, oldVal) => document.body.classList.toggle('no-scroll-y'));
+watch(
+  () => show.value,
+  () => document.body.classList.toggle('no-scroll-y'),
+);
 
-const Footer = defineAsyncComponent(() => import('~/components/Footer/Footer.vue'));
+const Footer = defineAsyncComponent(
+  () => import('~/components/Footer/Footer.vue'),
+);
 </script>
 
-<style  lang="scss">
-
-</style>
+<style lang="scss"></style>

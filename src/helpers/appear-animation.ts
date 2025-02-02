@@ -1,11 +1,11 @@
 import { createObserver } from './lazy-loaders';
 
-export function appearAnimation (el: HTMLElement, className: string):void {
+export function appearAnimation(el: HTMLElement, className: string): void {
   const handleIntersect: IntersectionObserverCallback = (
     entries,
-    observer
+    observer,
   ): void => {
-    entries.forEach(entry => {
+    entries.forEach((entry) => {
       if (!entry.isIntersecting) {
         return;
       } else {

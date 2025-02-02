@@ -1,14 +1,16 @@
 <template>
   <div class="authorship">
     <span class="authorship__text"> {{ $t('authorship.text') }}</span>
-    <a class="link authorship__link" target="_blank" href="https://github.com/MikhailErnstovich/MikhailErnstovich.github.io">
+    <a
+      class="link authorship__link"
+      target="_blank"
+      href="https://github.com/MikhailErnstovich/MikhailErnstovich.github.io"
+    >
       {{ $t('authorship.link') }}
     </a>
   </div>
 </template>
-<script setup lang="tsx">
-
-</script>
+<script setup lang="tsx"></script>
 <style lang="scss" scoped>
 .authorship {
   margin: var(--s-sm) 0;

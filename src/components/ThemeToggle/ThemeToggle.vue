@@ -1,7 +1,7 @@
- <template>
+<template>
   <article class="theme-toggle">
     <label class="theme-toggle__switch">
-      <input type="checkbox" v-model="isDark" aria-label="Dark theme">
+      <input v-model="isDark" type="checkbox" aria-label="Dark theme" />
       <span class="slider round"></span>
       <i class="theme-toggle__icon">{{ showIcon ? '🌜' : ' ' }}</i>
       <i class="theme-toggle__icon">{{ !showIcon ? '🌞' : ' ' }}</i>
@@ -14,7 +14,7 @@ import { useDark } from '@vueuse/core';
 import { computed } from 'vue';
 const isDark = useDark();
 
-const showIcon = computed(() => isDark.value)
+const showIcon = computed(() => isDark.value);
 </script>
 
 <style lang="scss" scoped>
@@ -24,7 +24,7 @@ const showIcon = computed(() => isDark.value)
     display: inline-block;
     width: 60px;
     height: 32px;
-    input { 
+    input {
       display: none;
       opacity: 0;
       width: 0;
@@ -52,7 +52,7 @@ const showIcon = computed(() => isDark.value)
   bottom: 0;
   background-color: var(--bays-1);
   box-shadow: none;
-  transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   &:hover,
   &:focus {
     background-color: var(--primary-color);
@@ -65,14 +65,14 @@ const showIcon = computed(() => isDark.value)
   }
   &::before {
     position: absolute;
-    content: "";
+    content: '';
     height: 24px;
     width: 24px;
     left: 4px;
     bottom: 4px;
     background-color: #ffffff;
     box-shadow: none;
-    transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+    transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
     z-index: 2;
   }
 }

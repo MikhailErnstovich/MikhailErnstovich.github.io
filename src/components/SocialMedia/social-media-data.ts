@@ -3,7 +3,7 @@ export const contacts = {
     {
       link: 'https://www.researchgate.net/profile/Mikhail-Makarov-6',
       title: 'ResearchGate',
-      img:  new URL('~/assets/icons/research-gate.svg', import.meta.url).href,
+      img: new URL('~/assets/icons/research-gate.svg', import.meta.url).href,
     },
     {
       link: 'https://www.linkedin.com/in/mikmakarov',
@@ -25,5 +25,5 @@ export const contacts = {
     link: 'mailto: mikhail.makarov@phystech.edu',
     title: 'E-mail',
     img: new URL('~/assets/icons/mail.svg', import.meta.url).href,
-  }
+  },
 };

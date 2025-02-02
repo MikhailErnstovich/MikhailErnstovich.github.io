@@ -1,32 +1,35 @@
 <template>
   <article class="social-media">
     <ul class="social-media__list">
-      <li 
-        class="social-media__item animation animation_opacity animation_drop start"
-        v-for="(item, index) in contacts.socials"
+      <li
+        v-for="item in contacts.socials"
         :key="item.link"
         v-appear-transition
+        class="social-media__item animation animation_opacity animation_drop start"
       >
-        <a 
-          class="social-media__item-link" 
+        <a
+          v-inserted
+          class="social-media__item-link"
           target="_blank"
           :href="item.link"
-          v-inserted
         >
-          <img :data-url="item.img" :alt="item.title + ' icon'"/>
+          <img :data-url="item.img" :alt="item.title + ' icon'" />
         </a>
       </li>
       <li
-        class="social-media__item animation animation_opacity animation_drop start"
         v-appear-transition
+        class="social-media__item animation animation_opacity animation_drop start"
       >
-        <a 
-          class="social-media__item-link" 
+        <a
+          v-inserted
+          class="social-media__item-link"
           target="_blank"
           :href="contacts.email.link"
-          v-inserted
         >
-          <img :data-url="contacts.email.img" :alt="contacts.email.title + ' icon'"/>
+          <img
+            :data-url="contacts.email.img"
+            :alt="contacts.email.title + ' icon'"
+          />
         </a>
       </li>
     </ul>
@@ -46,7 +49,7 @@ const vAppearTransition = {
 };
 </script>
 <style lang="scss" scoped>
-.social-media{
+.social-media {
   &__list {
     display: flex;
     justify-content: space-around;
@@ -73,10 +76,10 @@ const vAppearTransition = {
     }
     &:nth-child(2),
     &:nth-child(4) {
-      transition-delay: .2s;
+      transition-delay: 0.2s;
     }
     &:nth-child(3) {
-      transition-delay: .4s;
+      transition-delay: 0.4s;
     }
   }
   @include md-screen {
@@ -92,7 +95,7 @@ const vAppearTransition = {
   }
 }
 .dark {
-  .social-media{
+  .social-media {
     &__item {
       &-link {
         img {

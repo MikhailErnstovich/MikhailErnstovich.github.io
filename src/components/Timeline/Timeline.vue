@@ -1,31 +1,39 @@
 <template>
   <article class="timeline">
     <ul class="timeline__list">
-      <li 
-        class="timeline__item animation animation_opacity animation_rise start"       
-        :class="i !== 0 ? 'timeline__item_hidden' : 'timeline__item_selected'"  
-        v-for="(item, i) in timeline" 
+      <li
+        v-for="(item, i) in timeline"
         :key="item.order"
-        v-appear-transition
         :ref="setItemRef"
+        v-appear-transition
+        class="timeline__item animation animation_opacity animation_rise start"
+        :class="i !== 0 ? 'timeline__item_hidden' : 'timeline__item_selected'"
       >
         <div class="timeline__item-timestamp" @click="() => toggleCard(i)">
           {{ item.interval }}
           <span></span>
         </div>
-        <div class="timeline__axis" v-inserted>
+        <div v-inserted class="timeline__axis">
           <img class="timeline__axis-icon" :data-url="item.icon" alt="icon" />
           <div class="timeline__axis-tail"></div>
         </div>
-        <Card :cardData="item" class="timeline__card"/>
+        <Card :cardData="item" class="timeline__card" />
       </li>
     </ul>
-    <Card :cardData="cardData" class="timeline__tab"/>
+    <Card :cardData="cardData" class="timeline__tab" />
   </article>
 </template>
 
 <script setup lang="tsx">
-import { reactive, onMounted, computed, onBeforeUpdate, ref, Ref, watch } from 'vue';
+import {
+  reactive,
+  onMounted,
+  computed,
+  onBeforeUpdate,
+  ref,
+  Ref,
+  watch,
+} from 'vue';
 import { timelineData, TimelineEvent } from './timeline-data';
 import { insertImage } from '~/helpers/lazy-loaders';
 import { appearAnimation } from '~/helpers/appear-animation';
@@ -35,15 +43,15 @@ import { useI18n } from 'vue-i18n';
 const { locale } = useI18n({ useScope: 'global' });
 const timeline = computed(() => timelineData[locale.value as 'en' | 'ru']);
 const itemRefs: Ref<HTMLElement[]> = ref([]);
-//Clear itemRefs before list is updated. 
-//Items are added to itemRefs on component loading and every time when DOM changes, i.e. when changing the language 
-onBeforeUpdate(() => itemRefs.value.length = 0);
+//Clear itemRefs before list is updated.
+//Items are added to itemRefs on component loading and every time when DOM changes, i.e. when changing the language
+onBeforeUpdate(() => (itemRefs.value.length = 0));
 const setItemRef = (el: HTMLElement) => {
   if (el) {
-    itemRefs.value.push(el)
+    itemRefs.value.push(el);
   }
   return undefined;
-}
+};
 
 const vInserted = {
   mounted: insertImage,
@@ -58,7 +66,7 @@ onMounted(() => {
 });
 watch(locale, () => {
   Object.assign(cardData, timeline.value[currentCard.value]);
-})
+});
 
 const currentCard = ref(0);
 function toggleCard(i: number) {
@@ -74,16 +82,15 @@ function toggleCard(i: number) {
   Object.assign(cardData, timeline.value[i]);
 }
 
-const cardData: TimelineEvent = reactive({ 
-    order: 0,
-    interval: '',
-    title: '',
-    organization: '',
-    link: '',
-    activities: [''],
-    icon: ''
-  }
-) 
+const cardData: TimelineEvent = reactive({
+  order: 0,
+  interval: '',
+  title: '',
+  organization: '',
+  link: '',
+  activities: [''],
+  icon: '',
+});
 </script>
 
 <style lang="scss" scoped>
@@ -97,7 +104,7 @@ const cardData: TimelineEvent = reactive({
     grid-template-rows: clamp(var(--s-sm), 1.075rem + 0.748vw, var(--s-md)) 1fr;
     column-gap: var(--s-xs);
     max-height: 1000px;
-    transition: all 0.5s cubic-bezier(0.645,0.045,0.355,1);
+    transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
     will-change: max-height;
     overflow: hidden;
     &:last-child {
@@ -117,7 +124,7 @@ const cardData: TimelineEvent = reactive({
       line-height: clamp(var(--lh-sm), 1.075rem + 0.748vw, var(--lh-xl));
       font-family: var(--font-light);
       color: var(--boulders-4);
-      transition: color 0.25s cubic-bezier(0.645,0.045,0.355,1);
+      transition: color 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
       &:hover,
       &:focus {
         color: var(--primary-color);
@@ -193,7 +200,9 @@ const cardData: TimelineEvent = reactive({
       position: relative;
       display: block;
       padding: var(--s-xs) 0;
-      max-height: calc(clamp(1.5rem, 1.383rem + 0.498vw, 2rem) + 2 * var(--s-xs));
+      max-height: calc(
+        clamp(1.5rem, 1.383rem + 0.498vw, 2rem) + 2 * var(--s-xs)
+      );
       overflow: visible;
       &::before,
       &::after {
@@ -205,7 +214,7 @@ const cardData: TimelineEvent = reactive({
         height: var(--s-xs);
         border-left: 2px solid var(--bays-1);
         transform: translate(-8px) scale(0);
-        transition: transform 0.25s cubic-bezier(0.645,0.045,0.355,1);
+        transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
       }
       &::before {
         top: 0;
@@ -220,7 +229,7 @@ const cardData: TimelineEvent = reactive({
         height: clamp(1.5rem, 1.383rem + 0.498vw, 2rem);
         text-align: center;
         span {
-          width:100%;
+          width: 100%;
           height: 0;
           display: inline-block;
         }
@@ -234,7 +243,7 @@ const cardData: TimelineEvent = reactive({
           height: var(--s-xs);
           border-right: 2px solid var(--bays-1);
           transform: translate(8px) scale(0);
-          transition: transform 0.25s cubic-bezier(0.645,0.045,0.355,1);
+          transition: transform 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
         }
         &::before {
           top: 0;
@@ -262,7 +271,7 @@ const cardData: TimelineEvent = reactive({
       }
     }
     &__axis {
-      display: none;      
+      display: none;
     }
     &__list .timeline__card {
       display: none;
@@ -286,6 +295,5 @@ const cardData: TimelineEvent = reactive({
   @include xl-screen {
     @include lg-grid;
   }
- 
-}    
+}
 </style>
