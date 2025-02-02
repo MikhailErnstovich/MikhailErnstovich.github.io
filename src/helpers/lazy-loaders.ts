@@ -1,6 +1,3 @@
-import { MapPositions } from '~/types';
-import handleGeolocation from '~/helpers/geolocation';
-
 //load img or picture content when the tag is in the user's viewport
 export function insertImage(el: HTMLElement): void {
   const handleIntersect = (

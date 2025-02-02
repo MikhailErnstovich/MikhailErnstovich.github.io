@@ -1,32 +1,31 @@
 <template>
   <div id="map-wrapper" @click="mapHandler" ref="wrapper">
-    <YMap :location="location" :margin="[32,32,32,32]" id="map" v-if="toggleMap && scriptLoaded">
+    <YMap :location="location" :margin="[32, 32, 32, 32]" id="map" v-if="toggleMap && scriptLoaded">
       <YMapDefaultSchemeLayer />
       <YMapDefaultFeaturesLayer />
-      <YMapMarker :coordinates="props.positions.myPosition" :draggable="false">
+      <YMapMarker :coordinates="positions.myPosition" :draggable="false">
         <div class="marker">
           <span>Mikhail M</span>
         </div>
       </YMapMarker>
-      <YMapMarker :coordinates="props.positions.userPosition" :draggable="false" v-if="props.positions.userPosition[0] || props.positions.userPosition[1]">
+      <YMapMarker :coordinates="positions.userPosition" :draggable="false"
+        v-if="positions.userPosition[0] || positions.userPosition[1]">
         <div class="marker">
           <span>You</span>
         </div>
       </YMapMarker>
     </YMap>
-    <a id="map-toggle" @click="$emit('geoPermission')" v-else>Show map</a>
+    <a id="map-toggle"
+      @click="() => handleGeoPermission(geoSuccessCallback, geoErrorCallback).then(() => $emit('geoPermission', geoPermission))"
+      v-else>Show map</a>
   </div>
 </template>
 <script setup lang="tsx">
 import { insertMap } from '~/helpers/lazy-loaders';
-import { MapPositions } from '~/types';
-import { Component, computed, ref, shallowRef } from 'vue';
+import { Component, computed, ref, shallowRef, watch } from 'vue';
 import { YMapLocationRequest, LngLatBounds } from '@yandex/ymaps3-types';
-
-const props = defineProps<{
-  positions: MapPositions,
-  geoPermission: boolean
-}>();
+import { Position, MapPositions } from '~/types';
+import handleGeolocation from '~/helpers/geolocation';
 
 const toggleMap = ref(false);
 const mapHandler = (e: MouseEvent) => {
@@ -35,12 +34,47 @@ const mapHandler = (e: MouseEvent) => {
     insertMap(e.currentTarget as HTMLElement, createMap)
   }
 }
-const bounds = ref<LngLatBounds>([[0,0],[0,0]]);
-const location = computed<YMapLocationRequest>(() =>({
-  duration: 2000, 
+const bounds = ref<LngLatBounds>([[0, 0], [0, 0]]);
+const location = computed<YMapLocationRequest>(() => ({
+  duration: 2000,
   easing: 'ease-in-out',
   bounds: bounds.value
 }));
+const myPosition: Position = [37.214385, 55.991892];
+const userPosition = ref<Position>([0, 0]);
+const positions = computed({
+  get(): MapPositions {
+    return {
+      myPosition: myPosition,
+      userPosition: userPosition.value,
+    }
+  },
+  set(newVal: MapPositions) {
+    userPosition.value = newVal.userPosition
+  }
+});
+const geoPermission = ref(false);
+const handleGeoPermission = (
+  geoSuccessCallback: (data: GeolocationPosition | GeolocationPositionError) => void,
+  geoErrorCallback: (error: GeolocationPositionError) => void
+): Promise<void> => {
+  return handleGeolocation()
+    .then(geoSuccessCallback)
+    .catch(geoErrorCallback)
+}
+
+const geoSuccessCallback = (data: GeolocationPosition | GeolocationPositionError) => {
+  if ('coords' in data) {
+    positions.value = {
+      myPosition: myPosition,
+      userPosition: [data.coords.longitude, data.coords.latitude]
+    }
+    geoPermission.value = true;
+  }
+};
+const geoErrorCallback = (error: GeolocationPositionError) => {
+  geoPermission.value = false;
+}
 
 const scriptLoaded = ref<boolean>(false);
 const componentsLoaded = ref(false);
@@ -78,10 +112,20 @@ const createMap = async (): Promise<void> => {
   YMapMarker.value = module.YMapMarker;
   YMapFeature.value = module.YMapFeature;
   componentsLoaded.value = true;
-  bounds.value = getBounds(props.positions.myPosition, props.positions.userPosition);
+  bounds.value = getBounds(positions.value.myPosition, positions.value.userPosition);
 }
 
+watch(() => userPosition.value, () => {
+  bounds.value = getBounds(positions.value.myPosition, positions.value.userPosition);
+});
+
 const getBounds = (myPosition: [lng: number, lat: number], userPosition: [lng: number, lat: number]): LngLatBounds => {
+  if (!userPosition[0] && !userPosition[1]) {
+    return [
+      [myPosition[0] - 2, myPosition[1] - 2],
+      [myPosition[0] + 2, myPosition[1] + 2],
+    ]
+  }
   let minLat = Infinity,
     minLng = Infinity;
   let maxLat = -Infinity,
@@ -161,9 +205,10 @@ const getBounds = (myPosition: [lng: number, lat: number], userPosition: [lng: n
     border-radius: 20px;
     transform: translateY(-36px) translateX(-36px);
     background-color: var(--bays-1);
-    color:#ffffff;
+    color: #ffffff;
     font-family: var(--font-light);
     text-align: center;
+
     &::after {
       content: '';
       position: absolute;

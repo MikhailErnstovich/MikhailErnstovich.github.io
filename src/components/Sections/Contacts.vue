@@ -1,5 +1,5 @@
 <template>
-  <section class="section section_numbered section" :id="props.title.id" v-geolocation>
+  <section class="section section_numbered section" :id="props.title.id">
     <div class="section__title-wrapper animation animation_opacity animation_drop start" v-appear-transition>
       <h2 class="section__title">
         <span class="section__title-text">{{ props.title.title }}</span>
@@ -15,8 +15,8 @@
     >
       {{ $t('contacts.mail-link') }}
     </a>
-    <Map :positions="positions" :geoPermission="geoPermission" @geo-permission.once="() => handleGeoPermission(geoSuccessCallback, geoErrorCallback)"/>
-    <p class="tip-message" v-show="!geoPermission">
+    <Map @geo-permission="handleTip"></Map>
+    <p class="tip-message" v-show="!showTip">
       <a class="link contacts__tip-message-link" href="https://browserhow.com/how-to-enable-disable-geolocation-access-in-google-chrome/">
         {{ $t('contacts.tip-message-link') }}
       </a> 
@@ -33,9 +33,7 @@ import { contacts } from '~/components/SocialMedia/social-media-data';
 import { MenuItem } from '~/components/Menu/menu-data';
 import { appearAnimation } from '~/helpers/appear-animation';
 import Timezones from '~/components/Timezones/Timezones.vue';
-import { Position, MapPositions } from '~/types';
-import { computed, ref } from 'vue';
-import handleGeolocation from '~/helpers/geolocation';
+import { ref } from 'vue';
 
 const props = defineProps<{
   title: MenuItem 
@@ -45,41 +43,8 @@ const vAppearTransition = {
   mounted: (el: HTMLElement) => appearAnimation(el, 'start'),
 };
 
-const myPosition: Position = [37.214385, 55.991892];
-const userPosition = ref<Position>([0,0]);
-const positions = computed({
-  get():MapPositions {
-    return {
-      myPosition: myPosition,
-      userPosition: userPosition.value,
-    }
-  },
-  set(newVal: MapPositions) {
-    userPosition.value = newVal.userPosition
-  }
-});
-const geoPermission = ref(false);
-const handleGeoPermission = (
-  geoSuccessCallback: (data: GeolocationPosition | GeolocationPositionError) => void,
-  geoErrorCallback: (error: GeolocationPositionError) => void
-): void => {
-    handleGeolocation()
-      .then(geoSuccessCallback)
-      .catch(geoErrorCallback)
-}
-
-const geoSuccessCallback = (data: GeolocationPosition | GeolocationPositionError) => {
-  if ('coords' in data) {
-    positions.value = {
-      myPosition: myPosition,
-      userPosition: [data.coords.longitude, data.coords.latitude]
-    }
-    geoPermission.value = true;
-  }
-};
-const geoErrorCallback = (error: GeolocationPositionError) => {
-  geoPermission.value = false;
-}
+const showTip = ref(false);
+const handleTip = (geoPermission: boolean) => showTip.value = geoPermission;
 
 </script>
 <style lang="scss" scoped>
