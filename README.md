@@ -19,18 +19,7 @@ I'm a **Frontend Developer** with **3+ years of commercial experience**, working
 
 ---
 
-### 🔹 METRO AG (Mar 2020 – Jan 2022)  
-**Junior Frontend Developer**  
-- 🌍 Implemented **seamless locale switching** for **3 languages**.
-- 🔧 Set up a **CI/CD pipeline**, reducing deployment time **by 50%**.
-- 🐛 Fixed multiple **critical and minor bugs**, reducing **downtime by 20%**.
-- ✅ Enhanced user forms, increasing **submission rates by 15%**.
-
-🛠 **Tech Stack:** JavaScript, Vue.js, Vuex, SCSS, Jenkins, Git
-
----
-
-### 🔹 IMT RAS (Sep 2016 – Dec 2024)  
+### 🔹 JSC MERI (Sep 2016 – till now)  
 **Senior Researcher**  
 - 💡 Conducted research on **AI accelerators, photonic tensor processors, and photonic ADCs**.
 - 🔬 Developed a **photonic non-volatile memory** project and a preliminary **neural network acceleration hardware**.
@@ -66,7 +55,7 @@ I'm a **Frontend Developer** with **3+ years of commercial experience**, working
 
 ## 📬 Contact Me
 📧 **Email:** [mikhail.makarov@phystech.edu](mailto:mikhail.makarov@phystech.edu)  
-📞 **Phone:** [+37258582523](tel:+37258582523)  
+📞 **Phone:** [+79651567895](tel:+79651567895)  
 🔗 **LinkedIn:** [linkedin.com/in/makmik](https://linkedin.com/in/makmik)  
 🌐 **Personal website** [makmik.dev]()
 
