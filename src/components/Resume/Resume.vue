@@ -9,13 +9,13 @@
       <a
         href="/Mikhail_Makarov_frontend.docx"
         class="resume__link"
-        @click="handleCVlink"
+        download
         >{{ $t('resume.docx') }}</a
       >
       <a
         href="/Mikhail_Makarov_frontend.pdf"
         class="resume__link"
-        @click="handleCVlink"
+        download
         >{{ $t('resume.pdf') }}</a
       >
     </div>
@@ -25,15 +25,7 @@
 import { ref } from 'vue';
 const toggle = ref(false);
 const handleCVtoggle = () => (toggle.value = !toggle.value);
-const handleCVlink = (e: Event) => {
-  e.preventDefault();
-  if (e.target instanceof Element) {
-    const url = e.target.getAttribute('href');
-    if (url) {
-      window.open(url, '_black');
-    }
-  }
-};
+
 </script>
 <style lang="scss" scoped>
 .resume {
