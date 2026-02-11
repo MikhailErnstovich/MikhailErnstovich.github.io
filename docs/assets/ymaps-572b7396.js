@@ -1,0 +1,1 @@
+import{V as a}from"./index-0e92be32.js";const[e]=await Promise.all([ymaps3.import("@yandex/ymaps3-vuefy"),ymaps3.ready]),p=e.vuefy.bindTo(a),{YMap:y,YMapDefaultSchemeLayer:m,YMapDefaultFeaturesLayer:s,YMapMarker:t,YMapFeature:o}=p.module(ymaps3);export{y as YMap,s as YMapDefaultFeaturesLayer,m as YMapDefaultSchemeLayer,o as YMapFeature,t as YMapMarker,p as vuefy};
